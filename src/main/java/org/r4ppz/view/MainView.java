@@ -24,13 +24,13 @@ public class MainView {
     private final LoadFXML loadFXML = LoadFXML.getInstanceFxmlLoader();
     private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
 
-    public void showMainViewV2() throws Exception {
-        Stage mainView = new Stage();
-        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/MainView.fxml"));
-        mainView.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
-        mainView.setScene(scene);
-        mainView.setResizable(false);
-        mainView.setTitle("Archive");
-        mainView.show();
+    public void showMainView() throws Exception {
+        Stage stage = new Stage();
+        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/Main.fxml"));
+        stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Archive");
+        stage.show();
     }
 }

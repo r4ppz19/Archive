@@ -3,7 +3,7 @@ package org.r4ppz.view;
 import java.util.Objects;
 
 import org.r4ppz.controller.MainViewController;
-import org.r4ppz.controller.NewFolderAlertViewController;
+import org.r4ppz.controller.NewFolderDialogViewController;
 import org.r4ppz.util.ImageLoader;
 
 import javafx.fxml.FXMLLoader;
@@ -11,20 +11,20 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class NewFolderAlertView {
-    private static NewFolderAlertView newFolderAlertView;
+public class NewFolderDialogView {
+    private static NewFolderDialogView newFolderDialogView;
     private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
 
-    private NewFolderAlertView() {
+    private NewFolderDialogView() {
 
     }
 
-    public static NewFolderAlertView getInstancErrorAlertView() {
-        if (newFolderAlertView == null) {
-            newFolderAlertView = new NewFolderAlertView();
+    public static NewFolderDialogView getInstancErrorAlertView() {
+        if (newFolderDialogView == null) {
+            newFolderDialogView = new NewFolderDialogView();
         }
 
-        return newFolderAlertView;
+        return newFolderDialogView;
      }
 
 
@@ -34,13 +34,13 @@ public class NewFolderAlertView {
      * @param mainViewV2Controller the controller for the main view
      * @throws Exception if there is an error loading the FXML or displaying the stage
      */
-    public void showNewFolderAlert(MainViewController mainViewController, Stage ownerStage) throws Exception {
+    public void showNewFolderDialog(MainViewController mainViewController, Stage ownerStage) throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/NewFolderAlert.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/NewFolderDialog.fxml")));
     
         Scene scene = new Scene(loader.load());
     
-        NewFolderAlertViewController controller = loader.getController();
+        NewFolderDialogViewController controller = loader.getController();
         controller.setMainViewV2Controller(mainViewController);
     
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));

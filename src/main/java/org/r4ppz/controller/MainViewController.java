@@ -4,8 +4,8 @@ import java.io.File;
 
 import org.r4ppz.util.HandleFile;
 import org.r4ppz.util.ImageLoader;
-import org.r4ppz.view.NewFolderAlertView;
-import org.r4ppz.view.SuccessAlertView;
+import org.r4ppz.view.NewFolderDialogView;
+import org.r4ppz.view.SuccessDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewController {
-    private NewFolderAlertView newFolderAlertView = NewFolderAlertView.getInstancErrorAlertView();
+    private NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstancErrorAlertView();
 
     @FXML
     private VBox leftPanelVbox;
@@ -41,8 +41,8 @@ public class MainViewController {
         if (selectedFile != null) {
             handleFile.copyFileToProject(selectedFile, "src/main/resources/com/r4ppz/uploads");
 
-            SuccessAlertView successAlertView = SuccessAlertView.getInstanSuccessAlertView();
-            successAlertView.showSuccessAlertView(ownerStage);
+            SuccessDialogView successAlertView = SuccessDialogView.getInstanSuccessAlertView();
+            successAlertView.showSuccessDialogView(ownerStage);
 
             initialize();
         } else {
@@ -53,7 +53,7 @@ public class MainViewController {
     @FXML
     private void addFolderButton(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        newFolderAlertView.showNewFolderAlert(this,ownerStage);
+        newFolderDialogView.showNewFolderDialog(this,ownerStage);
     }
 
     public void refresh() {

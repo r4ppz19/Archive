@@ -2,9 +2,9 @@ package org.r4ppz.controller;
 
 import org.r4ppz.model.DefaultUser;
 import org.r4ppz.model.UserModel;
-import org.r4ppz.view.ErrorAlertView;
+import org.r4ppz.view.ErrorDialogView;
 import org.r4ppz.view.MainView;
-import org.r4ppz.view.SuccessAlertView;
+import org.r4ppz.view.SuccessDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginViewController {
-    private final ErrorAlertView errorAlertView = ErrorAlertView.getInstancErrorAlertView();
-    private final SuccessAlertView signUpAlertView = SuccessAlertView.getInstanSuccessAlertView();
+    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstancErrorAlertView();
+    private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstanSuccessAlertView();
     private final DefaultUser defaultUser = DefaultUser.getInstancDefaultUser();
 
     private final UserModel userModel = new UserModel();
@@ -49,10 +49,10 @@ public class LoginViewController {
 
             // Show the main view
             MainView mainView = MainView.getInstancMainView();
-            mainView.showMainViewV2();
+            mainView.showMainView();
         } else {
             Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            errorAlertView.showErrorAlertView(ownerStage);
+            errorDialogView.showErrorDialogView(ownerStage);
         }
 
     }
@@ -68,12 +68,12 @@ public class LoginViewController {
             userModel.setUsername(usernameTextField.getText());
             userModel.setPassword(passwordTextField.getText());
 
-            signUpAlertView.showSuccessAlertView(ownerStage);
+            signUpDialogView.showSuccessDialogView(ownerStage);
 
             usernameTextField.clear();
             passwordTextField.clear();
         } else {
-            errorAlertView.showErrorAlertView(ownerStage);
+            errorDialogView.showErrorDialogView(ownerStage);
         }
 
     }

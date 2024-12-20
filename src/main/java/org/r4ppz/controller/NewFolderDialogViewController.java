@@ -7,13 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class NewFolderAlertViewController {
+public class NewFolderDialogViewController {
     private HandleFile handleFile = HandleFile.getInstanceHandleFile();
 
-    private MainViewController mainViewV2Controller;
+    private MainViewController mainViewController;
 
     public void setMainViewV2Controller(MainViewController mainViewController) {
-        this.mainViewV2Controller = mainViewController;
+        this.mainViewController = mainViewController;
     }
     
     @FXML
@@ -26,7 +26,7 @@ public class NewFolderAlertViewController {
     public void createButtonAction(ActionEvent actionEvent) throws Exception {
         String folderName = folderNameTextField.getText();
         handleFile.createFolder(folderName);
-        mainViewV2Controller.refresh();
+        mainViewController.refresh();
 
         createButton.getScene().getWindow().hide();
     }
@@ -35,7 +35,7 @@ public class NewFolderAlertViewController {
     public void folderNameTextFieldAction(ActionEvent actionEvent) throws Exception {
         String folderName = folderNameTextField.getText();
         handleFile.createFolder(folderName);
-        mainViewV2Controller.refresh();
+        mainViewController.refresh();
 
 
         createButton.getScene().getWindow().hide();
