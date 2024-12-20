@@ -58,6 +58,7 @@ public class MainViewV2Controller {
         newFolderTextField.setPromptText("New folder name...");
         textFieldVboxContainer.getChildren().add(newFolderTextField);
         
+        
         newFolderTextField.setOnAction(_ -> {
             String newFolderName = newFolderTextField.getText();
             createFolder(newFolderName);

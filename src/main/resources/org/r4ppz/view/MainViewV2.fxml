@@ -34,7 +34,7 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#uploadButtonAction">
                            <graphic>
-                              <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                                  <image>
                                     <Image url="@../image/upload-icon.png" />
                                  </image>
@@ -43,7 +43,7 @@
                         </Button>
                         <Button mnemonicParsing="false" onAction="#addFolderButton">
                            <graphic>
-                              <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                                  <image>
                                     <Image url="@../image/create-folder-icon.png" />
                                  </image>
