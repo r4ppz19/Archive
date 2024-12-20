@@ -1,6 +1,7 @@
 package org.r4ppz.controller;
 
 import java.io.File;
+import java.nio.file.Path;
 
 import org.r4ppz.util.HandleFile;
 import org.r4ppz.util.ImageLoader;
@@ -35,7 +36,7 @@ public class MainViewController {
     @FXML
     public void uploadButtonAction(ActionEvent actionEvent) throws Exception {
         HandleFile handleFile = HandleFile.getInstanceHandleFile();
-        File selectedFile = handleFile.fileChooser((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+        Path selectedFile = handleFile.fileChooser((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
         Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         if (selectedFile != null) {
