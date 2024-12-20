@@ -37,7 +37,7 @@
     
 }
 
-/*! Dynamic design */
+/*! DYNAMIC DESIGN */
 .content-folder-button {
     -fx-background-color: rgb(255, 255, 255);
     -fx-background-radius: 5;
@@ -84,4 +84,15 @@
     -fx-border-color: rgb(0, 0, 0);
     -fx-border-radius: 5;
     -fx-border-width: 1px;
+}
+
+/*! TARGET ALL */
+.tooltip {
+    -fx-background-color: lightyellow;
+    -fx-text-fill: black;
+    -fx-font-size: 10px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
 }
