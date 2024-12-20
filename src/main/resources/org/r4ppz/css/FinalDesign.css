@@ -76,3 +76,12 @@
     -fx-border-radius: 5;
     -fx-text-fill: black;
 }
+
+.new-folder-text-field {
+    -fx-background-color: white;
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-background-radius: 5;
+    -fx-border-color: rgb(0, 0, 0);
+    -fx-border-radius: 5;
+    -fx-border-width: 1px;
+}

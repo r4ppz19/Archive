@@ -11,9 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -23,6 +25,8 @@ public class MainViewV2Controller {
     private VBox leftPanelVbox;
     @FXML
     private ImageView pdfImageView;
+    @FXML
+    private HBox textFieldVboxContainer;
 
     @FXML
     public void initialize() {
@@ -112,4 +116,13 @@ public class MainViewV2Controller {
         }
     }
 
+    @FXML
+    private void addFolderButton(ActionEvent actionEvent) {
+        TextField newFolderTextField = new TextField();
+        newFolderTextField.getStyleClass().add("new-folder-text-field");
+        newFolderTextField.setPromptText("New folder name...");
+        textFieldVboxContainer.getChildren().add(newFolderTextField);
+
+
+    }
 }
