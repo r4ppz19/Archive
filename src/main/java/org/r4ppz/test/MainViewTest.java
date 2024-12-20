@@ -7,7 +7,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainViewV2Test extends Application {
+public class MainViewTest extends Application {
     public static void main(String[] args) throws Exception {
         launch(args);
     }
@@ -21,7 +21,7 @@ public class MainViewV2Test extends Application {
         LoadFXML loadFXML = LoadFXML.getInstanceFxmlLoader();
         ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
 
-        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/MainViewV2.fxml"));
+        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/MainView.fxml"));
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);

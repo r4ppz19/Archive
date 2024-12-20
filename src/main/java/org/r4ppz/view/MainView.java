@@ -26,7 +26,7 @@ public class MainView {
 
     public void showMainViewV2() throws Exception {
         Stage mainView = new Stage();
-        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/MainViewV2.fxml"));
+        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/MainView.fxml"));
         mainView.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
         mainView.setScene(scene);
         mainView.setResizable(false);
