@@ -1,6 +1,6 @@
 package org.r4ppz.view;
 
-import org.r4ppz.util.FxmlLoader;
+import org.r4ppz.util.LoadFXML;
 import org.r4ppz.util.ImageLoader;
 
 import javafx.scene.Scene;
@@ -22,12 +22,12 @@ public class ErrorAlertView {
         return errorAlertView;
      }
 
-    private final FxmlLoader fxmlLoader = FxmlLoader.getInstanceFxmlLoader();
+    private final LoadFXML loadFXML = LoadFXML.getInstanceFxmlLoader();
     private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
 
     public void showErrorAlertView() throws Exception {
         Stage errorAlert = new Stage();
-        Scene scene = new Scene(fxmlLoader.fxmlLoader("/org/r4ppz/view/ErrorAlert.fxml"));
+        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/ErrorAlert.fxml"));
         errorAlert.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
         errorAlert.setScene(scene);
         errorAlert.setResizable(false);

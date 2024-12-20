@@ -8,17 +8,17 @@ import javafx.scene.Parent;
 
 public class LoadFXML {
 
-    private static LoadFXML fxmlLoader;
+    private static LoadFXML loadFXML;
     
     private LoadFXML() {
     }
 
     public static LoadFXML getInstanceFxmlLoader() {
-        if (fxmlLoader == null) {
-            fxmlLoader = new LoadFXML();
+        if (loadFXML == null) {
+            loadFXML = new LoadFXML();
         }
 
-        return fxmlLoader;
+        return loadFXML;
     }
 
     public Parent fxmlLoader(String fxmlPath) throws IOException {
