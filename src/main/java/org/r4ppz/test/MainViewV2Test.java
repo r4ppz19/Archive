@@ -1,6 +1,6 @@
 package org.r4ppz.test;
 
-import org.r4ppz.util.FxmlLoader;
+import org.r4ppz.util.LoadFXML;
 import org.r4ppz.util.ImageLoader;
 
 import javafx.application.Application;
@@ -18,10 +18,10 @@ public class MainViewV2Test extends Application {
     }
 
     public void showMainViewV2(Stage stage) throws Exception {
-        FxmlLoader fxmlLoader = FxmlLoader.getInstanceFxmlLoader();
+        LoadFXML loadFXML = LoadFXML.getInstanceFxmlLoader();
         ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
 
-        Scene scene = new Scene(fxmlLoader.fxmlLoader("/org/r4ppz/view/MainViewV2.fxml"));
+        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/MainViewV2.fxml"));
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);

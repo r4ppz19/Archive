@@ -1,14 +1,19 @@
 package org.r4ppz.view;
 
-import org.r4ppz.util.FxmlLoader;
+import java.util.Objects;
+
+import org.r4ppz.controller.MainViewV2Controller;
+import org.r4ppz.controller.NewFolderAlertViewController;
 import org.r4ppz.util.ImageLoader;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class NewFolderAlertView {
     private static NewFolderAlertView newFolderAlertView;
+    private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
 
     private NewFolderAlertView() {
 
@@ -22,16 +27,37 @@ public class NewFolderAlertView {
         return newFolderAlertView;
      }
 
-    private final FxmlLoader fxmlLoader = FxmlLoader.getInstanceFxmlLoader();
-    private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
 
-    public void showNewFolderAlert() throws Exception {
+    /**
+     * Displays a modal alert for creating a new folder.
+     *
+     * @param mainViewV2Controller the controller for the main view
+     * @throws Exception if there is an error loading the FXML or displaying the stage
+     */
+    public void showNewFolderAlert(MainViewV2Controller mainViewV2Controller) throws Exception {
         Stage stage = new Stage();
-        Scene scene = new Scene(fxmlLoader.fxmlLoader("/org/r4ppz/view/ErrorAlert.fxml"));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/NewFolderAlert.fxml")));
+    
+        Scene scene = new Scene(loader.load());
+    
+        NewFolderAlertViewController controller = loader.getController();
+        controller.setMainViewV2Controller(mainViewV2Controller);
+    
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
+    
+
+/*     public void showNewFolderAlert() throws Exception {
+        Stage stage = new Stage();
+        Scene scene = new Scene(fxmlLoader.fxmlLoader("/org/r4ppz/view/NewFolderAlert.fxml"));
+        stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    } */
 }

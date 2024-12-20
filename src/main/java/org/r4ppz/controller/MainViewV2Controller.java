@@ -1,18 +1,16 @@
 package org.r4ppz.controller;
 
 import java.io.File;
-import java.util.Objects;
 
 import org.r4ppz.util.HandleFile;
 import org.r4ppz.util.ImageLoader;
+import org.r4ppz.view.NewFolderAlertView;
 import org.r4ppz.view.SuccessAlertView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -20,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewV2Controller {
-    private HandleFile handleFile = HandleFile.getInstanceHandleFile();
+    private NewFolderAlertView newFolderAlertView = NewFolderAlertView.getInstancErrorAlertView();
 
     @FXML
     private VBox leftPanelVbox;
@@ -35,7 +33,7 @@ public class MainViewV2Controller {
     }
 
     @FXML
-    public void uploadButtonAction(ActionEvent actionEvent) throws Exception{
+    public void uploadButtonAction(ActionEvent actionEvent) throws Exception {
         HandleFile handleFile = HandleFile.getInstanceHandleFile();
         File selectedFile = handleFile.fileChooser((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
@@ -48,41 +46,30 @@ public class MainViewV2Controller {
             initialize();
         } else {
             System.out.println("File selection cancelled.");
-
         }
     }
 
     @FXML
-    private void addFolderButton(ActionEvent actionEvent) {
-        TextField newFolderTextField = new TextField();
-        newFolderTextField.getStyleClass().add("new-folder-text-field");
-        newFolderTextField.setPromptText("New folder name...");
-        textFieldVboxContainer.getChildren().add(newFolderTextField);
-        
-        newFolderTextField.setOnAction(_ -> {
-            String newFolderName = newFolderTextField.getText();
-            handleFile.createFolder(newFolderName);
-            textFieldVboxContainer.getChildren().clear();
-            refresh();
-        });
+    private void addFolderButton(ActionEvent actionEvent) throws Exception {
+        newFolderAlertView.showNewFolderAlert(this);
     }
 
-    private void refresh() {
+    public void refresh() {
         leftPanelVbox.getChildren().clear();
         // loadFilesToButton();
         loadFolderToButtons();
     }
 
-    private void loadFilesToButton() {
+/*     private void loadFilesToButton() {
         File directory = new File("src/main/resources/org/r4ppz/uploads/");
         if (directory.isDirectory()) {
             for (File file : Objects.requireNonNull(directory.listFiles())) {
                 String fileName = file.getName().replace(".pdf", "");
                 Button folderContainerButton = new Button(file.getName());
-                
+
                 ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
                 Image folderImage = imageLoader.loadImage("/org/r4ppz/image/folder-icon.png");
-                
+
                 ImageView folderIcon = new ImageView(folderImage);
                 folderIcon.setFitHeight(22);
                 folderIcon.setFitWidth(22);
@@ -100,6 +87,7 @@ public class MainViewV2Controller {
             System.out.println("Directory not found: " + directory.getAbsolutePath());
         }
     }
+ */
 
     private void loadFolderToButtons() {
         File mainFolder = new File("src/main/resources/org/r4ppz/uploads/");
@@ -114,7 +102,7 @@ public class MainViewV2Controller {
 
                         ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
                         Image folderImage = imageLoader.loadImage("/org/r4ppz/image/folder-icon.png");
-                        
+
                         ImageView folderIcon = new ImageView(folderImage);
                         folderIcon.setFitHeight(22);
                         folderIcon.setFitWidth(22);
@@ -131,6 +119,4 @@ public class MainViewV2Controller {
             System.out.println("Main Folder is null");
         }
     }
-
-
 }

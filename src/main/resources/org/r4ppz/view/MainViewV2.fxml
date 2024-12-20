@@ -63,7 +63,7 @@
                   </HBox>
                   <Pane prefHeight="40.0" prefWidth="182.0">
                      <children>
-                        <Line endX="92.0" layoutX="91.0" layoutY="20.0" startX="-91.0" strokeType="OUTSIDE" />
+                        <Line endX="92.0" fill="BLACK" layoutX="91.0" layoutY="20.0" startX="-91.0" strokeType="OUTSIDE" />
                      </children>
                   </Pane>
                   <VBox prefHeight="244.0" prefWidth="134.0">
@@ -84,7 +84,8 @@
          <center>
             <AnchorPane prefHeight="400.0" prefWidth="415.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="109.0" layoutY="109.0" prefHeight="200.0" prefWidth="297.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Line startY="402.0" strokeType="OUTSIDE" />
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="109.0" layoutY="109.0" prefHeight="200.0" prefWidth="297.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
                         <VBox prefHeight="398.0" prefWidth="378.0">
                            <children>
