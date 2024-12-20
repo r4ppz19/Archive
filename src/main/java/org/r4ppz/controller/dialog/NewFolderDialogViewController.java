@@ -1,7 +1,8 @@
-package org.r4ppz.controller;
+package org.r4ppz.controller.dialog;
 
+import org.r4ppz.controller.main.MainViewController;
 import org.r4ppz.util.HandleFile;
-import org.r4ppz.view.ErrorDialogView;
+import org.r4ppz.view.dialog.ErrorDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

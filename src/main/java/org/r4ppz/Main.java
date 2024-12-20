@@ -18,8 +18,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage mainStage) throws Exception {
-        mainStage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
-        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/Login.fxml"));
+        mainStage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
+        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/main/Login.fxml"));
         mainStage.setTitle("Archive");
         mainStage.setScene(scene);
         mainStage.setResizable(false);

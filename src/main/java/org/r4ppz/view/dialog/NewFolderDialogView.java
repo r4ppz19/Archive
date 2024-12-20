@@ -1,9 +1,9 @@
-package org.r4ppz.view;
+package org.r4ppz.view.dialog;
 
 import java.util.Objects;
 
-import org.r4ppz.controller.MainViewController;
-import org.r4ppz.controller.NewFolderDialogViewController;
+import org.r4ppz.controller.dialog.NewFolderDialogViewController;
+import org.r4ppz.controller.main.MainViewController;
 import org.r4ppz.util.ImageLoader;
 
 import javafx.fxml.FXMLLoader;
@@ -36,14 +36,14 @@ public class NewFolderDialogView {
      */
     public void showNewFolderDialog(MainViewController mainViewController, Stage ownerStage) throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/NewFolderDialog.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/dialog/NewFolderDialog.fxml")));
     
         Scene scene = new Scene(loader.load());
     
         NewFolderDialogViewController controller = loader.getController();
         controller.setMainViewV2Controller(mainViewController);
     
-        stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
+        stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);

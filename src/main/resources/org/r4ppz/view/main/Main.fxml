@@ -15,9 +15,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/FinalDesign.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.r4ppz.controller.MainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../css/FinalDesign.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.r4ppz.controller.main.MainViewController">
    <children>
-      <BorderPane layoutX="133.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/FinalDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="133.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../../css/FinalDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="182.0" stylesheets="@../css/FinalDesign.css" BorderPane.alignment="CENTER">
                <children>
@@ -39,7 +39,7 @@
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                                  <image>
-                                    <Image url="@../image/upload-icon.png" />
+                                    <Image url="@../../image/icon/upload-icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -51,7 +51,7 @@
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                                  <image>
-                                    <Image url="@../image/create-folder-icon.png" />
+                                    <Image url="@../../image/icon/create-folder-icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>

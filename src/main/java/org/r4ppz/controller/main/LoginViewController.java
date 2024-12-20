@@ -1,10 +1,10 @@
-package org.r4ppz.controller;
+package org.r4ppz.controller.main;
 
 import org.r4ppz.model.DefaultUser;
 import org.r4ppz.model.UserModel;
-import org.r4ppz.view.ErrorDialogView;
-import org.r4ppz.view.MainView;
-import org.r4ppz.view.SuccessDialogView;
+import org.r4ppz.view.dialog.ErrorDialogView;
+import org.r4ppz.view.dialog.SuccessDialogView;
+import org.r4ppz.view.main.MainView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

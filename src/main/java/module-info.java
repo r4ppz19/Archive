@@ -7,10 +7,10 @@ module com.r4ppz {
     requires transitive java.desktop;
 
     opens org.r4ppz to javafx.fxml;
-    opens org.r4ppz.controller to javafx.fxml;
+    opens org.r4ppz.controller.dialog to javafx.fxml;
+    opens org.r4ppz.controller.main to javafx.fxml;
 
     exports org.r4ppz;
-    exports org.r4ppz.controller;
     exports org.r4ppz.util;
     exports org.r4ppz.model;
     
