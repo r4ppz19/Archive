@@ -2,7 +2,7 @@ package org.r4ppz.view;
 
 import java.util.Objects;
 
-import org.r4ppz.controller.MainViewV2Controller;
+import org.r4ppz.controller.MainViewController;
 import org.r4ppz.controller.NewFolderAlertViewController;
 import org.r4ppz.util.ImageLoader;
 
@@ -34,14 +34,14 @@ public class NewFolderAlertView {
      * @param mainViewV2Controller the controller for the main view
      * @throws Exception if there is an error loading the FXML or displaying the stage
      */
-    public void showNewFolderAlert(MainViewV2Controller mainViewV2Controller) throws Exception {
+    public void showNewFolderAlert(MainViewController mainViewController) throws Exception {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/NewFolderAlert.fxml")));
     
         Scene scene = new Scene(loader.load());
     
         NewFolderAlertViewController controller = loader.getController();
-        controller.setMainViewV2Controller(mainViewV2Controller);
+        controller.setMainViewV2Controller(mainViewController);
     
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/white-circle-icon.png"));
         stage.setScene(scene);

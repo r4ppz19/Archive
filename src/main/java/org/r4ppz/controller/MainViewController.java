@@ -17,7 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MainViewV2Controller {
+public class MainViewController {
     private NewFolderAlertView newFolderAlertView = NewFolderAlertView.getInstancErrorAlertView();
 
     @FXML

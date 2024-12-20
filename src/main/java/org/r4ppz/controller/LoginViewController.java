@@ -3,7 +3,7 @@ package org.r4ppz.controller;
 import org.r4ppz.model.DefaultUser;
 import org.r4ppz.model.UserModel;
 import org.r4ppz.view.ErrorAlertView;
-import org.r4ppz.view.MainViewV2;
+import org.r4ppz.view.MainView;
 import org.r4ppz.view.SuccessAlertView;
 
 import javafx.event.ActionEvent;
@@ -48,8 +48,8 @@ public class LoginViewController {
             currentStage.close();
 
             // Show the main view
-            MainViewV2 mainViewV2 = MainViewV2.getInstancMainView();
-            mainViewV2.showMainViewV2();
+            MainView mainView = MainView.getInstancMainView();
+            mainView.showMainViewV2();
         } else {
             errorAlertView.showErrorAlertView();
         }

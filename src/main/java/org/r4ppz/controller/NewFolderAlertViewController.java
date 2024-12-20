@@ -10,10 +10,10 @@ import javafx.scene.control.TextField;
 public class NewFolderAlertViewController {
     private HandleFile handleFile = HandleFile.getInstanceHandleFile();
 
-    private MainViewV2Controller mainViewV2Controller;
+    private MainViewController mainViewV2Controller;
 
-    public void setMainViewV2Controller(MainViewV2Controller mainViewV2Controller) {
-        this.mainViewV2Controller = mainViewV2Controller;
+    public void setMainViewV2Controller(MainViewController mainViewController) {
+        this.mainViewV2Controller = mainViewController;
     }
     
     @FXML
