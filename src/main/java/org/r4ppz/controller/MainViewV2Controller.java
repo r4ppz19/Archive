@@ -51,6 +51,21 @@ public class MainViewV2Controller {
         }
     }
 
+    @FXML
+    private void addFolderButton(ActionEvent actionEvent) {
+        TextField newFolderTextField = new TextField();
+        newFolderTextField.getStyleClass().add("new-folder-text-field");
+        newFolderTextField.setPromptText("New folder name...");
+        textFieldVboxContainer.getChildren().add(newFolderTextField);
+        
+        newFolderTextField.setOnAction(_ -> {
+            String newFolderName = newFolderTextField.getText();
+            createFolder(newFolderName);
+            textFieldVboxContainer.getChildren().clear();
+            refresh();
+        });
+    }
+
     private void refresh() {
         leftPanelVbox.getChildren().clear();
         // loadFilesToButton();
@@ -116,13 +131,19 @@ public class MainViewV2Controller {
         }
     }
 
-    @FXML
-    private void addFolderButton(ActionEvent actionEvent) {
-        TextField newFolderTextField = new TextField();
-        newFolderTextField.getStyleClass().add("new-folder-text-field");
-        newFolderTextField.setPromptText("New folder name...");
-        textFieldVboxContainer.getChildren().add(newFolderTextField);
+    private void createFolder(String folderName) {
+        String newFolderPath = "src/main/resources/org/r4ppz/uploads/" + folderName;
+        File newFolder = new File(newFolderPath);
 
+        if (!newFolder.exists()) {
+            if (newFolder.mkdir()) {
+                System.out.println("Success");
+            } else {
+                System.out.println("Fail");
+            }
+        } else {
+            System.out.println("New folder already exist");
+        }
 
     }
 }
