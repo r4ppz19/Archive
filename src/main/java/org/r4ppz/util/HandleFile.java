@@ -46,4 +46,19 @@ public class HandleFile {
         File destinationFile = new File(destinationPath, sourceFile.getName());
         Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
+
+    public void createFolder(String folderName) {
+        String newFolderPath = "src/main/resources/org/r4ppz/uploads/" + folderName;
+        File newFolder = new File(newFolderPath);
+
+        if (!newFolder.exists()) {
+            if (newFolder.mkdir()) {
+                System.out.println("Success");
+            } else {
+                System.out.println("Fail");
+            }
+        } else {
+            System.out.println("New folder already exist");
+        }
+    }
 }

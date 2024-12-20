@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewV2Controller {
+    private HandleFile handleFile = HandleFile.getInstanceHandleFile();
 
     @FXML
     private VBox leftPanelVbox;
@@ -58,10 +59,9 @@ public class MainViewV2Controller {
         newFolderTextField.setPromptText("New folder name...");
         textFieldVboxContainer.getChildren().add(newFolderTextField);
         
-        
         newFolderTextField.setOnAction(_ -> {
             String newFolderName = newFolderTextField.getText();
-            createFolder(newFolderName);
+            handleFile.createFolder(newFolderName);
             textFieldVboxContainer.getChildren().clear();
             refresh();
         });
@@ -132,19 +132,5 @@ public class MainViewV2Controller {
         }
     }
 
-    private void createFolder(String folderName) {
-        String newFolderPath = "src/main/resources/org/r4ppz/uploads/" + folderName;
-        File newFolder = new File(newFolderPath);
 
-        if (!newFolder.exists()) {
-            if (newFolder.mkdir()) {
-                System.out.println("Success");
-            } else {
-                System.out.println("Fail");
-            }
-        } else {
-            System.out.println("New folder already exist");
-        }
-
-    }
 }
