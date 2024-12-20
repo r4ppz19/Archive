@@ -1,4 +1,4 @@
-package org.r4ppz.model;
+package org.r4ppz.test;
 
 import java.io.File;
 public class TestMethod {
