@@ -36,12 +36,13 @@ public class MainViewController {
     public void uploadButtonAction(ActionEvent actionEvent) throws Exception {
         HandleFile handleFile = HandleFile.getInstanceHandleFile();
         File selectedFile = handleFile.fileChooser((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         if (selectedFile != null) {
             handleFile.copyFileToProject(selectedFile, "src/main/resources/com/r4ppz/uploads");
 
             SuccessAlertView successAlertView = SuccessAlertView.getInstanSuccessAlertView();
-            successAlertView.showSuccessAlertView();
+            successAlertView.showSuccessAlertView(ownerStage);
 
             initialize();
         } else {
@@ -51,7 +52,8 @@ public class MainViewController {
 
     @FXML
     private void addFolderButton(ActionEvent actionEvent) throws Exception {
-        newFolderAlertView.showNewFolderAlert(this);
+        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        newFolderAlertView.showNewFolderAlert(this,ownerStage);
     }
 
     public void refresh() {

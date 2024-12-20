@@ -51,24 +51,29 @@ public class LoginViewController {
             MainView mainView = MainView.getInstancMainView();
             mainView.showMainViewV2();
         } else {
-            errorAlertView.showErrorAlertView();
+            Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            errorAlertView.showErrorAlertView(ownerStage);
         }
 
     }
 
     @FXML
     public void signUpAction(ActionEvent actionEvent) throws Exception {
+        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+
         if (usernameTextField.getText() != null && !usernameTextField.getText().isEmpty()
                 && passwordTextField.getText() != null && !passwordTextField.getText().isEmpty()) {
 
             userModel.setUsername(usernameTextField.getText());
             userModel.setPassword(passwordTextField.getText());
-            signUpAlertView.showSuccessAlertView();
+
+            signUpAlertView.showSuccessAlertView(ownerStage);
 
             usernameTextField.clear();
             passwordTextField.clear();
         } else {
-            errorAlertView.showErrorAlertView();
+            errorAlertView.showErrorAlertView(ownerStage);
         }
 
     }

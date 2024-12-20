@@ -34,7 +34,7 @@ public class NewFolderAlertView {
      * @param mainViewV2Controller the controller for the main view
      * @throws Exception if there is an error loading the FXML or displaying the stage
      */
-    public void showNewFolderAlert(MainViewController mainViewController) throws Exception {
+    public void showNewFolderAlert(MainViewController mainViewController, Stage ownerStage) throws Exception {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/NewFolderAlert.fxml")));
     
@@ -47,6 +47,17 @@ public class NewFolderAlertView {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.initOwner(ownerStage);
+
+        // Center the dialog within the main window
+        stage.setOnShown(event -> {
+            double x = ownerStage.getX() + (ownerStage.getWidth() - stage.getWidth()) / 2;
+            double y = ownerStage.getY() + (ownerStage.getHeight() - stage.getHeight()) / 2;
+            stage.setX(x);
+            stage.setY(y);
+        });
+
         stage.showAndWait();
     }
     
