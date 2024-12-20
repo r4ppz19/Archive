@@ -52,7 +52,7 @@
                      <children>
                         <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="249.0" prefWidth="162.0" styleClass="background" vbarPolicy="NEVER">
                            <content>
-                              <VBox fx:id="fileContainer" alignment="CENTER" prefHeight="240.0" prefWidth="159.0" spacing="10.0" styleClass="background" />
+                              <VBox fx:id="leftPanelVbox" alignment="CENTER" prefHeight="240.0" prefWidth="159.0" spacing="10.0" styleClass="background" />
                            </content>
                         </ScrollPane>
                      </children>
