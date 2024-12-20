@@ -6,16 +6,16 @@ import java.util.Objects;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-public class FxmlLoader {
+public class LoadFXML {
 
-    private static FxmlLoader fxmlLoader;
+    private static LoadFXML fxmlLoader;
     
-    private FxmlLoader() {
+    private LoadFXML() {
     }
 
-    public static FxmlLoader getInstanceFxmlLoader() {
+    public static LoadFXML getInstanceFxmlLoader() {
         if (fxmlLoader == null) {
-            fxmlLoader = new FxmlLoader();
+            fxmlLoader = new LoadFXML();
         }
 
         return fxmlLoader;
