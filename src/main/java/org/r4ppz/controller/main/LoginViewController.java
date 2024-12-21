@@ -61,7 +61,6 @@ public class LoginViewController {
     public void signUpAction(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-
         if (usernameTextField.getText() != null && !usernameTextField.getText().isEmpty()
                 && passwordTextField.getText() != null && !passwordTextField.getText().isEmpty()) {
 

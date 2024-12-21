@@ -38,20 +38,15 @@ public class HandleFile {
         Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
     }
 
-    public void createFolder(String folderName) {
+    public void createFolder(String folderName) throws IOException {
         String newFolderPath = "src/main/resources/org/r4ppz/uploads/" + folderName;
-        File newFolder = new File(newFolderPath);
+        Path newFolder =  Paths.get(newFolderPath);
 
-        if (!newFolder.exists()) {
-            if (newFolder.mkdir()) {
-                System.out.println("Success");
-            } else {
-                System.out.println("Fail");
-            }
+        if (!Files.exists(newFolder)) {
+            Files.createDirectories(newFolder);
+            System.out.println("Success");
         } else {
             System.out.println("New folder already exist");
         }
     }
-
-
 }

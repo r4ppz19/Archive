@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 public class NewFolderDialogViewController {
-    private HandleFile handleFile = HandleFile.getInstanceHandleFile();
-    private ErrorDialogView errorDialogView = ErrorDialogView.getInstancErrorAlertView();
+    private final HandleFile handleFile = HandleFile.getInstanceHandleFile();
+    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstancErrorAlertView();
 
     private MainViewController mainViewController;
 
@@ -29,29 +29,22 @@ public class NewFolderDialogViewController {
 
     @FXML
     public void createButtonAction(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()) .getScene().getWindow();
-        String folderName = folderNameTextField.getText();
-
-        if (folderName != null  && !folderName.isEmpty()) {
-            handleFile.createFolder(folderName);
-            mainViewController.refresh();
-    
-            createButton.getScene().getWindow().hide();
-        } else {
-            errorDialogView.showErrorDialogView(ownerStage);
-        }
+        validateButtonAction(actionEvent);
     }
 
     @FXML
     public void folderNameTextFieldAction(ActionEvent actionEvent) throws Exception {
+        validateButtonAction(actionEvent);
+    }
+
+    private void validateButtonAction(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = (Stage) ((Node) actionEvent.getSource()) .getScene().getWindow();
         String folderName = folderNameTextField.getText();
-
 
         if (folderName != null  && !folderName.isEmpty()) {
             handleFile.createFolder(folderName);
             mainViewController.refresh();
-    
+
             createButton.getScene().getWindow().hide();
         } else {
             errorDialogView.showErrorDialogView(ownerStage);
