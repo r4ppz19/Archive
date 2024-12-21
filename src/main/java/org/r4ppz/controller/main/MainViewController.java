@@ -1,7 +1,10 @@
 package org.r4ppz.controller.main;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.r4ppz.util.HandleFile;
 import org.r4ppz.util.ImageLoader;
@@ -54,7 +57,7 @@ public class MainViewController {
     @FXML
     private void addFolderButton(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        newFolderDialogView.showNewFolderDialog(this,ownerStage);
+        newFolderDialogView.showNewFolderDialog(this, ownerStage);
     }
 
     public void refresh() {
@@ -63,44 +66,14 @@ public class MainViewController {
         loadFolderToButtons();
     }
 
-/*     private void loadFilesToButton() {
-        File directory = new File("src/main/resources/org/r4ppz/uploads/");
-        if (directory.isDirectory()) {
-            for (File file : Objects.requireNonNull(directory.listFiles())) {
-                String fileName = file.getName().replace(".pdf", "");
-                Button folderContainerButton = new Button(file.getName());
-
-                ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
-                Image folderImage = imageLoader.loadImage("/org/r4ppz/image/folder-icon.png");
-
-                ImageView folderIcon = new ImageView(folderImage);
-                folderIcon.setFitHeight(22);
-                folderIcon.setFitWidth(22);
-                folderContainerButton.setGraphic(folderIcon);
-                folderContainerButton.getStyleClass().add("content-folder-button");
-
-                // Add tooltip
-                Tooltip fileNametooltip = new Tooltip(fileName);
-                folderContainerButton.setTooltip(fileNametooltip);
-                fileNametooltip.getStyleClass().add("file-name-tooltip");
-
-                leftPanelVbox.getChildren().add(folderContainerButton);
-            }
-        } else {
-            System.out.println("Directory not found: " + directory.getAbsolutePath());
-        }
-    }
- */
-
     private void loadFolderToButtons() {
-        File mainFolder = new File("src/main/resources/org/r4ppz/uploads/");
+        Path mainFolder = Paths.get("src/main/resources/org/r4ppz/uploads/");
 
-        if (mainFolder.isDirectory()) {
-            File[] filesInside = mainFolder.listFiles();
-            if (filesInside != null) {
-                for (File files : filesInside) {
-                    if (files.isDirectory()) {
-                        String folderName = files.getName();
+        if (Files.isDirectory(mainFolder)) {
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(mainFolder)) {
+                for (Path entry : stream) {
+                    if (Files.isDirectory(entry)) {
+                        String folderName = entry.getFileName().toString();
                         Button folderButton = new Button(folderName);
 
                         ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
@@ -115,11 +88,43 @@ public class MainViewController {
                         leftPanelVbox.getChildren().add(folderButton);
                     }
                 }
-            } else {
-                System.out.println("Files inside is null");
+            } catch (IOException e) {
+                System.out.println("Error reading directory: " + e.getMessage());
             }
         } else {
-            System.out.println("Main Folder is null");
+            System.out.println("Main Folder is not a directory");
         }
     }
+
+    /*
+     * private void loadFilesToButton() {
+     * File directory = new File("src/main/resources/org/r4ppz/uploads/");
+     * if (directory.isDirectory()) {
+     * for (File file : Objects.requireNonNull(directory.listFiles())) {
+     * String fileName = file.getName().replace(".pdf", "");
+     * Button folderContainerButton = new Button(file.getName());
+     * 
+     * ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
+     * Image folderImage =
+     * imageLoader.loadImage("/org/r4ppz/image/folder-icon.png");
+     * 
+     * ImageView folderIcon = new ImageView(folderImage);
+     * folderIcon.setFitHeight(22);
+     * folderIcon.setFitWidth(22);
+     * folderContainerButton.setGraphic(folderIcon);
+     * folderContainerButton.getStyleClass().add("content-folder-button");
+     * 
+     * // Add tooltip
+     * Tooltip fileNametooltip = new Tooltip(fileName);
+     * folderContainerButton.setTooltip(fileNametooltip);
+     * fileNametooltip.getStyleClass().add("file-name-tooltip");
+     * 
+     * leftPanelVbox.getChildren().add(folderContainerButton);
+     * }
+     * } else {
+     * System.out.println("Directory not found: " + directory.getAbsolutePath());
+     * }
+     * }
+     */
+
 }

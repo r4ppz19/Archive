@@ -1,5 +1,8 @@
 package org.r4ppz.controller.dialog;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.r4ppz.controller.main.MainViewController;
 import org.r4ppz.util.HandleFile;
 import org.r4ppz.view.dialog.ErrorDialogView;
@@ -12,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 public class NewFolderDialogViewController {
+    private static final List<Character> INVALID_CHARACTERS = Arrays.asList('*', '?', '<', '>', '|', ':', '"', '\\', '/');
+
     private final HandleFile handleFile = HandleFile.getInstanceHandleFile();
     private final ErrorDialogView errorDialogView = ErrorDialogView.getInstancErrorAlertView();
 
@@ -29,19 +34,19 @@ public class NewFolderDialogViewController {
 
     @FXML
     public void createButtonAction(ActionEvent actionEvent) throws Exception {
-        validateButtonAction(actionEvent);
+        validateButton(actionEvent);
     }
 
     @FXML
     public void folderNameTextFieldAction(ActionEvent actionEvent) throws Exception {
-        validateButtonAction(actionEvent);
+        validateButton(actionEvent);
     }
 
-    private void validateButtonAction(ActionEvent actionEvent) throws Exception {
+    private void validateButton(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = (Stage) ((Node) actionEvent.getSource()) .getScene().getWindow();
         String folderName = folderNameTextField.getText();
 
-        if (folderName != null  && !folderName.isEmpty()) {
+        if (folderName != null  && !folderName.isEmpty() && !containsInvalidCharacters(folderName)) {
             handleFile.createFolder(folderName);
             mainViewController.refresh();
 
@@ -49,5 +54,14 @@ public class NewFolderDialogViewController {
         } else {
             errorDialogView.showErrorDialogView(ownerStage);
         }
+    }
+
+    private boolean containsInvalidCharacters(String folderName) {
+        for (char c : folderName.toCharArray()) {
+            if (INVALID_CHARACTERS.contains(c)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
