@@ -1,14 +1,18 @@
 package org.r4ppz.view.dialog;
 
-import org.r4ppz.util.LoadFXML;
+import java.util.Objects;
+
 import org.r4ppz.util.ImageLoader;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ErrorDialogView {
     private static ErrorDialogView errorDialogView;
+    private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
+
 
     private ErrorDialogView() {
 
@@ -22,12 +26,9 @@ public class ErrorDialogView {
         return errorDialogView;
      }
 
-    private final LoadFXML loadFXML = LoadFXML.getInstanceFxmlLoader();
-    private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
-
     public void showErrorDialogView(Stage ownerStage) throws Exception {
         Stage stage = new Stage();
-        Scene scene = new Scene(loadFXML.fxmlLoader("/org/r4ppz/view/dialog/ErrorDialog.fxml"));
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/dialog/ErrorDialog.fxml"))));
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);
