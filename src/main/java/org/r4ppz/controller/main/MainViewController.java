@@ -66,6 +66,22 @@ public class MainViewController {
         loadFolderToButtons();
     }
 
+    /**
+     * Loads folders from a specified directory and creates buttons for each folder.
+     * Each button is styled and has an icon representing a folder.
+     * The buttons are added to a VBox container named leftPanelVbox.
+     * 
+     * The method performs the following steps:
+     * 1. Checks if the specified path is a directory.
+     * 2. Iterates through the directory entries.
+     * 3. For each subdirectory, creates a button with the folder name.
+     * 4. Loads an image to use as an icon for the button.
+     * 5. Sets the icon and style for the button.
+     * 6. Adds the button to the leftPanelVbox.
+     * 
+     * If the specified path is not a directory or an error occurs while reading the directory,
+     * appropriate error messages are printed to the console.
+     */
     private void loadFolderToButtons() {
         Path mainFolder = Paths.get("src/main/resources/org/r4ppz/uploads/");
 

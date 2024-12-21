@@ -42,6 +42,13 @@ public class NewFolderDialogViewController {
         validateButton(actionEvent);
     }
 
+    /**
+     * Validates the folder name entered by the user and creates a new folder if the name is valid.
+     * If the folder name is invalid, an error dialog is displayed.
+     *
+     * @param actionEvent the action event triggered by the button click
+     * @throws Exception if an error occurs during folder creation
+     */
     private void validateButton(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = (Stage) ((Node) actionEvent.getSource()) .getScene().getWindow();
         String folderName = folderNameTextField.getText();
@@ -56,6 +63,12 @@ public class NewFolderDialogViewController {
         }
     }
 
+    /**
+     * Checks if the given folder name contains any invalid characters.
+     *
+     * @param folderName the name of the folder to check
+     * @return true if the folder name contains any invalid characters, false otherwise
+     */
     private boolean containsInvalidCharacters(String folderName) {
         for (char c : folderName.toCharArray()) {
             if (INVALID_CHARACTERS.contains(c)) {

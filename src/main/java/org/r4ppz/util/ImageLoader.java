@@ -21,8 +21,16 @@ public class ImageLoader {
         return imageLoader;
     }
 
-    // Using cache mechanism for loading an image
     private final Map<String, Image> imageCache = new HashMap<>();
+    /**
+     * Loads an image from the specified path. If the image has been previously loaded and cached,
+     * it retrieves the image from the cache. Otherwise, it loads the image from the given path,
+     * caches it, and then returns the loaded image.
+     *
+     * @param imagePath the path to the image file to be loaded
+     * @return the loaded Image object
+     * @throws NullPointerException if the imagePath is null or the resource cannot be found
+     */
     public Image loadImage(String imagePath) {
         if (imageCache.containsKey(imagePath)) {
             return imageCache.get(imagePath);
