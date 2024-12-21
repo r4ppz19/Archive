@@ -3,6 +3,11 @@
     -fx-font-family: Lexend, JetBrains Mono;
 }
 
+.title-text-field {
+    -fx-font-weight: bold;
+    -fx-font-size: 40;
+}
+
 /* Style for TextFields */
 .text-field {
     -fx-background-color: #ffffff;
