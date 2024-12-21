@@ -7,10 +7,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.r4ppz.view.dialog.SuccessDialogView;
+
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class FileHandler {
+    private SuccessDialogView successDialogView = SuccessDialogView.getInstanceSuccessAlertView();
+
     private static FileHandler handleFile;
 
     private FileHandler() {
@@ -46,8 +52,14 @@ public class FileHandler {
      * @throws IOException if an I/O error occurs during the file copy operation
      */
     public void copyFileToProject(Path sourceFile, String destinationPath) throws IOException {
-        Path destinationDir  = Paths.get(destinationPath);
-        Path destinationFile = destinationDir.resolve(destinationPath);
+        Path destinationDir = Paths.get(destinationPath);
+        Path destinationFile = destinationDir.resolve(sourceFile.getFileName().toString());
+    
+        // Ensure the destination directory exists
+        if (!Files.exists(destinationDir)) {
+            Files.createDirectories(destinationDir);
+        }
+    
         Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
     }
 
@@ -66,6 +78,20 @@ public class FileHandler {
             System.out.println("Success");
         } else {
             System.out.println("New folder already exist");
+        }
+    }
+
+    public void uploadFile(ActionEvent actionEvent, String uploadsFilePath) throws Exception {
+        Path selectedFile = handleFile.fileChooser((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        if (selectedFile != null) {
+            handleFile.copyFileToProject(selectedFile, uploadsFilePath);
+
+            successDialogView.showSuccessDialogView(ownerStage);
+
+        } else {
+            System.out.println("File selection cancelled.");
         }
     }
 }

@@ -55,7 +55,7 @@ public class NewFolderDialogViewController {
 
         if (folderName != null  && !folderName.isEmpty() && !containsInvalidCharacters(folderName)) {
             fileHandler.createFolder(folderName);
-            mainViewController.refresh();
+            mainViewController.vboxRefresher(mainViewController.getLeftPanelVBox());
 
             createButton.getScene().getWindow().hide();
         } else {

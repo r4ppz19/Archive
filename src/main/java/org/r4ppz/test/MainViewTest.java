@@ -13,6 +13,7 @@ public class MainViewTest extends Application{
     public void start(Stage primaryStage) throws Exception {
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/main/Main.fxml"))));
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Testing");
         primaryStage.show();
     }
 

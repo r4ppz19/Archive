@@ -1,17 +1,13 @@
 package org.r4ppz.controller.main;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Objects;
-
 import org.r4ppz.util.FileHandler;
 import org.r4ppz.util.ImageLoader;
 import org.r4ppz.view.dialog.NewFolderDialogView;
-import org.r4ppz.view.dialog.SuccessDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,41 +17,32 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewController {
     private final NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstanceErrorAlertView();
-    private final SuccessDialogView successAlertView = SuccessDialogView.getInstanceSuccessAlertView();
+    private FileHandler fileHandler = FileHandler.getInstanceHandleFile();
 
     private final String uploadsFilePath = "src/main/resources/org/r4ppz/uploads/";
 
     @FXML
     private VBox leftPanelVBox;
+    public VBox getLeftPanelVBox() {
+        return leftPanelVBox;
+    }
     @FXML
     private FlowPane listButtonFilesFlowPane;
 
     @FXML
     public void initialize() {
-        refresh();
+        vboxRefresher(leftPanelVBox);
     }
 
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
-        FileHandler handleFile = FileHandler.getInstanceHandleFile();
-        Path selectedFile = handleFile.fileChooser((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-        if (selectedFile != null) {
-            handleFile.copyFileToProject(selectedFile, uploadsFilePath);
-
-            successAlertView.showSuccessDialogView(ownerStage);
-
-            initialize();
-        } else {
-            System.out.println("File selection cancelled.");
-        }
+        fileHandler.uploadFile(actionEvent, uploadsFilePath);
+        initialize();
     }
 
     @FXML
@@ -64,10 +51,12 @@ public class MainViewController {
         newFolderDialogView.showNewFolderDialog(this, ownerStage);
     }
 
-    public void refresh() {
-        leftPanelVBox.getChildren().clear();
-        // loadFilesToButton();
+    public void vboxRefresher(VBox vbox) {
+        vbox.getChildren().clear();
         populateFolderButtons();
+    }
+    public void flowPaneRefresher(FlowPane flowPane) {
+        flowPane.getChildren().clear();
     }
 
     /**
@@ -76,10 +65,12 @@ public class MainViewController {
      * 
      * The method checks if the specified directory exists and is a directory.
      * If it is, it iterates through the directory entries and creates a button
-     * for each subdirectory. The buttons are styled with the "content-folder-button"
+     * for each subdirectory. The buttons are styled with the
+     * "content-folder-button"
      * CSS class and added to the left panel VBox.
      * 
-     * If an IOException occurs while reading the directory, an error message is printed
+     * If an IOException occurs while reading the directory, an error message is
+     * printed
      * to the console.
      */
     private void populateFolderButtons() {
@@ -89,11 +80,14 @@ public class MainViewController {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(uploadsDirectory)) {
                 for (Path folderPath : stream) {
                     if (Files.isDirectory(folderPath)) {
+
                         Button folderButton = createFolderButton(folderPath);
                         folderButton.getStyleClass().add("folder-button");
 
                         folderButton.setOnAction(event -> {
-                            selectedFolderButton(folderButton, uploadsFilePath);
+                            flowPaneRefresher(listButtonFilesFlowPane);
+                            
+                            populatedFilesButton(folderButton, uploadsFilePath);
 
                         });
 
@@ -112,7 +106,8 @@ public class MainViewController {
      * Creates a button representing a folder with an icon.
      *
      * @param entry the path of the folder
-     * @return a Button object with the folder name as its text and a folder icon as its graphic
+     * @return a Button object with the folder name as its text and a folder icon as
+     *         its graphic
      */
     private static Button createFolderButton(Path entry) {
         String folderName = entry.getFileName().toString();
@@ -128,13 +123,10 @@ public class MainViewController {
         return folderButton;
     }
 
-    public void selectedFolderButton(Button currentButton , String path) {
+    private void populatedFilesButton(Button currentButton, String uploadsFilePath) {
         String currentfolderName = currentButton.getText();
-        String fullCurrentFolderPath = path + currentfolderName;
-        populatedFilesButton(fullCurrentFolderPath);
-    }
+        String fullCurrentFolderPath = uploadsFilePath + currentfolderName;
 
-    private void populatedFilesButton(String fullCurrentFolderPath) {
         Path directory = Paths.get(fullCurrentFolderPath);
 
         if (Files.isDirectory(directory)) {
@@ -143,21 +135,16 @@ public class MainViewController {
 
                     String fileName = file.getFileName().toString();
 
-                    int dotExtensionIndex = fileName.lastIndexOf(".");
+                    Button folderContainerButton = new Button(fileName);
 
-                    String finalFileNameNoExtension = fileName.substring(0, dotExtensionIndex);
-
-                    Button folderContainerButton = new Button(file.getFileName().toString());
-    
                     folderContainerButton.getStyleClass().add("file-button");
-    
+
                     // Add tooltip
-                    Tooltip fileNametooltip = new Tooltip(finalFileNameNoExtension);
+                    Tooltip fileNametooltip = new Tooltip(fileName);
                     folderContainerButton.setTooltip(fileNametooltip);
                     fileNametooltip.getStyleClass().add("file-name-tooltip");
-    
-                    listButtonFilesFlowPane.getChildren().add(folderContainerButton);
 
+                    listButtonFilesFlowPane.getChildren().add(folderContainerButton);
 
                 }
             } catch (IOException e) {
