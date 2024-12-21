@@ -1,9 +1,8 @@
-module com.r4ppz {
+module org.r4ppz {
     requires javafx.controls;
     requires javafx.fxml;
     requires transitive javafx.graphics;
 
-    requires org.apache.pdfbox;
     requires transitive java.desktop;
 
     opens org.r4ppz to javafx.fxml;
@@ -13,6 +12,5 @@ module com.r4ppz {
     exports org.r4ppz;
     exports org.r4ppz.util;
     exports org.r4ppz.model;
-    
     exports org.r4ppz.test;
 }
