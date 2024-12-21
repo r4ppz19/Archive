@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.r4ppz.controller.main.MainViewController;
-import org.r4ppz.util.HandleFile;
+import org.r4ppz.util.FileHandler;
 import org.r4ppz.view.dialog.ErrorDialogView;
 
 import javafx.event.ActionEvent;
@@ -17,8 +17,8 @@ import javafx.scene.Node;
 public class NewFolderDialogViewController {
     private static final List<Character> INVALID_CHARACTERS = Arrays.asList('*', '?', '<', '>', '|', ':', '"', '\\', '/');
 
-    private final HandleFile handleFile = HandleFile.getInstanceHandleFile();
-    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstancErrorAlertView();
+    private final FileHandler fileHandler = FileHandler.getInstanceHandleFile();
+    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstanceErrorAlertView();
 
     private MainViewController mainViewController;
 
@@ -54,7 +54,7 @@ public class NewFolderDialogViewController {
         String folderName = folderNameTextField.getText();
 
         if (folderName != null  && !folderName.isEmpty() && !containsInvalidCharacters(folderName)) {
-            handleFile.createFolder(folderName);
+            fileHandler.createFolder(folderName);
             mainViewController.refresh();
 
             createButton.getScene().getWindow().hide();

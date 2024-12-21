@@ -10,16 +10,16 @@ import java.nio.file.StandardCopyOption;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class HandleFile {
-    private static HandleFile handleFile;
+public class FileHandler {
+    private static FileHandler handleFile;
 
-    private HandleFile() {
+    private FileHandler() {
 
     }
 
-    public static HandleFile getInstanceHandleFile() {
+    public static FileHandler getInstanceHandleFile() {
         if (handleFile == null) {
-            handleFile = new HandleFile();
+            handleFile = new FileHandler();
         }
         return handleFile;
     }

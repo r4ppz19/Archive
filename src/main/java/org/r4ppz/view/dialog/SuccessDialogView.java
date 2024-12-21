@@ -16,7 +16,7 @@ public class SuccessDialogView {
 
     }
 
-    public static SuccessDialogView getInstanSuccessAlertView() {
+    public static SuccessDialogView getInstanceSuccessAlertView() {
         if (successDialogView == null) {
             successDialogView = new SuccessDialogView();
         }

@@ -18,7 +18,7 @@ public class ErrorDialogView {
 
     }
 
-    public static ErrorDialogView getInstancErrorAlertView() {
+    public static ErrorDialogView getInstanceErrorAlertView() {
         if (errorDialogView == null) {
             errorDialogView = new ErrorDialogView();
         }

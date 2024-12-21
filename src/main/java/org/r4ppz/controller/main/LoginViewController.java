@@ -14,9 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginViewController {
-    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstancErrorAlertView();
-    private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstanSuccessAlertView();
+    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstanceErrorAlertView();
+    private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstanceSuccessAlertView();
     private final DefaultUser defaultUser = DefaultUser.getInstancDefaultUser();
+    private final MainView mainView = MainView.getInstanceMainView();
+
 
     private final UserModel userModel = new UserModel();
 
@@ -48,7 +50,6 @@ public class LoginViewController {
             currentStage.close();
 
             // Show the main view
-            MainView mainView = MainView.getInstancMainView();
             mainView.showMainView();
         } else {
             Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

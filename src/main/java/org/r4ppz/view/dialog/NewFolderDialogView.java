@@ -19,7 +19,7 @@ public class NewFolderDialogView {
 
     }
 
-    public static NewFolderDialogView getInstancErrorAlertView() {
+    public static NewFolderDialogView getInstanceErrorAlertView() {
         if (newFolderDialogView == null) {
             newFolderDialogView = new NewFolderDialogView();
         }

@@ -15,7 +15,7 @@ public class MainView {
 
     }
 
-    public static MainView getInstancMainView() {
+    public static MainView getInstanceMainView() {
         if (mainView == null) {
             mainView = new MainView();
         }
