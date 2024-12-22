@@ -47,7 +47,7 @@ public class NewFolderDialogViewController {
         // Validate folder name and create the folder if valid
         if (isFolderNameValid(folderName)) {
             fileHandler.createFolder(folderName, fileHandler.getDefaultUploadsPath());
-            mainViewController.refreshContainer(mainViewController.getLeftPanelVBox());
+            mainViewController.refreshVbox(mainViewController.getLeftPanelVBox());
             closeDialog(actionEvent);
         } else {
             showErrorDialog(actionEvent);

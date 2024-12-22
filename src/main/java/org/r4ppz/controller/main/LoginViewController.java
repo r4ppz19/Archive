@@ -30,6 +30,7 @@ public class LoginViewController {
     public void handleUsernameTextFieldAction(ActionEvent actionEvent) throws Exception{
         handleSignInAction(actionEvent);
     }
+
     @FXML
     public void handlePasswordTextFieldAction(ActionEvent actionEvent) throws Exception {
         handleSignInAction(actionEvent);

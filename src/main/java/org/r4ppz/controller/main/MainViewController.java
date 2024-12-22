@@ -28,17 +28,17 @@ public class MainViewController {
 
     @FXML
     private VBox leftPanelVBox;
-    @FXML
-    private FlowPane listButtonFilesFlowPane;
-
     public VBox getLeftPanelVBox() {
         return leftPanelVBox;
     }
+    @FXML
+    private FlowPane listButtonFilesFlowPane;
 
     @FXML
     public void initialize() {
         if (leftPanelVBox != null) {
-            refreshContainer(leftPanelVBox);
+            refreshVbox(leftPanelVBox);
+            refreshFlowPane(listButtonFilesFlowPane);
         } else {
             System.out.println("leftPanelVBox is null");
         }
@@ -47,7 +47,7 @@ public class MainViewController {
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
         fileHandler.uploadFile(actionEvent, fileHandler.getDefaultUploadsPath());
-        refreshContainer(leftPanelVBox); // No need to call initialize() again
+        refreshVbox(leftPanelVBox); // No need to call initialize() again
     }
 
     @FXML
@@ -56,15 +56,24 @@ public class MainViewController {
         newFolderDialogView.showNewFolderDialog(ownerStage, this);
     }
 
-    public void refreshContainer(Pane container) {
+    public void refreshVbox(Pane container) {
         if (container == null) {
             System.out.println("Container is null!");
             return;
         }
-
         container.getChildren().clear();
         populateFolderButtons(); // Populate folder buttons after clearing
     }
+    
+    public void refreshFlowPane(Pane container) {
+        if (container == null) {
+            System.out.println("Container is null!");
+            return;
+        }
+        container.getChildren().clear();
+    }
+
+
 
     private void populateFolderButtons() {
         Path uploadsDirectory = Paths.get(fileHandler.getDefaultUploadsPath());
@@ -76,7 +85,7 @@ public class MainViewController {
                         Button folderButton = createFolderButton(folderPath);
 
                         folderButton.setOnAction(event -> {
-                            refreshContainer(listButtonFilesFlowPane);
+                            refreshFlowPane(listButtonFilesFlowPane);
                             populateFilesButton(folderButton);
                         });
 
