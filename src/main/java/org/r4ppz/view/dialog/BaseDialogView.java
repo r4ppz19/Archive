@@ -1,8 +1,11 @@
 package org.r4ppz.view.dialog;
 
+import java.util.Objects;
+
 import org.r4ppz.util.ImageLoader;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -11,10 +14,11 @@ public abstract class BaseDialogView {
     private ImageLoader imageLoader = ImageLoader.getInstance();
 
 
-    public void showDialog(Stage ownerStage, FXMLLoader loader) throws Exception {
+    public void showDialog(Stage ownerStage, String fxmlPath) throws Exception {
         Stage stage = new Stage();
         try {
-            Scene scene = new Scene(loader.load());
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+            Scene scene = new Scene(root);
             stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
             stage.setScene(scene);
             stage.setResizable(false);

@@ -16,7 +16,6 @@ public class ErrorDialogView extends BaseDialogView {
     }
 
     public void showErrorDialog(Stage ownerStage) throws Exception {
-        FXMLLoader loader = FXMLLoader.load(getClass().getResource("/org/r4ppz/view/dialog/ErrorDialog.fxml"));
-        showDialog(ownerStage, loader);
+        showDialog(ownerStage, "/org/r4ppz/view/dialog/ErrorDialog.fxml");
     }
 }

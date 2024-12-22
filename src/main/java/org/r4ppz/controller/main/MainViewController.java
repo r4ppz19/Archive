@@ -24,13 +24,15 @@ public class MainViewController {
     private final NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstance();
     private FileHandler fileHandler = FileHandler.getInstance();
 
-    private final String uploadsFilePath = "src/main/resources/org/r4ppz/uploads/";
+    private MainViewController mainViewController;
 
     @FXML
     private VBox leftPanelVBox;
+
     public VBox getLeftPanelVBox() {
         return leftPanelVBox;
     }
+
     @FXML
     private FlowPane listButtonFilesFlowPane;
 
@@ -41,40 +43,27 @@ public class MainViewController {
 
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
-        fileHandler.uploadFile(actionEvent, uploadsFilePath);
+        fileHandler.uploadFile(actionEvent, fileHandler.getdefaultUploadsPath());
         initialize();
     }
 
     @FXML
     private void handleAddFolderButtonAction(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        newFolderDialogView.showNewFolderDialog(this, ownerStage);
+        Stage ownerStage = getCurrentStage(actionEvent);
+        newFolderDialogView.showNewFolderDialog(ownerStage, this);
     }
 
     public void vboxRefresher(VBox vbox) {
         vbox.getChildren().clear();
         populateFolderButtons();
     }
+
     public void flowPaneRefresher(FlowPane flowPane) {
         flowPane.getChildren().clear();
     }
 
-    /**
-     * Loads folders from a specified directory and creates buttons for each folder.
-     * The buttons are styled and added to the left panel VBox.
-     * 
-     * The method checks if the specified directory exists and is a directory.
-     * If it is, it iterates through the directory entries and creates a button
-     * for each subdirectory. The buttons are styled with the
-     * "content-folder-button"
-     * CSS class and added to the left panel VBox.
-     * 
-     * If an IOException occurs while reading the directory, an error message is
-     * printed
-     * to the console.
-     */
     private void populateFolderButtons() {
-        Path uploadsDirectory = Paths.get(uploadsFilePath);
+        Path uploadsDirectory = Paths.get(fileHandler.getdefaultUploadsPath());
 
         if (Files.isDirectory(uploadsDirectory)) {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(uploadsDirectory)) {
@@ -85,9 +74,9 @@ public class MainViewController {
                         folderButton.getStyleClass().add("folder-button");
 
                         folderButton.setOnAction(event -> {
-                            flowPaneRefresher(listButtonFilesFlowPane);
-                            
-                            populatedFilesButton(folderButton, uploadsFilePath);
+                            // flowPaneRefresher(listButtonFilesFlowPane);
+
+                            // populatedFilesButton(folderButton, fileHandler.getdefaultUploadsPath());
 
                         });
 
@@ -102,13 +91,6 @@ public class MainViewController {
         }
     }
 
-    /**
-     * Creates a button representing a folder with an icon.
-     *
-     * @param entry the path of the folder
-     * @return a Button object with the folder name as its text and a folder icon as
-     *         its graphic
-     */
     private static Button createFolderButton(Path entry) {
         String folderName = entry.getFileName().toString();
         Button folderButton = new Button(folderName);
@@ -153,5 +135,10 @@ public class MainViewController {
         } else {
             System.out.println("The provided path is not a directory.");
         }
+    }
+
+    private Stage getCurrentStage(ActionEvent actionEvent) {
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        return currentStage;
     }
 }

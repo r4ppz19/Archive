@@ -1,12 +1,20 @@
 package org.r4ppz.view.dialog;
 
+import java.util.Objects;
+
 import org.r4ppz.controller.dialog.NewFolderDialogViewController;
 import org.r4ppz.controller.main.MainViewController;
+import org.r4ppz.util.ImageLoader;
+
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class NewFolderDialogView extends BaseDialogView {
     private static NewFolderDialogView instance;
+    private ImageLoader imageLoader = ImageLoader.getInstance();
 
     private NewFolderDialogView() {}
 
@@ -17,15 +25,24 @@ public class NewFolderDialogView extends BaseDialogView {
         return instance;
     }
 
-    public void showNewFolderDialog(MainViewController mainViewController, Stage ownerStage) throws Exception {
-        // Create FXMLLoader
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/r4ppz/view/dialog/NewFolderDialog.fxml"));
-        
-        // Get the controller after showing dialog
-        showDialog(ownerStage, loader);
-        
-        // Set main view controller reference
-        NewFolderDialogViewController controller = loader.getController();
-        controller.setMainViewController(mainViewController);
+    public void showNewFolderDialog(Stage ownerStage, MainViewController mainViewController) throws Exception {
+        showDialog(ownerStage, "/org/r4ppz/view/dialog/ErrorDialog.fxml", mainViewController);
+    }
+
+    public void showDialog(Stage ownerStage, String fxmlPath, MainViewController mainViewController) throws Exception {
+        Stage stage = new Stage();
+        FXMLLoader loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+        Scene scene = new Scene(loader.load());
+
+        NewFolderDialogViewController mainController = loader.getController();
+        mainController.setSecondaryController(mainViewController);
+
+        stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        centerView(stage, ownerStage);
+        stage.initOwner(ownerStage);
+        stage.showAndWait();
     }
 }

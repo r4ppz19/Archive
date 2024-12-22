@@ -17,7 +17,6 @@ public class SuccessDialogView extends BaseDialogView {
     }
 
     public void showSuccessDialog(Stage ownerStage) throws Exception {
-        FXMLLoader loader = FXMLLoader.load(getClass().getResource("/org/r4ppz/view/dialog/SuccessDialog.fxml"));
-        showDialog(ownerStage, loader);
+        showDialog(ownerStage, "/org/r4ppz/view/dialog/SuccessDialog.fxml");
     }
 }

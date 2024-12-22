@@ -17,6 +17,12 @@ import javafx.stage.Stage;
 public class FileHandler {
     private SuccessDialogView successDialogView = SuccessDialogView.getInstance();
 
+    private final String defaultUploadsPath = "src/main/resources/org/r4ppz/uploads/";
+    public String getdefaultUploadsPath() {
+        return defaultUploadsPath;
+    }
+
+
     private static FileHandler handleFile;
 
     private FileHandler() {
@@ -69,8 +75,8 @@ public class FileHandler {
      * @param folderName the name of the folder to be created
      * @throws IOException if an I/O error occurs or the folder cannot be created
      */
-    public void createFolder(String folderName) throws IOException {
-        String newFolderPath = "src/main/resources/org/r4ppz/uploads/" + folderName;
+    public void createFolder(String folderName, String destinationPath) throws IOException {
+        String newFolderPath = destinationPath + folderName;
         Path newFolder =  Paths.get(newFolderPath);
 
         if (!Files.exists(newFolder)) {
