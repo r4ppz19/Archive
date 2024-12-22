@@ -46,13 +46,13 @@ public class LoginViewController {
                         && passwordTextField.getText().equals(defaultUser.getPassword())) {
 
             // Get the state and close it
-            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Stage currentStage = getCurrentStage(actionEvent);
             currentStage.close();
 
             // Show the main view
             mainView.showMainView();
         } else {
-            Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Stage ownerStage = getCurrentStage(actionEvent);
             errorDialogView.showErrorDialog(ownerStage);
         }
 
@@ -60,7 +60,7 @@ public class LoginViewController {
 
     @FXML
     public void signUpAction(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage ownerStage = getCurrentStage(actionEvent);
 
         if (usernameTextField.getText() != null && !usernameTextField.getText().isEmpty()
                 && passwordTextField.getText() != null && !passwordTextField.getText().isEmpty()) {
@@ -76,6 +76,11 @@ public class LoginViewController {
             errorDialogView.showErrorDialog(ownerStage);
         }
 
+    }
+
+    public Stage getCurrentStage(ActionEvent actionEvent) {
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        return currentStage;
     }
 
 }
