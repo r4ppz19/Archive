@@ -23,7 +23,7 @@ public class MainView {
         return mainView;
     }
 
-    private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
+    private final ImageLoader imageLoader = ImageLoader.getInstance();
 
     public void showMainView() throws Exception {
         Stage stage = new Stage();

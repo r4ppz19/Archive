@@ -21,8 +21,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewController {
-    private final NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstanceErrorAlertView();
-    private FileHandler fileHandler = FileHandler.getInstanceHandleFile();
+    private final NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstance();
+    private FileHandler fileHandler = FileHandler.getInstance();
 
     private final String uploadsFilePath = "src/main/resources/org/r4ppz/uploads/";
 
@@ -113,7 +113,7 @@ public class MainViewController {
         String folderName = entry.getFileName().toString();
         Button folderButton = new Button(folderName);
 
-        ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
+        ImageLoader imageLoader = ImageLoader.getInstance();
         Image folderImage = imageLoader.loadImage("/org/r4ppz/image/icon/folder-icon.png");
 
         ImageView folderIcon = new ImageView(folderImage);

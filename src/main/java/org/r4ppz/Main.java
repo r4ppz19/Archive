@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private final ImageLoader imageLoader = ImageLoader.getInstanceImageLoader();
+    private final ImageLoader imageLoader = ImageLoader.getInstance();
 
     public static void main(String[] args) {
         launch(args);

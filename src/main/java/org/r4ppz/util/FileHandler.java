@@ -15,7 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class FileHandler {
-    private SuccessDialogView successDialogView = SuccessDialogView.getInstanceSuccessAlertView();
+    private SuccessDialogView successDialogView = SuccessDialogView.getInstance();
 
     private static FileHandler handleFile;
 
@@ -23,7 +23,7 @@ public class FileHandler {
 
     }
 
-    public static FileHandler getInstanceHandleFile() {
+    public static FileHandler getInstance() {
         if (handleFile == null) {
             handleFile = new FileHandler();
         }
@@ -88,7 +88,7 @@ public class FileHandler {
         if (selectedFile != null) {
             handleFile.copyFileToProject(selectedFile, uploadsFilePath);
 
-            successDialogView.showSuccessDialogView(ownerStage);
+            successDialogView.showSuccessDialog(ownerStage);
 
         } else {
             System.out.println("File selection cancelled.");

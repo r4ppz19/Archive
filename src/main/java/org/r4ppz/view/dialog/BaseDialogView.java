@@ -1,7 +1,5 @@
 package org.r4ppz.view.dialog;
 
-import java.util.Objects;
-
 import org.r4ppz.util.ImageLoader;
 
 import javafx.fxml.FXMLLoader;
@@ -13,10 +11,9 @@ public abstract class BaseDialogView {
     private ImageLoader imageLoader = ImageLoader.getInstance();
 
 
-    public void showDialog(Stage ownerStage, String fxmlPath) throws Exception {
+    public void showDialog(Stage ownerStage, FXMLLoader loader) throws Exception {
         Stage stage = new Stage();
         try {
-            FXMLLoader loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
             Scene scene = new Scene(loader.load());
             stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
             stage.setScene(scene);
@@ -27,7 +24,7 @@ public abstract class BaseDialogView {
             stage.showAndWait();
         } catch (Exception e) {
             e.printStackTrace(); // Or log this error for better visibility
-            throw new Exception("Error loading dialog: " + fxmlPath, e);
+            throw new Exception("Error loading dialog: " +  e);
         }
     }
 

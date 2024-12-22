@@ -14,8 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginViewController {
-    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstanceErrorAlertView();
-    private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstanceSuccessAlertView();
+    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
+    private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstance();
     private final DefaultUser defaultUser = DefaultUser.getInstancDefaultUser();
     private final MainView mainView = MainView.getInstanceMainView();
 
@@ -53,7 +53,7 @@ public class LoginViewController {
             mainView.showMainView();
         } else {
             Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            errorDialogView.showErrorDialogView(ownerStage);
+            errorDialogView.showErrorDialog(ownerStage);
         }
 
     }
@@ -68,12 +68,12 @@ public class LoginViewController {
             userModel.setUsername(usernameTextField.getText());
             userModel.setPassword(passwordTextField.getText());
 
-            signUpDialogView.showSuccessDialogView(ownerStage);
+            signUpDialogView.showSuccessDialog(ownerStage);
 
             usernameTextField.clear();
             passwordTextField.clear();
         } else {
-            errorDialogView.showErrorDialogView(ownerStage);
+            errorDialogView.showErrorDialog(ownerStage);
         }
 
     }

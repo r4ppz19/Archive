@@ -17,12 +17,12 @@ import javafx.scene.Node;
 public class NewFolderDialogViewController {
     private static final List<Character> INVALID_CHARACTERS = Arrays.asList('*', '?', '<', '>', '|', ':', '"', '\\', '/');
 
-    private final FileHandler fileHandler = FileHandler.getInstanceHandleFile();
-    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstanceErrorAlertView();
+    private final FileHandler fileHandler = FileHandler.getInstance();
+    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
 
     private MainViewController mainViewController;
 
-    public void setMainViewV2Controller(MainViewController mainViewController) {
+    public void setMainViewController(MainViewController mainViewController) {
         this.mainViewController = mainViewController;
     }
     
@@ -59,7 +59,7 @@ public class NewFolderDialogViewController {
 
             createButton.getScene().getWindow().hide();
         } else {
-            errorDialogView.showErrorDialogView(ownerStage);
+            errorDialogView.showErrorDialog(ownerStage);
         }
     }
 
