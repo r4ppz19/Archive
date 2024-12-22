@@ -19,8 +19,8 @@
                </font></Label>
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="200.0" spacing="5.0" styleClass="background">
                <children>
-                  <TextField fx:id="folderNameTextField" onAction="#folderNameTextFieldAction" promptText="New Folder" styleClass="text-field" />
-                  <Button fx:id="createButton" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="26.0" prefWidth="70.0" text="Create">
+                  <TextField fx:id="folderNameTextField" onAction="#handleFolderNameTextFieldAction" promptText="New Folder" styleClass="text-field" />
+                  <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateButtonAction" prefHeight="26.0" prefWidth="70.0" text="Create">
                      <font>
                         <Font size="10.0" />
                      </font>

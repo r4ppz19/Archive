@@ -27,6 +27,15 @@ public class LoginViewController {
     private PasswordField passwordTextField;
 
     @FXML
+    public void handleUsernameTextFieldAction(ActionEvent actionEvent) throws Exception{
+        handleSignInAction(actionEvent);
+    }
+    @FXML
+    public void handlePasswordTextFieldAction(ActionEvent actionEvent) throws Exception {
+        handleSignInAction(actionEvent);
+    }
+
+    @FXML
     public void handleSignInAction(ActionEvent actionEvent) throws Exception {
         if (isValidCredentials()) {
             closeCurrentStage(actionEvent);

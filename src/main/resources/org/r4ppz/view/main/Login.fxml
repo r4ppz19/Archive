@@ -13,8 +13,8 @@
    <children>
       <VBox alignment="CENTER" layoutX="220.0" layoutY="143.0" prefHeight="86.0" prefWidth="161.0" spacing="10.0">
          <children>
-            <TextField fx:id="usernameTextField" onAction="#usernameTextFieldAction" />
-            <PasswordField fx:id="passwordTextField" onAction="#passwordTextFieldAction" />
+            <TextField fx:id="usernameTextField" onAction="#handleUsernameTextFieldAction" />
+            <PasswordField fx:id="passwordTextField" onAction="#handlePasswordTextFieldAction" />
          </children>
       </VBox>
       <VBox alignment="CENTER" layoutX="125.0" layoutY="150.0" prefHeight="72.0" prefWidth="95.0" spacing="20.0">
@@ -25,8 +25,8 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="220.0" layoutY="229.0" prefHeight="55.0" prefWidth="161.0" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#signInAction" text="Sign In" />
-            <Button mnemonicParsing="false" onAction="#signUpAction" text="Sign Up" />
+            <Button mnemonicParsing="false" onAction="#handleSignInAction" text="Sign In" />
+            <Button mnemonicParsing="false" onAction="#handleSignUpAction" text="Sign Up" />
          </children>
       </HBox>
       <Label alignment="CENTER" layoutX="188.0" layoutY="45.0" prefHeight="152.0" prefWidth="600.0" styleClass="title-text-field" text="Archive" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

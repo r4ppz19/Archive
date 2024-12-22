@@ -42,7 +42,7 @@ public class NewFolderDialogViewController {
     }
 
     private void validateFolderName(ActionEvent actionEvent) throws Exception {
-        String folderName = folderNameTextField.getText();
+        String folderName = folderNameTextField.getText().trim(); // Trim any leading or trailing whitespace
 
         // Validate folder name and create the folder if valid
         if (isFolderNameValid(folderName)) {

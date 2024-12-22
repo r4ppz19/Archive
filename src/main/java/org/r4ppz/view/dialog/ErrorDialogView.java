@@ -14,7 +14,12 @@ public class ErrorDialogView extends BaseDialogView {
         return errorDialogView;
     }
 
+    @Override
+    protected String getFxmlPath() {
+        return "/org/r4ppz/view/dialog/ErrorDialog.fxml";
+    }
+
     public void showErrorDialog(Stage ownerStage) throws Exception {
-        showDialog(ownerStage, "/org/r4ppz/view/dialog/ErrorDialog.fxml");
+        showDialog(ownerStage);
     }
 }
