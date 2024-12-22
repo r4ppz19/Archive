@@ -14,12 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginViewController {
+
     private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
     private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstance();
     private final DefaultUser defaultUser = DefaultUser.getInstancDefaultUser();
     private final MainView mainView = MainView.getInstanceMainView();
-
-
     private final UserModel userModel = new UserModel();
 
     @FXML
@@ -28,59 +27,59 @@ public class LoginViewController {
     private PasswordField passwordTextField;
 
     @FXML
-    public void passwordTextFieldAction(ActionEvent actionEvent) throws Exception {
-        signInAction(actionEvent);
-    }
-
-    @FXML
-    public void usernameTextFieldAction(ActionEvent actionEvent) throws Exception {
-        signInAction(actionEvent);
-    }
-
-    @FXML
-    public void signInAction(ActionEvent actionEvent) throws Exception {
-
-        if (usernameTextField.getText().equals(userModel.getUsername())
-                && passwordTextField.getText().equals(userModel.getPassword())
-                || usernameTextField.getText().equals(defaultUser.getUsername())
-                        && passwordTextField.getText().equals(defaultUser.getPassword())) {
-
-            // Get the state and close it
-            Stage currentStage = getCurrentStage(actionEvent);
-            currentStage.close();
-
-            // Show the main view
+    public void handleSignInAction(ActionEvent actionEvent) throws Exception {
+        if (isValidCredentials()) {
+            closeCurrentStage(actionEvent);
             mainView.showMainView();
         } else {
-            Stage ownerStage = getCurrentStage(actionEvent);
-            errorDialogView.showErrorDialog(ownerStage);
+            showErrorDialog(actionEvent);
         }
-
     }
 
     @FXML
-    public void signUpAction(ActionEvent actionEvent) throws Exception {
+    public void handleSignUpAction(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = getCurrentStage(actionEvent);
 
-        if (usernameTextField.getText() != null && !usernameTextField.getText().isEmpty()
-                && passwordTextField.getText() != null && !passwordTextField.getText().isEmpty()) {
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
 
-            userModel.setUsername(usernameTextField.getText());
-            userModel.setPassword(passwordTextField.getText());
+        if (isValidSignUpCredentials(username, password)) {
+            userModel.setUsername(username);
+            userModel.setPassword(password);
 
             signUpDialogView.showSuccessDialog(ownerStage);
-
-            usernameTextField.clear();
-            passwordTextField.clear();
+            clearInputFields();
         } else {
             errorDialogView.showErrorDialog(ownerStage);
         }
-
     }
 
-    public Stage getCurrentStage(ActionEvent actionEvent) {
-        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        return currentStage;
+    private boolean isValidCredentials() {
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        return (username.equals(userModel.getUsername()) && password.equals(userModel.getPassword()))
+                || (username.equals(defaultUser.getUsername()) && password.equals(defaultUser.getPassword()));
     }
 
+    private boolean isValidSignUpCredentials(String username, String password) {
+        return username != null && !username.isEmpty() && password != null && !password.isEmpty();
+    }
+
+    private void clearInputFields() {
+        usernameTextField.clear();
+        passwordTextField.clear();
+    }
+
+    private void showErrorDialog(ActionEvent actionEvent) throws Exception {
+        Stage ownerStage = getCurrentStage(actionEvent);
+        errorDialogView.showErrorDialog(ownerStage);
+    }
+
+    private void closeCurrentStage(ActionEvent actionEvent) {
+        getCurrentStage(actionEvent).close();
+    }
+
+    private Stage getCurrentStage(ActionEvent actionEvent) {
+        return (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+    }
 }

@@ -26,14 +26,16 @@ public class NewFolderDialogView extends BaseDialogView {
     }
 
     public void showNewFolderDialog(Stage ownerStage, MainViewController mainViewController) throws Exception {
-        showDialog(ownerStage, "/org/r4ppz/view/dialog/ErrorDialog.fxml", mainViewController);
+        showDialog(ownerStage, "/org/r4ppz/view/dialog/NewFolderDialog.fxml", mainViewController);
     }
 
     public void showDialog(Stage ownerStage, String fxmlPath, MainViewController mainViewController) throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
-        Scene scene = new Scene(loader.load());
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
 
+        // set secondary controller (MainViweController)
         NewFolderDialogViewController mainController = loader.getController();
         mainController.setSecondaryController(mainViewController);
 

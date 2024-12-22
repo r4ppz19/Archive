@@ -17,34 +17,37 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewController {
     private final NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstance();
-    private FileHandler fileHandler = FileHandler.getInstance();
-
-    private MainViewController mainViewController;
+    private final FileHandler fileHandler = FileHandler.getInstance();
+    private final ImageLoader imageLoader = ImageLoader.getInstance();
 
     @FXML
     private VBox leftPanelVBox;
+    @FXML
+    private FlowPane listButtonFilesFlowPane;
 
     public VBox getLeftPanelVBox() {
         return leftPanelVBox;
     }
 
     @FXML
-    private FlowPane listButtonFilesFlowPane;
-
-    @FXML
     public void initialize() {
-        vboxRefresher(leftPanelVBox);
+        if (leftPanelVBox != null) {
+            refreshContainer(leftPanelVBox);
+        } else {
+            System.out.println("leftPanelVBox is null");
+        }
     }
 
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
-        fileHandler.uploadFile(actionEvent, fileHandler.getdefaultUploadsPath());
-        initialize();
+        fileHandler.uploadFile(actionEvent, fileHandler.getDefaultUploadsPath());
+        refreshContainer(leftPanelVBox); // No need to call initialize() again
     }
 
     @FXML
@@ -53,31 +56,28 @@ public class MainViewController {
         newFolderDialogView.showNewFolderDialog(ownerStage, this);
     }
 
-    public void vboxRefresher(VBox vbox) {
-        vbox.getChildren().clear();
-        populateFolderButtons();
-    }
+    public void refreshContainer(Pane container) {
+        if (container == null) {
+            System.out.println("Container is null!");
+            return;
+        }
 
-    public void flowPaneRefresher(FlowPane flowPane) {
-        flowPane.getChildren().clear();
+        container.getChildren().clear();
+        populateFolderButtons(); // Populate folder buttons after clearing
     }
 
     private void populateFolderButtons() {
-        Path uploadsDirectory = Paths.get(fileHandler.getdefaultUploadsPath());
+        Path uploadsDirectory = Paths.get(fileHandler.getDefaultUploadsPath());
 
         if (Files.isDirectory(uploadsDirectory)) {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(uploadsDirectory)) {
                 for (Path folderPath : stream) {
                     if (Files.isDirectory(folderPath)) {
-
                         Button folderButton = createFolderButton(folderPath);
-                        folderButton.getStyleClass().add("folder-button");
 
                         folderButton.setOnAction(event -> {
-                            // flowPaneRefresher(listButtonFilesFlowPane);
-
-                            // populatedFilesButton(folderButton, fileHandler.getdefaultUploadsPath());
-
+                            refreshContainer(listButtonFilesFlowPane);
+                            populateFilesButton(folderButton);
                         });
 
                         leftPanelVBox.getChildren().add(folderButton);
@@ -91,43 +91,30 @@ public class MainViewController {
         }
     }
 
-    private static Button createFolderButton(Path entry) {
-        String folderName = entry.getFileName().toString();
+    private Button createFolderButton(Path folderPath) {
+        String folderName = folderPath.getFileName().toString();
         Button folderButton = new Button(folderName);
 
-        ImageLoader imageLoader = ImageLoader.getInstance();
         Image folderImage = imageLoader.loadImage("/org/r4ppz/image/icon/folder-icon.png");
-
         ImageView folderIcon = new ImageView(folderImage);
         folderIcon.setFitHeight(22);
         folderIcon.setFitWidth(22);
         folderButton.setGraphic(folderIcon);
+
+        folderButton.getStyleClass().add("folder-button");
         return folderButton;
     }
 
-    private void populatedFilesButton(Button currentButton, String uploadsFilePath) {
-        String currentfolderName = currentButton.getText();
-        String fullCurrentFolderPath = uploadsFilePath + currentfolderName;
+    private void populateFilesButton(Button folderButton) {
+        String currentFolderName = folderButton.getText();
+        Path folderPath = Paths.get(fileHandler.getDefaultUploadsPath(), currentFolderName);
 
-        Path directory = Paths.get(fullCurrentFolderPath);
-
-        if (Files.isDirectory(directory)) {
-            try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory)) {
+        if (Files.isDirectory(folderPath)) {
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(folderPath)) {
                 for (Path file : stream) {
-
                     String fileName = file.getFileName().toString();
-
-                    Button folderContainerButton = new Button(fileName);
-
-                    folderContainerButton.getStyleClass().add("file-button");
-
-                    // Add tooltip
-                    Tooltip fileNametooltip = new Tooltip(fileName);
-                    folderContainerButton.setTooltip(fileNametooltip);
-                    fileNametooltip.getStyleClass().add("file-name-tooltip");
-
-                    listButtonFilesFlowPane.getChildren().add(folderContainerButton);
-
+                    Button fileButton = createFileButton(fileName);
+                    listButtonFilesFlowPane.getChildren().add(fileButton);
                 }
             } catch (IOException e) {
                 System.out.println("IO EXCEPTION: " + e.getMessage());
@@ -137,8 +124,18 @@ public class MainViewController {
         }
     }
 
+    private Button createFileButton(String fileName) {
+        Button fileButton = new Button(fileName);
+        fileButton.getStyleClass().add("file-button");
+
+        Tooltip fileNameTooltip = new Tooltip(fileName);
+        fileButton.setTooltip(fileNameTooltip);
+        fileNameTooltip.getStyleClass().add("file-name-tooltip");
+
+        return fileButton;
+    }
+
     private Stage getCurrentStage(ActionEvent actionEvent) {
-        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        return currentStage;
+        return (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
     }
 }

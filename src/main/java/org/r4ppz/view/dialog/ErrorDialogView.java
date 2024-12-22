@@ -1,6 +1,5 @@
 package org.r4ppz.view.dialog;
 
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
 public class ErrorDialogView extends BaseDialogView {

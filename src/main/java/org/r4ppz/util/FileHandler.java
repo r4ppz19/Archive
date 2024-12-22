@@ -15,34 +15,25 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class FileHandler {
-    private SuccessDialogView successDialogView = SuccessDialogView.getInstance();
+    private static final String DEFAULT_UPLOADS_PATH = "src/main/resources/org/r4ppz/uploads/";
+    private static FileHandler instance;
 
-    private final String defaultUploadsPath = "src/main/resources/org/r4ppz/uploads/";
-    public String getdefaultUploadsPath() {
-        return defaultUploadsPath;
-    }
-
-
-    private static FileHandler handleFile;
+    private final SuccessDialogView successDialogView = SuccessDialogView.getInstance();
 
     private FileHandler() {
-
     }
 
     public static FileHandler getInstance() {
-        if (handleFile == null) {
-            handleFile = new FileHandler();
+        if (instance == null) {
+            instance = new FileHandler();
         }
-        return handleFile;
+        return instance;
     }
 
+    public String getDefaultUploadsPath() {
+        return DEFAULT_UPLOADS_PATH;
+    }
 
-    /**
-     * Opens a file chooser dialog for the user to select a file.
-     *
-     * @param stage the stage on which the file chooser dialog will be displayed
-     * @return the path of the selected file, or null if no file was selected
-     */
     public Path fileChooser(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File");
@@ -50,54 +41,40 @@ public class FileHandler {
         return selectedFile != null ? selectedFile.toPath() : null;
     }
 
-    /**
-     * Copies a file from the specified source path to the specified destination path within the project.
-     *
-     * @param sourceFile the path to the source file that needs to be copied
-     * @param destinationPath the path to the destination directory where the file should be copied
-     * @throws IOException if an I/O error occurs during the file copy operation
-     */
     public void copyFileToProject(Path sourceFile, String destinationPath) throws IOException {
         Path destinationDir = Paths.get(destinationPath);
-        Path destinationFile = destinationDir.resolve(sourceFile.getFileName().toString());
-    
-        // Ensure the destination directory exists
+        Path destinationFile = destinationDir.resolve(sourceFile.getFileName());
+
         if (!Files.exists(destinationDir)) {
             Files.createDirectories(destinationDir);
         }
-    
+
         Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
     }
 
-    /**
-     * Creates a new folder in the specified directory if it does not already exist.
-     *
-     * @param folderName the name of the folder to be created
-     * @throws IOException if an I/O error occurs or the folder cannot be created
-     */
     public void createFolder(String folderName, String destinationPath) throws IOException {
-        String newFolderPath = destinationPath + folderName;
-        Path newFolder =  Paths.get(newFolderPath);
+        Path newFolderPath = Paths.get(destinationPath, folderName);
 
-        if (!Files.exists(newFolder)) {
-            Files.createDirectories(newFolder);
-            System.out.println("Success");
+        if (Files.notExists(newFolderPath)) {
+            Files.createDirectories(newFolderPath);
+            System.out.println("Folder created successfully: " + folderName);
         } else {
-            System.out.println("New folder already exist");
+            System.out.println("Folder already exists: " + folderName);
         }
     }
 
     public void uploadFile(ActionEvent actionEvent, String uploadsFilePath) throws Exception {
-        Path selectedFile = handleFile.fileChooser((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-        Stage ownerStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Path selectedFile = fileChooser(getCurrentStage(actionEvent));
 
         if (selectedFile != null) {
-            handleFile.copyFileToProject(selectedFile, uploadsFilePath);
-
-            successDialogView.showSuccessDialog(ownerStage);
-
+            copyFileToProject(selectedFile, uploadsFilePath);
+            successDialogView.showSuccessDialog(getCurrentStage(actionEvent));
         } else {
             System.out.println("File selection cancelled.");
         }
+    }
+
+    private Stage getCurrentStage(ActionEvent actionEvent) {
+        return (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
     }
 }
