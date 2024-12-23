@@ -5,7 +5,8 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import org.r4ppz.util.FileHandler;
+
+import org.r4ppz.service.FileHandler;
 import org.r4ppz.util.ImageLoader;
 import org.r4ppz.view.dialog.NewFolderDialogView;
 
@@ -48,7 +49,6 @@ public class MainViewController {
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
         fileHandler.uploadFile(actionEvent, currentFolderFullPath);
-        refreshVbox(leftPanelVBox);
     }
 
     @FXML

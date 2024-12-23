@@ -2,7 +2,7 @@ package org.r4ppz.controller.dialog;
 
 import java.util.List;
 import org.r4ppz.controller.main.MainViewController;
-import org.r4ppz.util.FileHandler;
+import org.r4ppz.service.FileHandler;
 import org.r4ppz.view.dialog.ErrorDialogView;
 
 import javafx.event.ActionEvent;
