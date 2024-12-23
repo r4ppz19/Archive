@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 
 import org.r4ppz.service.FileHandler;
 import org.r4ppz.util.ImageLoader;
+import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.NewFolderDialogView;
 
 import javafx.event.ActionEvent;
@@ -53,7 +54,7 @@ public class MainViewController {
 
     @FXML
     private void handleAddFolderButtonAction(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = getCurrentStage(actionEvent);
+        Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         newFolderDialogView.showNewFolderDialog(ownerStage, this);
     }
 
@@ -140,9 +141,5 @@ public class MainViewController {
         fileNameTooltip.getStyleClass().add("file-name-tooltip");
 
         return fileButton;
-    }
-
-    private Stage getCurrentStage(ActionEvent actionEvent) {
-        return (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
     }
 }

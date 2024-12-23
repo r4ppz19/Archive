@@ -1,5 +1,7 @@
 package org.r4ppz.controller.dialog;
 
+import org.r4ppz.util.StageGetter;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -10,7 +12,7 @@ public class ErrorDialogViewController {
     @FXML
     public void okButtonAction(ActionEvent actionEvent) {
         // Get the stage and close it
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage stage = StageGetter.getCurrentStage(actionEvent);
         stage.close();
     }
 }

@@ -2,6 +2,7 @@ package org.r4ppz.controller.main;
 
 import org.r4ppz.model.DefaultUser;
 import org.r4ppz.model.UserModel;
+import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.ErrorDialogView;
 import org.r4ppz.view.dialog.SuccessDialogView;
 import org.r4ppz.view.main.MainView;
@@ -48,7 +49,7 @@ public class LoginViewController {
 
     @FXML
     public void handleSignUpAction(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = getCurrentStage(actionEvent);
+        Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
 
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
@@ -81,15 +82,11 @@ public class LoginViewController {
     }
 
     private void showErrorDialog(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = getCurrentStage(actionEvent);
+        Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         errorDialogView.showErrorDialog(ownerStage);
     }
 
     private void closeCurrentStage(ActionEvent actionEvent) {
-        getCurrentStage(actionEvent).close();
-    }
-
-    private Stage getCurrentStage(ActionEvent actionEvent) {
-        return (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        StageGetter.getCurrentStage(actionEvent).close();
     }
 }

@@ -3,6 +3,7 @@ package org.r4ppz.controller.dialog;
 import java.util.List;
 import org.r4ppz.controller.main.MainViewController;
 import org.r4ppz.service.FileHandler;
+import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.ErrorDialogView;
 
 import javafx.event.ActionEvent;
@@ -59,15 +60,11 @@ public class NewFolderDialogViewController {
     }
 
     private void closeDialog(ActionEvent actionEvent) {
-        getCurrentStage(actionEvent).close();
+        StageGetter.getCurrentStage(actionEvent).close();
     }
 
     private void showErrorDialog(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = getCurrentStage(actionEvent);
+        Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         errorDialogView.showErrorDialog(ownerStage);
-    }
-
-    private Stage getCurrentStage(ActionEvent actionEvent) {
-        return (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
     }
 }

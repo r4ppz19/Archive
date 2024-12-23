@@ -7,10 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.SuccessDialogView;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -57,11 +57,11 @@ public class FileHandler {
     }
 
     public void uploadFile(ActionEvent actionEvent, Path uploadsFilePath) throws Exception {
-        Path selectedFile = fileChooser(getCurrentStage(actionEvent));
+        Path selectedFile = fileChooser(StageGetter.getCurrentStage(actionEvent));
 
         if (selectedFile != null) {
             copyFileToProject(selectedFile, uploadsFilePath);
-            successDialogView.showSuccessDialog(getCurrentStage(actionEvent));
+            successDialogView.showSuccessDialog(StageGetter.getCurrentStage(actionEvent));
         } else {
             System.out.println("File selection cancelled.");
         }
@@ -72,9 +72,5 @@ public class FileHandler {
         fileChooser.setTitle("Select File");
         File selectedFile = fileChooser.showOpenDialog(stage);
         return selectedFile != null ? selectedFile.toPath() : null;
-    }
-
-    private Stage getCurrentStage(ActionEvent actionEvent) {
-        return (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
     }
 }
