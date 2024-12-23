@@ -10,13 +10,11 @@ import org.r4ppz.view.dialog.NewFolderDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewController {
-    private Path currentFolderFullPath = null;
 
     private final NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstance();
     private final FileHandler fileHandler = FileHandler.getInstance();
@@ -29,13 +27,15 @@ public class MainViewController {
 
     @FXML
     public void initialize() {
+        System.out.println("Controller initialized");
+
         leftPanelVBox.getChildren().clear();
         LoadButtons.loadFolderButtons(leftPanelVBox);
     }
 
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
-        fileHandler.uploadFile(actionEvent, currentFolderFullPath);
+        fileHandler.uploadFile(actionEvent, LoadButtons.getCurrentFolderFullPath());
     }
 
     @FXML
@@ -45,7 +45,8 @@ public class MainViewController {
     }
 
     @FXML
-    public void handleRefreshAction(ActionEvent actionEvent) {
+    public void handleRefreshAction() {
         Refresher.vBoxRefresher(leftPanelVBox);
+        Refresher.flowPaneRefresher(listButtonFilesFlowPane);
     }
 }

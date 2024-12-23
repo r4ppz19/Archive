@@ -6,8 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.r4ppz.controller.main.MainViewController;
 import org.r4ppz.util.ImageLoader;
 
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -16,6 +18,14 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
 public class LoadButtons {
+    private static MainViewController mainViewController = new MainViewController();
+
+    private static Path currentFolderFullPath = null;
+
+    public static Path getCurrentFolderFullPath() {
+        return currentFolderFullPath;
+    }
+
     private static FileHandler fileHandler = FileHandler.getInstance();
 
     private static ImageLoader imageLoader = ImageLoader.getInstance();
@@ -30,16 +40,16 @@ public class LoadButtons {
                         String folderName = folderPath.getFileName().toString();
                         Button folderButton = LoadButtons.createFolderButton(folderName);
 
-/*                         folderButton.setOnAction(event -> {
-                            listButtonFilesFlowPane.getChildren().clear();
-                            populateFilesButton(folderButton);
-
+                        folderButton.setOnAction(event -> {
                             Path currentFolderName = Paths.get(folderButton.getText());
                             Path uploadsPath = Paths.get(fileHandler.getDefaultUploadsPath());
                             currentFolderFullPath = uploadsPath.resolve(currentFolderName);
-                            // ! CHECK POINT
-                            System.out.println(currentFolderFullPath);
-                        }); */
+
+                            // Platform.runLater(() -> {
+                            //     mainViewController.handleRefreshAction();
+                            // });
+
+                        });
 
                         leftPanelVBox.getChildren().add(folderButton);
                     }
@@ -52,9 +62,8 @@ public class LoadButtons {
         }
     }
 
-    private void loadFileButtons(Button folderButton, FlowPane listButtonFilesFlowPane) {
-        String currentFolderName = folderButton.getText();
-        Path folderPath = Paths.get(fileHandler.getDefaultUploadsPath(), currentFolderName);
+    public static void loadFileButtons(String currentFolderFullPath, FlowPane listButtonFilesFlowPane) {
+        Path folderPath = Paths.get(fileHandler.getDefaultUploadsPath(), currentFolderFullPath);
 
         if (Files.isDirectory(folderPath)) {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(folderPath)) {
