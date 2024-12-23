@@ -1,7 +1,4 @@
-package org.r4ppz.service;
-
-import org.r4ppz.model.DefaultUser;
-import org.r4ppz.model.UserModel;
+package org.r4ppz.model;
 
 public class ValidateCredentials {
     UserModel userModel = new UserModel();

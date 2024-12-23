@@ -1,7 +1,7 @@
 module org.r4ppz {
-    requires javafx.controls;
     requires javafx.fxml;
     requires transitive javafx.graphics;
+    requires transitive javafx.controls;
 
     requires transitive java.desktop;
 
