@@ -4,11 +4,13 @@ import java.nio.file.Path;
 
 import org.r4ppz.service.FileHandler;
 import org.r4ppz.service.LoadButtons;
+import org.r4ppz.service.Refresher;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.NewFolderDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -40,5 +42,10 @@ public class MainViewController {
     private void handleAddFolderButtonAction(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         newFolderDialogView.showNewFolderDialog(ownerStage);
+    }
+
+    @FXML
+    public void handleRefreshAction(ActionEvent actionEvent) {
+        Refresher.vBoxRefresher(leftPanelVBox);
     }
 }
