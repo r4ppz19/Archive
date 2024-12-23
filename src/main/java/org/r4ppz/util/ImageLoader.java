@@ -10,7 +10,6 @@ public class ImageLoader {
 
     private static ImageLoader imageLoader;
 
-
     private ImageLoader() {
     }
 

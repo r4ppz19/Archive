@@ -1,7 +1,6 @@
 package org.r4ppz.controller.dialog;
 
 import javafx.stage.Stage;
-import javafx.scene.Node;
 
 import org.r4ppz.util.StageGetter;
 

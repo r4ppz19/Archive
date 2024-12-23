@@ -37,10 +37,6 @@ public class NewFolderDialogView extends BaseDialogView {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        // Set secondary controller
-        NewFolderDialogViewController controller = loader.getController();
-        controller.setSecondaryController(mainViewController);
-
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);

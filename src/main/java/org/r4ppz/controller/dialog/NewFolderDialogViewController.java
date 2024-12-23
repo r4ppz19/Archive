@@ -3,6 +3,7 @@ package org.r4ppz.controller.dialog;
 import java.util.List;
 import org.r4ppz.controller.main.MainViewController;
 import org.r4ppz.service.FileHandler;
+import org.r4ppz.service.ValidateFolderName;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.ErrorDialogView;
 
@@ -11,21 +12,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.Node;
 
 public class NewFolderDialogViewController {
-
-    private static final List<Character> INVALID_CHARACTERS = List.of('*', '?', '<', '>', '|', ':', '"', '\\', '/');
-
-    private final FileHandler fileHandler = FileHandler.getInstance();
-    private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
-
-    private MainViewController mainViewController;
-
-    public void setSecondaryController(MainViewController secondaryController) {
-        this.mainViewController = secondaryController;
-    }
-
+    
     @FXML
     private TextField folderNameTextField;
 
@@ -34,37 +23,13 @@ public class NewFolderDialogViewController {
 
     @FXML
     public void handleCreateButtonAction(ActionEvent actionEvent) throws Exception {
-        validateFolderName(actionEvent);
+        String folderName = createButton.getText().trim();
+        ValidateFolderName.validateFolderName(actionEvent, folderName);
     }
 
     @FXML
     public void handleFolderNameTextFieldAction(ActionEvent actionEvent) throws Exception {
-        validateFolderName(actionEvent);
-    }
-
-    private void validateFolderName(ActionEvent actionEvent) throws Exception {
-        String folderName = folderNameTextField.getText().trim(); // Trim any leading or trailing whitespace
-
-        // Validate folder name and create the folder if valid
-        if (isFolderNameValid(folderName)) {
-            fileHandler.createFolder(folderName, fileHandler.getDefaultUploadsPath());
-            mainViewController.refreshVbox(mainViewController.getLeftPanelVBox());
-            closeDialog(actionEvent);
-        } else {
-            showErrorDialog(actionEvent);
-        }
-    }
-
-    private boolean isFolderNameValid(String folderName) {
-        return folderName != null && !folderName.isEmpty() && folderName.chars().noneMatch(c -> INVALID_CHARACTERS.contains((char) c));
-    }
-
-    private void closeDialog(ActionEvent actionEvent) {
-        StageGetter.getCurrentStage(actionEvent).close();
-    }
-
-    private void showErrorDialog(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
-        errorDialogView.showErrorDialog(ownerStage);
+        String folderName = createButton.getText().trim();
+        ValidateFolderName.validateFolderName(actionEvent, folderName);
     }
 }
