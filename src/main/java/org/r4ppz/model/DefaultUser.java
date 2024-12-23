@@ -10,7 +10,7 @@ public class DefaultUser {
 
     }
 
-    public static DefaultUser getInstancDefaultUser() {
+    public static DefaultUser getInstanc() {
         if (defaultUser == null) {
             defaultUser = new DefaultUser();
         }

@@ -1,7 +1,9 @@
 package org.r4ppz.controller.main;
 
+import org.r4ppz.Main;
 import org.r4ppz.model.DefaultUser;
 import org.r4ppz.model.UserModel;
+import org.r4ppz.service.ValidateCredentials;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.ErrorDialogView;
 import org.r4ppz.view.dialog.SuccessDialogView;
@@ -17,9 +19,8 @@ public class LoginViewController {
 
     private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
     private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstance();
-    private final DefaultUser defaultUser = DefaultUser.getInstancDefaultUser();
-    private final MainView mainView = MainView.getInstanceMainView();
-    private final UserModel userModel = new UserModel();
+    private final ValidateCredentials validateCredentials = new ValidateCredentials();
+    private final MainView mainView = MainView.getInstance();
 
     @FXML
     private TextField usernameTextField;
@@ -38,11 +39,17 @@ public class LoginViewController {
 
     @FXML
     public void handleSignInAction(ActionEvent actionEvent) throws Exception {
-        if (isValidCredentials()) {
-            closeCurrentStage(actionEvent);
+        Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
+
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+
+        if (validateCredentials.isValidSignInCredentials(username, password)) {
+            Stage currentStage = StageGetter.getCurrentStage(actionEvent);
+            currentStage.close();
             mainView.showMainView();
         } else {
-            showErrorDialog(actionEvent);
+            errorDialogView.showDialog(ownerStage);
         }
     }
 
@@ -53,39 +60,13 @@ public class LoginViewController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
-        if (isValidSignUpCredentials(username, password)) {
-            userModel.setUsername(username);
-            userModel.setPassword(password);
+        if (validateCredentials.isValidSignUpCredentials(username, password)) {
+            validateCredentials.setCredentials(username, password);
 
             signUpDialogView.showSuccessDialog(ownerStage);
-            clearInputFields();
+            passwordTextField.clear();
         } else {
             errorDialogView.showErrorDialog(ownerStage);
         }
-    }
-
-    private boolean isValidCredentials() {
-        String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
-        return (username.equals(userModel.getUsername()) && password.equals(userModel.getPassword()))
-                || (username.equals(defaultUser.getUsername()) && password.equals(defaultUser.getPassword()));
-    }
-
-    private boolean isValidSignUpCredentials(String username, String password) {
-        return username != null && !username.isEmpty() && password != null && !password.isEmpty();
-    }
-
-    private void clearInputFields() {
-        usernameTextField.clear();
-        passwordTextField.clear();
-    }
-
-    private void showErrorDialog(ActionEvent actionEvent) throws Exception {
-        Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
-        errorDialogView.showErrorDialog(ownerStage);
-    }
-
-    private void closeCurrentStage(ActionEvent actionEvent) {
-        StageGetter.getCurrentStage(actionEvent).close();
     }
 }
