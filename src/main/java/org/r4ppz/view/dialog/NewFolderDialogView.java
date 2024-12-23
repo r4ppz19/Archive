@@ -31,18 +31,7 @@ public class NewFolderDialogView extends BaseDialogView {
         return "/org/r4ppz/view/dialog/NewFolderDialog.fxml";
     }
 
-    public void showNewFolderDialog(Stage ownerStage, MainViewController mainViewController) throws Exception {
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(getFxmlPath())));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-
-        stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        centerView(stage, ownerStage);
-        stage.initOwner(ownerStage);
-        stage.showAndWait();
+    public void showNewFolderDialog(Stage ownerStage) throws Exception {
+        showDialog(ownerStage);
     }
 }

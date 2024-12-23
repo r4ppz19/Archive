@@ -54,7 +54,7 @@ public class MainViewController {
     @FXML
     private void handleAddFolderButtonAction(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
-        newFolderDialogView.showNewFolderDialog(ownerStage, this);
+        newFolderDialogView.showNewFolderDialog(ownerStage);
     }
 
     // VBOX REFRESHER
