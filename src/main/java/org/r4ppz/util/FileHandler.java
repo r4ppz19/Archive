@@ -34,13 +34,6 @@ public class FileHandler {
         return DEFAULT_UPLOADS_PATH;
     }
 
-    public Path fileChooser(Stage stage) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select File");
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        return selectedFile != null ? selectedFile.toPath() : null;
-    }
-
     public void copyFileToProject(Path sourceFile, String destinationPath) throws IOException {
         Path destinationDir = Paths.get(destinationPath);
         Path destinationFile = destinationDir.resolve(sourceFile.getFileName());
@@ -72,6 +65,13 @@ public class FileHandler {
         } else {
             System.out.println("File selection cancelled.");
         }
+    }
+
+    private Path fileChooser(Stage stage) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select File");
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        return selectedFile != null ? selectedFile.toPath() : null;
     }
 
     private Stage getCurrentStage(ActionEvent actionEvent) {

@@ -38,7 +38,6 @@ public class MainViewController {
     public void initialize() {
         if (leftPanelVBox != null) {
             refreshVbox(leftPanelVBox);
-            refreshFlowPane(listButtonFilesFlowPane);
         } else {
             System.out.println("leftPanelVBox is null");
         }
@@ -47,7 +46,7 @@ public class MainViewController {
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
         fileHandler.uploadFile(actionEvent, fileHandler.getDefaultUploadsPath());
-        refreshVbox(leftPanelVBox); // No need to call initialize() again
+        refreshVbox(leftPanelVBox);
     }
 
     @FXML
@@ -56,24 +55,16 @@ public class MainViewController {
         newFolderDialogView.showNewFolderDialog(ownerStage, this);
     }
 
+    // VBOX REFRESHER
     public void refreshVbox(Pane container) {
         if (container == null) {
             System.out.println("Container is null!");
             return;
         }
         container.getChildren().clear();
-        populateFolderButtons(); // Populate folder buttons after clearing
+        populateFolderButtons();
     }
     
-    public void refreshFlowPane(Pane container) {
-        if (container == null) {
-            System.out.println("Container is null!");
-            return;
-        }
-        container.getChildren().clear();
-    }
-
-
 
     private void populateFolderButtons() {
         Path uploadsDirectory = Paths.get(fileHandler.getDefaultUploadsPath());
@@ -85,8 +76,11 @@ public class MainViewController {
                         Button folderButton = createFolderButton(folderPath);
 
                         folderButton.setOnAction(event -> {
-                            refreshFlowPane(listButtonFilesFlowPane);
+                            // ! I DONT FUCKIN KNOW
+                            listButtonFilesFlowPane.getChildren().clear();
                             populateFilesButton(folderButton);
+
+
                         });
 
                         leftPanelVBox.getChildren().add(folderButton);
