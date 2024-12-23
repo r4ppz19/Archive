@@ -34,8 +34,8 @@ public class FileHandler {
         return DEFAULT_UPLOADS_PATH;
     }
 
-    public void copyFileToProject(Path sourceFile, String destinationPath) throws IOException {
-        Path destinationDir = Paths.get(destinationPath);
+    public void copyFileToProject(Path sourceFile, Path destinationPath) throws IOException {
+        Path destinationDir = destinationPath;
         Path destinationFile = destinationDir.resolve(sourceFile.getFileName());
 
         if (!Files.exists(destinationDir)) {
@@ -56,7 +56,7 @@ public class FileHandler {
         }
     }
 
-    public void uploadFile(ActionEvent actionEvent, String uploadsFilePath) throws Exception {
+    public void uploadFile(ActionEvent actionEvent, Path uploadsFilePath) throws Exception {
         Path selectedFile = fileChooser(getCurrentStage(actionEvent));
 
         if (selectedFile != null) {

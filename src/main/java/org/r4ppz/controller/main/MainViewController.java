@@ -22,6 +22,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainViewController {
+    private Path currentFolderFullPath = null;
+
     private final NewFolderDialogView newFolderDialogView = NewFolderDialogView.getInstance();
     private final FileHandler fileHandler = FileHandler.getInstance();
     private final ImageLoader imageLoader = ImageLoader.getInstance();
@@ -45,7 +47,7 @@ public class MainViewController {
 
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
-        fileHandler.uploadFile(actionEvent, fileHandler.getDefaultUploadsPath());
+        fileHandler.uploadFile(actionEvent, currentFolderFullPath);
         refreshVbox(leftPanelVBox);
     }
 
@@ -65,7 +67,6 @@ public class MainViewController {
         populateFolderButtons();
     }
     
-
     private void populateFolderButtons() {
         Path uploadsDirectory = Paths.get(fileHandler.getDefaultUploadsPath());
 
@@ -76,11 +77,14 @@ public class MainViewController {
                         Button folderButton = createFolderButton(folderPath);
 
                         folderButton.setOnAction(event -> {
-                            // ! I DONT FUCKIN KNOW
                             listButtonFilesFlowPane.getChildren().clear();
                             populateFilesButton(folderButton);
-
-
+                            
+                            Path currentFolderName = Paths.get(folderButton.getText());
+                            Path uploadsPath = Paths.get(fileHandler.getDefaultUploadsPath());
+                            currentFolderFullPath = uploadsPath.resolve(currentFolderName);
+                            // ! CHECK POINT
+                            System.out.println(currentFolderFullPath);
                         });
 
                         leftPanelVBox.getChildren().add(folderButton);
