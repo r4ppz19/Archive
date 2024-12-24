@@ -2,7 +2,7 @@ package org.r4ppz.controller.main;
 
 import org.r4ppz.service.FileHandler;
 import org.r4ppz.service.LoadButtons;
-import org.r4ppz.service.Refresher;
+import org.r4ppz.service.RefreshUI;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.CreateFolderDialogView;
 
@@ -44,7 +44,7 @@ public class MainViewController {
 
     @FXML
     public void handleRefreshAction() {
-        Refresher.vBoxRefresher(leftPanelVBox);
-        Refresher.flowPaneRefresher(listButtonFilesFlowPane);
+        RefreshUI.vBoxRefresher(leftPanelVBox);
+        RefreshUI.flowPaneRefresher(listButtonFilesFlowPane);
     }
 }
