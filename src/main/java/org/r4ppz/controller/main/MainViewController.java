@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.r4ppz.controller.service.LoadButtons;
-import org.r4ppz.controller.service.RefreshUI;
 import org.r4ppz.model.FoldersAndFiles;
 import org.r4ppz.service.FileHandler;
 import org.r4ppz.service.RefresherService;
