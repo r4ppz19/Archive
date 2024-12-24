@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class FoldersAndFiles {
+public class FolderData {
     private static Map<String, List<String>> folderData = new HashMap<>();
 
     public static void addFolderData(String folderName, List<String> files) {
@@ -18,11 +18,5 @@ public class FoldersAndFiles {
 
     public static List<String> getFiles(String folderName) {
         return folderData.get(folderName);
-    }
-
-    public static void diplayFolderData() {
-        for (Map.Entry<String, List<String>> entry : folderData.entrySet()) {
-            System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
-        }
     }
 }
