@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class FoldersAndFiles {
-    // Sample data: Folders and their files
     private static Map<String, List<String>> folderData = new HashMap<>();
 
     public static void addFolderData(String folderName, List<String> files) {

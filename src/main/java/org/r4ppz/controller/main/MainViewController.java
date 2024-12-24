@@ -5,11 +5,9 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.concurrent.TimeUnit;
 
 import org.r4ppz.model.FoldersAndFiles;
 import org.r4ppz.service.FileHandler;
-import org.r4ppz.service.RefresherService;
 import org.r4ppz.util.GetFilesToList;
 import org.r4ppz.util.ImageLoader;
 import org.r4ppz.util.StageGetter;
@@ -30,7 +28,6 @@ public class MainViewController {
     private final CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
     private final FileHandler fileHandler = FileHandler.getInstance();
     private ImageLoader imageLoader = ImageLoader.getInstance();
-    private RefresherService refresherService;
 
     @FXML
     private VBox leftPanelVBox;
@@ -41,7 +38,7 @@ public class MainViewController {
     @FXML
     public void initialize() {
         System.out.println("Controller initialized");
-
+        loadFolderButtons(leftPanelVBox);
     }
 
     @FXML
@@ -52,11 +49,10 @@ public class MainViewController {
     private void handleAddFolderButtonAction(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         newFolderDialogView.showCreateFolderDialog(ownerStage);
-        refresherService.startRefreshing(this::handleRefreshAction, 0, 5, TimeUnit.SECONDS);
     }
 
     @FXML
-    public void handleRefreshAction() {
+    public void handleRefreshButtonAction() {
     }
 
     public void loadFolderButtons(VBox leftPanelVBox) {
