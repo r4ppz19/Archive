@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
 public class PopulateButtons {
@@ -48,24 +47,6 @@ public class PopulateButtons {
             }
         } else {
             System.out.println("Main Folder is not a directory");
-        }
-    }
-
-    public static void loadFileButtons(String currentFolderFullPath, FlowPane listButtonFilesFlowPane) {
-        Path folderPath = Paths.get(fileHandler.getDefaultUploadsPath(), currentFolderFullPath);
-
-        if (Files.isDirectory(folderPath)) {
-            try (DirectoryStream<Path> stream = Files.newDirectoryStream(folderPath)) {
-                for (Path file : stream) {
-                    String fileName = file.getFileName().toString();
-                    Button fileButton = createFileButton(fileName);
-                    listButtonFilesFlowPane.getChildren().add(fileButton);
-                }
-            } catch (IOException e) {
-                System.out.println("IO EXCEPTION: " + e.getMessage());
-            }
-        } else {
-            System.out.println("The provided path is not a directory.");
         }
     }
 
