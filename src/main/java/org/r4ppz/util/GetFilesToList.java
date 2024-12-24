@@ -8,10 +8,10 @@ import java.util.List;
 
 public class GetFilesToList {
 
-    public static List<String> getFilesTolist(Path uploadsDirectory) {
+    public static List<String> getFilesTolist(Path currentFolder) {
         List<String> fileList = new ArrayList<>();
 
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(uploadsDirectory)) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(currentFolder)) {
             for (Path file : stream) {
                 String fileName = file.getFileName().toString();
                 fileList.add(fileName);

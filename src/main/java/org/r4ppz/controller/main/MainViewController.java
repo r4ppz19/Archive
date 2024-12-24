@@ -1,8 +1,11 @@
 package org.r4ppz.controller.main;
 
+import java.util.concurrent.TimeUnit;
+
+import org.r4ppz.controller.service.LoadButtons;
+import org.r4ppz.controller.service.RefreshUI;
 import org.r4ppz.service.FileHandler;
-import org.r4ppz.service.LoadButtons;
-import org.r4ppz.service.RefreshUI;
+import org.r4ppz.service.RefresherService;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.CreateFolderDialogView;
 
@@ -16,6 +19,7 @@ public class MainViewController {
 
     private final CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
     private final FileHandler fileHandler = FileHandler.getInstance();
+    private RefresherService refresherService;
 
     @FXML
     private VBox leftPanelVBox;
@@ -26,9 +30,8 @@ public class MainViewController {
     @FXML
     public void initialize() {
         System.out.println("Controller initialized");
-
-        leftPanelVBox.getChildren().clear();
-        LoadButtons.loadFolderButtons(leftPanelVBox);
+        RefreshUI.vBoxRefresher(leftPanelVBox);
+        
     }
 
     @FXML
@@ -40,6 +43,7 @@ public class MainViewController {
     private void handleAddFolderButtonAction(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         newFolderDialogView.showCreateFolderDialog(ownerStage);
+        refresherService.startRefreshing(this::handleRefreshAction, 0, 5, TimeUnit.SECONDS);
     }
 
     @FXML

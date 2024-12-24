@@ -1,4 +1,4 @@
-package org.r4ppz.service;
+package org.r4ppz.controller.service;
 
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
@@ -6,6 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.r4ppz.model.FoldersAndFiles;
+import org.r4ppz.service.FileHandler;
+import org.r4ppz.util.GetFilesToList;
 import org.r4ppz.util.ImageLoader;
 
 import javafx.scene.control.Button;
@@ -15,38 +18,26 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
-public class LoadButtons {
-    //private static MainViewController mainViewController = new MainViewController();
-
-    private static Path currentFolderFullPath = null;
-
-    public static Path getCurrentFolderFullPath() {
-        return currentFolderFullPath;
-    }
-
+public class PopulateButtons {
     private static FileHandler fileHandler = FileHandler.getInstance();
-
     private static ImageLoader imageLoader = ImageLoader.getInstance();
 
     public static void loadFolderButtons(VBox leftPanelVBox) {
-        Path uploadsDirectory = Paths.get(fileHandler.getDefaultUploadsPath());
+        Path pathToLoad = Paths.get(fileHandler.getDefaultUploadsPath());
 
-        if (Files.isDirectory(uploadsDirectory)) {
-            try (DirectoryStream<Path> stream = Files.newDirectoryStream(uploadsDirectory)) {
+        if (Files.isDirectory(pathToLoad)) {
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(pathToLoad)) {
                 for (Path folderPath : stream) {
                     if (Files.isDirectory(folderPath)) {
                         String folderName = folderPath.getFileName().toString();
-                        Button folderButton = LoadButtons.createFolderButton(folderName);
+                        Button folderButton = createFolderButton(folderName);
 
                         folderButton.setOnAction(event -> {
-                            Path currentFolderName = Paths.get(folderButton.getText());
                             Path uploadsPath = Paths.get(fileHandler.getDefaultUploadsPath());
-                            currentFolderFullPath = uploadsPath.resolve(currentFolderName);
-
-                            // Platform.runLater(() -> {
-                            //     mainViewController.handleRefreshAction();
-                            // });
-
+                            Path fullCurrentFolderPath = uploadsPath.resolve(folderName);
+                            
+                            FoldersAndFiles.addFolderData(folderName, GetFilesToList.getFilesTolist(fullCurrentFolderPath));
+                            System.out.println(GetFilesToList.getFilesTolist(fullCurrentFolderPath));
                         });
 
                         leftPanelVBox.getChildren().add(folderButton);
@@ -67,7 +58,7 @@ public class LoadButtons {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(folderPath)) {
                 for (Path file : stream) {
                     String fileName = file.getFileName().toString();
-                    Button fileButton = LoadButtons.createFileButton(fileName);
+                    Button fileButton = createFileButton(fileName);
                     listButtonFilesFlowPane.getChildren().add(fileButton);
                 }
             } catch (IOException e) {
@@ -76,17 +67,6 @@ public class LoadButtons {
         } else {
             System.out.println("The provided path is not a directory.");
         }
-    }
-
-    private static Button createFileButton(String fileName) {
-        Button fileButton = new Button(fileName);
-        fileButton.getStyleClass().add("file-button");
-
-        Tooltip fileNameTooltip = new Tooltip(fileName);
-        fileButton.setTooltip(fileNameTooltip);
-        fileNameTooltip.getStyleClass().add("file-name-tooltip");
-
-        return fileButton;
     }
 
     private static Button createFolderButton(String folderName) {
@@ -101,4 +81,16 @@ public class LoadButtons {
         folderButton.getStyleClass().add("folder-button");
         return folderButton;
     }
+
+    private static Button createFileButton(String fileName) {
+        Button fileButton = new Button(fileName);
+        fileButton.getStyleClass().add("file-button");
+
+        Tooltip fileNameTooltip = new Tooltip(fileName);
+        fileButton.setTooltip(fileNameTooltip);
+        fileNameTooltip.getStyleClass().add("file-name-tooltip");
+
+        return fileButton;
+    }
+
 }
