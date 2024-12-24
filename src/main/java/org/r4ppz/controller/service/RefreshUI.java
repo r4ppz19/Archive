@@ -4,10 +4,10 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
 public class RefreshUI {
-    public static void Refresher(VBox vBox) {
+    public static void vBoxRefresher(VBox vBox) {
         if (vBox != null) {
             vBox.getChildren().clear();
-            PopulateButtons.populateFolderButtons(vBox);    
+            PopulateButtons.loadFolderButtons(vBox);    
         } else {
             System.out.println("VBox is null");
         }
@@ -23,10 +23,6 @@ public class RefreshUI {
         } else {
             System.out.println("FlowPane is null");
         }
-    }
-
-    public static void clearFlowPane(FlowPane flowPane) {
-        flowPane.getChildren().clear();
     }
 
 }
