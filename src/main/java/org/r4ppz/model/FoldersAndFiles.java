@@ -19,4 +19,10 @@ public class FoldersAndFiles {
     public static List<String> getFiles(String folderName) {
         return folderData.get(folderName);
     }
+
+    public static void diplayFolderData() {
+        for (Map.Entry<String, List<String>> entry : folderData.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
+        }
+    }
 }

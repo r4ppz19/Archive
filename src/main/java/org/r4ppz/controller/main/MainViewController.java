@@ -5,10 +5,12 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.r4ppz.model.FoldersAndFiles;
 import org.r4ppz.service.FileHandler;
-import org.r4ppz.util.GetFilesToList;
+import org.r4ppz.util.ListLoader;
 import org.r4ppz.util.ImageLoader;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.CreateFolderDialogView;
@@ -38,6 +40,7 @@ public class MainViewController {
     @FXML
     public void initialize() {
         System.out.println("Controller initialized");
+        loadFiles();
         loadFolderButtons(leftPanelVBox);
     }
 
@@ -55,6 +58,23 @@ public class MainViewController {
     public void handleRefreshButtonAction() {
     }
 
+    public void loadFiles() {
+        Path uploadsPath = Paths.get(fileHandler.getDefaultUploadsPath());
+
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(uploadsPath)) {
+            for (Path folders : stream) {
+                List<String> files = ListLoader.getFilesTolist(folders);
+                List<String> foldersName = ListLoader.getFoldersToList(folders);
+                
+                for (String folderName : foldersName) {
+                    FoldersAndFiles.addFolderData(folderName, files);
+                }
+            }
+        } catch (Exception e) {
+        }
+        FoldersAndFiles.diplayFolderData();
+    }
+
     public void loadFolderButtons(VBox leftPanelVBox) {
         Path pathToLoad = Paths.get(fileHandler.getDefaultUploadsPath());
 
@@ -68,10 +88,9 @@ public class MainViewController {
                         folderButton.setOnAction(event -> {
                             Path uploadsPath = Paths.get(fileHandler.getDefaultUploadsPath());
                             Path fullCurrentFolderPath = uploadsPath.resolve(folderName);
-
-                            FoldersAndFiles.addFolderData(folderName,
-                                    GetFilesToList.getFilesTolist(fullCurrentFolderPath));
-                            System.out.println(GetFilesToList.getFilesTolist(fullCurrentFolderPath));
+                            List<String> files = ListLoader.getFilesTolist(fullCurrentFolderPath);
+                            FoldersAndFiles.addFolderData(folderName, files);
+                            System.out.println(ListLoader.getFilesTolist(fullCurrentFolderPath));
                         });
 
                         leftPanelVBox.getChildren().add(folderButton);
@@ -98,6 +117,7 @@ public class MainViewController {
         return folderButton;
     }
 
+    @SuppressWarnings("unused")
     private Button createFileButton(String fileName) {
         Button fileButton = new Button(fileName);
         fileButton.getStyleClass().add("file-button");
