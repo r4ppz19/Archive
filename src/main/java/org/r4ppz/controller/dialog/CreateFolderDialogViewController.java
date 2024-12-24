@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class NewFolderDialogViewController {
+public class CreateFolderDialogViewController {
     
     @FXML
     private TextField folderNameTextField;
