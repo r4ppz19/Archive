@@ -7,10 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
-<<<<<<< HEAD
-=======
-import org.r4ppz.controller.service.LoadButtons;
->>>>>>> 3c3fad182cc420cd9b3589d1422d21e7f50ea23e
 import org.r4ppz.model.FoldersAndFiles;
 import org.r4ppz.service.FileHandler;
 import org.r4ppz.service.RefresherService;
