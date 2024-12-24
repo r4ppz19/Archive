@@ -6,10 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.r4ppz.controller.main.MainViewController;
 import org.r4ppz.util.ImageLoader;
 
-import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -18,7 +16,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
 public class LoadButtons {
-    private static MainViewController mainViewController = new MainViewController();
+    //private static MainViewController mainViewController = new MainViewController();
 
     private static Path currentFolderFullPath = null;
 

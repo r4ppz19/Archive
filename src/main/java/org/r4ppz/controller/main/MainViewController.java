@@ -1,7 +1,5 @@
 package org.r4ppz.controller.main;
 
-import java.nio.file.Path;
-
 import org.r4ppz.service.FileHandler;
 import org.r4ppz.service.LoadButtons;
 import org.r4ppz.service.Refresher;
