@@ -5,6 +5,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.r4ppz.model.FoldersAndFiles;
 import org.r4ppz.service.FileHandler;
@@ -22,7 +23,7 @@ public class PopulateButtons {
     private static FileHandler fileHandler = FileHandler.getInstance();
     private static ImageLoader imageLoader = ImageLoader.getInstance();
 
-    public static void loadFolderButtons(VBox leftPanelVBox) {
+    public static void populateFolderButtons(VBox leftPanelVBox) {
         Path pathToLoad = Paths.get(fileHandler.getDefaultUploadsPath());
 
         if (Files.isDirectory(pathToLoad)) {
@@ -38,6 +39,8 @@ public class PopulateButtons {
                             
                             FoldersAndFiles.addFolderData(folderName, GetFilesToList.getFilesTolist(fullCurrentFolderPath));
                             System.out.println(GetFilesToList.getFilesTolist(fullCurrentFolderPath));
+
+                            populateFileButton(folderName);
                         });
 
                         leftPanelVBox.getChildren().add(folderButton);
@@ -51,7 +54,14 @@ public class PopulateButtons {
         }
     }
 
-    public static void loadFileButtons(String currentFolderFullPath, FlowPane listButtonFilesFlowPane) {
+    private static void populateFileButton(String folderName) {
+        List<String> files = FoldersAndFiles.getFiles(folderName);
+        for (String fileName : files) {
+            createFileButton(fileName);
+        }
+    }
+
+    private static void loadFileButtons(String currentFolderFullPath, FlowPane listButtonFilesFlowPane) {
         Path folderPath = Paths.get(fileHandler.getDefaultUploadsPath(), currentFolderFullPath);
 
         if (Files.isDirectory(folderPath)) {
