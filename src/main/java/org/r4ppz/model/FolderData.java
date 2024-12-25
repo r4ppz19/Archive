@@ -6,17 +6,27 @@ import java.util.Map;
 import java.util.Set;
 
 public class FolderData {
-    private static Map<String, List<String>> folderData = new HashMap<>();
+    private final Map<String, List<String>> folderData = new HashMap<>();
+    private static FolderData instance;
 
-    public static void addFolderData(String folderName, List<String> files) {
+    private FolderData() {}
+
+    public static FolderData getInstance() {
+        if (instance == null) {
+            instance = new FolderData();
+        }
+        return instance;
+    }
+
+    public void addFolderData(String folderName, List<String> files) {
         folderData.put(folderName, files);
     }
 
-    public static Set<String> getFolderName() {
+    public Set<String> getFolderName() {
         return folderData.keySet();
     }
 
-    public static List<String> getFiles(String folderName) {
+    public List<String> getFile(String folderName) {
         return folderData.get(folderName);
     }
 }

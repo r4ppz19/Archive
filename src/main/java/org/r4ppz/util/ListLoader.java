@@ -4,7 +4,9 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ListLoader {
 
@@ -23,20 +25,31 @@ public class ListLoader {
         return fileList;
     }
 
-    public static List<String> getFoldersToList(Path folderPath) {
-        List<String> folders = new ArrayList<String>();
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(folderPath)) {
-             for (Path content : stream) {
-                if (Files.isDirectory(content)) {
-                    String validFolder = content.getFileName().toString();
-                    folders.add(validFolder);
+    public static Map<String, List<String>> getFolderToFileMap(Path rootPath) {
+        Map<String, List<String>> folderToFileMap = new HashMap<>();
+    
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(rootPath)) {
+            for (Path folder : stream) {
+                if (Files.isDirectory(folder)) {
+                    String folderName = folder.getFileName().toString();
+                    List<String> files = new ArrayList<>();
+                    try (DirectoryStream<Path> fileStream = Files.newDirectoryStream(folder)) {
+                        for (Path file : fileStream) {
+                            if (!Files.isDirectory(file)) { // Ensure it's a file
+                                files.add(file.getFileName().toString());
+                            }
+                        }
+                    }
+                    folderToFileMap.put(folderName, files); // Map folder to its files
                 }
-             }
+            }
         } catch (Exception e) {
-            System.out.println("getFoldersToList Exception");
+            System.err.println("Error in getFolderToFileMap: " + e.getMessage());
+            e.printStackTrace();
         }
-
-        return folders;
+    
+        return folderToFileMap;
     }
+    
 }
 

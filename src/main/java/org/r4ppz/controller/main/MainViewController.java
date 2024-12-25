@@ -1,10 +1,9 @@
 package org.r4ppz.controller.main;
 
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 import org.r4ppz.model.FolderData;
 import org.r4ppz.service.FileHandler;
@@ -28,6 +27,7 @@ public class MainViewController {
     private final CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
     private final FileHandler fileHandler = FileHandler.getInstance();
     private ImageLoader imageLoader = ImageLoader.getInstance();
+    private FolderData folderData = FolderData.getInstance();
 
     @FXML
     private VBox leftPanelVBox;
@@ -54,33 +54,38 @@ public class MainViewController {
 
     @FXML
     public void handleRefreshButtonAction() {
+        folderData = FolderData.getInstance(); // Reinitialize to avoid duplicating entries
+        folderData.getFolderName().clear();
+        listButtonFilesFlowPane.getChildren().clear();
+    
+        loadFiles();
+        populateButton();
     }
+    
 
-    public void loadFiles() {
+    private void loadFiles() {
         Path uploadsPath = Paths.get(fileHandler.getDefaultUploadsPath());
 
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(uploadsPath)) {
-            for (Path folders : stream) {
-                List<String> files = ListLoader.getFilesTolist(folders);
-                List<String> foldersName = ListLoader.getFoldersToList(folders);
-
-                for (String folderName : foldersName) {
-                    FolderData.addFolderData(folderName, files);
-                }
+        try {
+            Map<String, List<String>> folderToFileMap = ListLoader.getFolderToFileMap(uploadsPath);
+            for (Map.Entry<String, List<String>> entry : folderToFileMap.entrySet()) {
+                folderData.addFolderData(entry.getKey(), entry.getValue());
             }
         } catch (Exception e) {
+            System.err.println("Error in loadFiles: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     private void populateButton() {
-        for (String folderName : FolderData.getFolderName()) {
+        for (String folderName : folderData.getFolderName()) {
             Button folderButton = createFolderButton(folderName);
 
             folderButton.setOnAction(event -> {
                 leftPanelVBox.getChildren().clear();
 
                 // Populate the second VBox with file buttons
-                List<String> files = FolderData.getFiles(folderName);
+                List<String> files = folderData.getFile(folderName);
                 for (String fileName : files) {
                     Button fileButton = createFileButton(fileName);
                     listButtonFilesFlowPane.getChildren().add(fileButton);
