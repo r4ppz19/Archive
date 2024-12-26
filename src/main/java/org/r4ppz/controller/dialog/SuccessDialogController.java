@@ -7,7 +7,7 @@ import org.r4ppz.util.StageGetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class SuccessDialogViewController {
+public class SuccessDialogController {
 
     @FXML
     public void okButtonAction(ActionEvent actionEvent) {

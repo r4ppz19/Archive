@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HomePageViewController {
+public class HomePageController {
 
     private CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
     private ImageLoader imageLoader = ImageLoader.getInstance();

@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class ErrorDialogViewController {
+public class ErrorDialogController {
 
     @FXML
     public void okButtonAction(ActionEvent actionEvent) {
