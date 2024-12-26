@@ -29,8 +29,10 @@
     -fx-border-radius:  5;
     -fx-background-radius: 5;
     
-    -fx-pref-width: 298;
-    -fx-pref-height: 37;
+    -fx-min-width: 298;
+    -fx-min-height: 40;
+    -fx-max-width: 298;
+    -fx-max-height: 40;
 }
 
 .file-button:hover {

@@ -35,6 +35,10 @@
     -fx-background-radius: 5;
 }
 
+.box2-background-only {
+    -fx-background-color: #D9D9D9;
+}
+
 .function-button {
     -fx-background-color: #959595;
     -fx-border-color: #000000;

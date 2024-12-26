@@ -83,11 +83,20 @@
             </HBox>
             <HBox prefHeight="379.0" prefWidth="600.0" spacing="20.0" styleClass="box1">
                <children>
-                  <VBox fx:id="fileBox" alignment="TOP_CENTER" prefHeight="333.0" prefWidth="513.0" spacing="10.0" styleClass="box2">
-                     <padding>
-                        <Insets top="20.0" />
-                     </padding></VBox>
-                  <VBox prefHeight="333.0" prefWidth="348.0" styleClass="box2">
+                  <VBox prefHeight="333.0" prefWidth="383.0" styleClass="box2">
+                     <children>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="320.0" prefWidth="331.0" vbarPolicy="NEVER">
+                           <content>
+                              <VBox fx:id="fileBox" alignment="TOP_CENTER" prefHeight="406.0" prefWidth="336.0" spacing="10.0" styleClass="box2-background-only">
+                                 <padding>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="333.0" prefWidth="228.0" styleClass="box2">
                      <children>
                         <VBox prefHeight="120.0" prefWidth="130.0" styleClass="box2" />
                      </children>
