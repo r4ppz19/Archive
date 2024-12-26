@@ -1,90 +1,53 @@
-.left-panel-vbox {
-    -fx-background-color: #DBDBDB;
-
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
+.root {
+    -fx-font-family: Lexend, Inter;
 }
 
-.main-back-ground {
+.title-label {
+    -fx-text-fill: #5B5B5B;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+}
+
+.r4ppz-label {
+    -fx-text-fill: #5B5B5B;
+    -fx-font-size: 15px;
+}
+
+.white-background {
     -fx-background-color: #FFFFFF;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
 }
 
-.background2 {
-    -fx-background-color: #ffffff;
+.box1 {
+    -fx-background-color: #BDBDBD;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
     -fx-background-radius: 5;
-    -fx-border-radius: 5;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
 }
 
-.file-vbox {
-    -fx-background-color: #ffffff;
+.box1-background-only {
+    -fx-background-color: #BDBDBD;
+}
+
+.box2 {
+    -fx-background-color: #D9D9D9;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
     -fx-background-radius: 5;
-    -fx-border-radius: 5;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
 }
 
-.files-details-hbox {
-    -fx-background-color: #ffffff;
+.button {
+    -fx-background-color: #959595;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
     -fx-background-radius: 5;
-    -fx-border-radius: 5;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
 }
 
-.box {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
+/* ScrollPane Styling */
+.scrollpane {
+    -fx-border-color: transparent;  /* Remove any border */
+    -fx-background-color: transparent; /* Remove the background color */
+    -fx-padding: 0;  /* Remove any padding around the ScrollPane */
+    -fx-effect: none;  /* Remove any effects like shadows */
+    -fx-focus-color: transparent;  /* Remove focus border on click */
+    -fx-faint-focus-color: transparent;  /* Remove faint focus border on click */
 }
-
-.search-bar-textfield {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
-}
-
-.profile-vbox {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
-}
-
-.function-button {
-    /* -fx-background-color: #ffffff; */
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
-}
-
-.function-button:hover {
-    -fx-background-color: #8a8a8a;
-    -fx-text-fill: #000000;
-}
-
-.function-button:pressed {
-    -fx-background-color: #828282;
-}
-
-.function-button:focused {
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}   
