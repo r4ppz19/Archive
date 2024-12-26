@@ -8,11 +8,11 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public abstract class BaseDialogView {
+abstract class BaseDialogView {
     private ImageLoader imageLoader = ImageLoader.getInstance();
 
     // Abstract method for showing a dialog
-    protected abstract String getFxmlPath();
+    abstract String getFxmlPath();
 
     // Show the dialog with common functionality
     public void showDialog(Stage ownerStage) throws Exception {
