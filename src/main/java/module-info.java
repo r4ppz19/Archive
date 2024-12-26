@@ -14,4 +14,5 @@ module org.r4ppz {
     exports org.r4ppz.model;
     exports org.r4ppz.test;
     exports org.r4ppz.service;
+    exports org.r4ppz.view.dialog;
 }
