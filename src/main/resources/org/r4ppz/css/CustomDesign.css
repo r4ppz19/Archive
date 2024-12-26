@@ -24,7 +24,7 @@
     -fx-border-width: 1;
 }
 
-.file-hbox {
+.file-vbox {
     -fx-background-color: #ffffff;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
@@ -67,7 +67,7 @@
 }
 
 .function-button {
-    -fx-background-color: #ffffff;
+    /* -fx-background-color: #ffffff; */
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 
