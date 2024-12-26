@@ -64,6 +64,7 @@ public class LoginPageController {
 
             signUpDialogView.showSuccessDialog(ownerStage);
             passwordTextField.clear();
+            usernameTextField.clear();
         } else {
             errorDialogView.showErrorDialog(ownerStage);
         }
