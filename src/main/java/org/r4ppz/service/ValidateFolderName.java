@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.ErrorDialogView;
-import org.r4ppz.view.dialog.SuccessDialogView;
-
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
