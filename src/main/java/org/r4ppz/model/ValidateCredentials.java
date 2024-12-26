@@ -9,6 +9,7 @@ public class ValidateCredentials {
         this.userModel = userModel;
     }
 
+    // Singleton
     public static ValidateCredentials getInstance(UserModel userModel) {
         if (validateCredentials == null) {
             validateCredentials = new ValidateCredentials(userModel);
@@ -16,7 +17,7 @@ public class ValidateCredentials {
         return validateCredentials;
     }
 
-    DefaultUser defaultUser = DefaultUser.getInstanc();
+    DefaultUser defaultUser = DefaultUser.getInstance();
     
     public boolean isValidSignInCredentials(String username, String password) {
         return (username.equals(userModel.getUsername()) && password.equals(userModel.getPassword()))

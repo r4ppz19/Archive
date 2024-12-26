@@ -4,18 +4,18 @@ public class DefaultUser {
     private final String username = "r4ppz";
     private final String password = "12312005";
 
-    private static DefaultUser defaultUser;
+    private static DefaultUser instance;
 
     private DefaultUser() {
 
     }
 
-    public static DefaultUser getInstanc() {
-        if (defaultUser == null) {
-            defaultUser = new DefaultUser();
+    public static DefaultUser getInstance() {
+        if (instance == null) {
+            instance = new DefaultUser();
         }
 
-        return defaultUser;
+        return instance;
     }
 
     public String getUsername() {

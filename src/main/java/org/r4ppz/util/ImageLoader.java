@@ -8,16 +8,16 @@ import javafx.scene.image.Image;
 
 public class ImageLoader {
 
-    private static ImageLoader imageLoader;
+    private static ImageLoader instance;
 
     private ImageLoader() {
     }
 
     public static ImageLoader getInstance() {
-        if (imageLoader == null) {
-            imageLoader = new ImageLoader();
+        if (instance == null) {
+            instance = new ImageLoader();
         }
-        return imageLoader;
+        return instance;
     }
 
     private final Map<String, Image> imageCache = new HashMap<>();

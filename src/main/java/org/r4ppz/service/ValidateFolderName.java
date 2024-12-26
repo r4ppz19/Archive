@@ -21,6 +21,7 @@ public class ValidateFolderName {
         this.errorDialogView = errorDialogView;
     }
 
+    // Singleton
     public static ValidateFolderName getInstance(FileHandler fileHandler, ErrorDialogView errorDialogView) {
         if (instance == null) {
             instance = new ValidateFolderName(fileHandler, errorDialogView);

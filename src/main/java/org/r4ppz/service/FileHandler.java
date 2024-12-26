@@ -20,11 +20,13 @@ public class FileHandler {
 
     private final SuccessDialogView successDialogView;
 
+    // Dependency
     private FileHandler(SuccessDialogView successDialogView) {
         this.successDialogView = successDialogView;
     }
 
-    public static synchronized  FileHandler getInstance(SuccessDialogView successDialogView) {
+    // Singleton
+    public static FileHandler getInstance(SuccessDialogView successDialogView) {
         if (instance == null) {
             instance = new FileHandler(successDialogView);
         }
