@@ -10,6 +10,7 @@ import org.r4ppz.service.FileHandler;
 import org.r4ppz.util.ImageLoader;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.CreateFolderDialogView;
+import org.r4ppz.view.dialog.SuccessDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,9 +23,10 @@ import javafx.stage.Stage;
 
 public class HomePageController {
 
+    private SuccessDialogView successDialogView = SuccessDialogView.getInstance();
     private CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
     private ImageLoader imageLoader = ImageLoader.getInstance();
-    private FileHandler fileHandler = FileHandler.getInstance();
+    private FileHandler fileHandler = FileHandler.getInstance(successDialogView);
 
     @FXML
     private VBox folderBox;

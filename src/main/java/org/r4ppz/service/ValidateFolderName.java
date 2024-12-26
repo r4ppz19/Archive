@@ -4,17 +4,33 @@ import java.util.List;
 
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.ErrorDialogView;
+import org.r4ppz.view.dialog.SuccessDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
 public class ValidateFolderName {
-    private static final List<Character> INVALID_CHARACTERS = List.of('*', '?', '<', '>', '|', ':', '"', '\\', '/');
+    private final List<Character> INVALID_CHARACTERS = List.of('*', '?', '<', '>', '|', ':', '"', '\\', '/');
     
-    private static FileHandler fileHandler = FileHandler.getInstance();
-    private static ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
+    private static ValidateFolderName instance;
 
-    public static void validateFolderName(ActionEvent actionEvent, String folderName) throws Exception {
+    private FileHandler fileHandler;
+    private ErrorDialogView errorDialogView;
+
+    // Dependencies
+    private ValidateFolderName(FileHandler fileHandler, ErrorDialogView errorDialogView) {
+        this.fileHandler = fileHandler;
+        this.errorDialogView = errorDialogView;
+    }
+
+    public static ValidateFolderName getInstance(FileHandler fileHandler, ErrorDialogView errorDialogView) {
+        if (instance == null) {
+            instance = new ValidateFolderName(fileHandler, errorDialogView);
+        }
+        return instance;
+    }
+
+    public void validateFolderName(ActionEvent actionEvent, String folderName) throws Exception {
 
         // Validate folder name and create the folder if valid
         if (isFolderNameValid(folderName)) {
@@ -24,11 +40,11 @@ public class ValidateFolderName {
         }
     }
 
-    private static boolean isFolderNameValid(String folderName) {
+    private boolean isFolderNameValid(String folderName) {
         return folderName != null && !folderName.isEmpty() && folderName.chars().noneMatch(c -> INVALID_CHARACTERS.contains((char) c));
     }
 
-    private static void showErrorDialog(ActionEvent actionEvent) throws Exception {
+    private void showErrorDialog(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         errorDialogView.showErrorDialog(ownerStage);
     }

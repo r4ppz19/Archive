@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 
 public class LoginPageController {
     private UserModel userModel = new UserModel();
-    
-    private final ValidateCredentials validateCredentials = new ValidateCredentials(userModel);
+
+    private final ValidateCredentials validateCredentials = ValidateCredentials.getInstance(userModel);
     private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
     private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstance();
     private final HomePageView mainView = HomePageView.getInstance();

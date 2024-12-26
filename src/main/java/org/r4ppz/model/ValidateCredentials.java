@@ -1,10 +1,19 @@
 package org.r4ppz.model;
 
 public class ValidateCredentials {
-    private UserModel userModel;
+    private static ValidateCredentials validateCredentials;
+    private final UserModel userModel;
 
-    public ValidateCredentials(UserModel userModel) {
+    // Dependency
+    private ValidateCredentials(UserModel userModel) {
         this.userModel = userModel;
+    }
+
+    public static ValidateCredentials getInstance(UserModel userModel) {
+        if (validateCredentials == null) {
+            validateCredentials = new ValidateCredentials(userModel);
+        }
+        return validateCredentials;
     }
 
     DefaultUser defaultUser = DefaultUser.getInstanc();

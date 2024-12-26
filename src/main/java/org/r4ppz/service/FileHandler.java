@@ -18,14 +18,15 @@ public class FileHandler {
     private static final String DEFAULT_UPLOADS_PATH = "src/main/resources/org/r4ppz/uploads/";
     private static FileHandler instance;
 
-    private final SuccessDialogView successDialogView = SuccessDialogView.getInstance();
+    private final SuccessDialogView successDialogView;
 
-    private FileHandler() {
+    private FileHandler(SuccessDialogView successDialogView) {
+        this.successDialogView = successDialogView;
     }
 
-    public static FileHandler getInstance() {
+    public static synchronized  FileHandler getInstance(SuccessDialogView successDialogView) {
         if (instance == null) {
-            instance = new FileHandler();
+            instance = new FileHandler(successDialogView);
         }
         return instance;
     }
