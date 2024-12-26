@@ -13,7 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginViewController {
+public class LoginPageController {
     private UserModel userModel = new UserModel();
     
     private final ValidateCredentials validateCredentials = new ValidateCredentials(userModel);

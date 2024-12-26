@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0" stylesheets="@../../css/loginPage/LoginPageDesign.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0" stylesheets="@../../css/loginPage/LoginPageDesign.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.r4ppz.controller.main.LoginPageController">
    <children>
       <Label alignment="CENTER" layoutX="185.0" layoutY="30.0" prefHeight="31.0" prefWidth="80.0" text="Login" textFill="#5b5b5b">
          <font>
@@ -16,10 +15,10 @@
          </font>
       </Label>
       <Label layoutX="102.0" layoutY="90.0" text="Username:" />
-      <TextField layoutX="167.0" layoutY="85.0" styleClass="text-field-box" />
+      <TextField fx:id="usernameTextField" layoutX="167.0" layoutY="85.0" onAction="#handleUsernameTextFieldAction" styleClass="text-field-box" />
       <Label layoutX="103.0" layoutY="130.0" text="Password:" />
-      <PasswordField layoutX="167.0" layoutY="125.0" styleClass="password-field-box" />
-      <Button layoutX="167.0" layoutY="170.0" mnemonicParsing="false" text="Sign In" />
-      <Button layoutX="258.0" layoutY="170.0" mnemonicParsing="false" text="Sign Up" />
+      <PasswordField fx:id="passwordTextField" layoutX="167.0" layoutY="125.0" onAction="#handlePasswordTextFieldAction" styleClass="password-field-box" />
+      <Button layoutX="167.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleSignInAction" text="Sign In" />
+      <Button layoutX="258.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleSignUpAction" text="Sign Up" />
    </children>
 </AnchorPane>
