@@ -35,23 +35,23 @@
     -fx-background-radius: 5;
 }
 
-.button {
+.function-button {
     -fx-background-color: #959595;
     -fx-border-color: #000000;
     -fx-border-radius:  5;
     -fx-background-radius: 5;
 }
 
-.button:hover {
+.function-button:hover {
     -fx-background-color: #7f7f7f;
     -fx-text-fill: #000000;
 }
 
-.button:pressed {
+.function-button:pressed {
     -fx-background-color: #606060;
 }
 
-.button:focused {
+.function-button:focused {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
