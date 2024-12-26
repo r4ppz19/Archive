@@ -4,12 +4,9 @@
     -fx-border-radius:  5;
     -fx-background-radius: 5;
     
-    -fx-pref-width: 200;
-    -fx-pref-height: 45;
-    -fx-min-width: 200;
+    -fx-min-width: 150;
     -fx-min-height: 45;
-    -fx-max-width: 200;
-    -fx-max-height: 45;
+
 }
 
 .folder-button:hover {
