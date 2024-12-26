@@ -4,7 +4,7 @@ import org.r4ppz.model.ValidateCredentials;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.ErrorDialogView;
 import org.r4ppz.view.dialog.SuccessDialogView;
-import org.r4ppz.view.main.MainView;
+import org.r4ppz.view.main.HomePageView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ public class LoginViewController {
     private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();
     private final SuccessDialogView signUpDialogView = SuccessDialogView.getInstance();
     private final ValidateCredentials validateCredentials = new ValidateCredentials();
-    private final MainView mainView = MainView.getInstance();
+    private final HomePageView mainView = HomePageView.getInstance();
 
     @FXML
     private TextField usernameTextField;

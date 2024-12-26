@@ -8,16 +8,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainView {
-    private static MainView mainView;
+public class HomePageView {
+    private static HomePageView mainView;
 
-    private MainView() {
+    private HomePageView() {
 
     }
 
-    public static MainView getInstance() {
+    public static HomePageView getInstance() {
         if (mainView == null) {
-            mainView = new MainView();
+            mainView = new HomePageView();
         }
 
         return mainView;
@@ -27,7 +27,7 @@ public class MainView {
 
     public void showMainView() throws Exception {
         Stage stage = new Stage();
-        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/main/Main.fxml"))));
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/r4ppz/view/main/HomePage.fxml"))));
         stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);

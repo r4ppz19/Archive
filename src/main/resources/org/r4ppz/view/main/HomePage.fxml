@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="white-background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="white-background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.r4ppz.controller.main.HomePageViewController">
    <children>
       <VBox layoutX="41.0" layoutY="21.0" minHeight="468.0" minWidth="188.0" prefHeight="468.0" prefWidth="188.0" styleClass="box1" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -35,7 +35,7 @@
                <children>
                   <ScrollPane hbarPolicy="NEVER" prefHeight="247.0" prefWidth="186.0" styleClass="scrollpane" vbarPolicy="NEVER">
                      <content>
-                        <VBox alignment="TOP_CENTER" prefHeight="248.0" prefWidth="185.0" spacing="10.0" styleClass="box1-background-only">
+                        <VBox fx:id="folderBox" alignment="TOP_CENTER" prefHeight="248.0" prefWidth="185.0" spacing="10.0" styleClass="box1-background-only">
                            <children>
                               <Button mnemonicParsing="false" styleClass="folder-button" text="Button" />
                               <Button mnemonicParsing="false" styleClass="folder-button" text="Button" />
@@ -89,7 +89,7 @@
             </HBox>
             <HBox prefHeight="379.0" prefWidth="600.0" spacing="20.0" styleClass="box1">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="333.0" prefWidth="513.0" spacing="10.0" styleClass="box2">
+                  <VBox fx:id="fileBox" alignment="TOP_CENTER" prefHeight="333.0" prefWidth="513.0" spacing="10.0" styleClass="box2">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="298.0" styleClass="file-button" text="Button" />
                         <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="298.0" styleClass="file-button" text="Button" />

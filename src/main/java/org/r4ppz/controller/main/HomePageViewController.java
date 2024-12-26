@@ -1,13 +1,12 @@
 package org.r4ppz.controller.main;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
+import java.util.stream.Stream;
 
-import org.r4ppz.model.FolderData;
 import org.r4ppz.service.FileHandler;
-import org.r4ppz.util.ListLoader;
 import org.r4ppz.util.ImageLoader;
 import org.r4ppz.util.StageGetter;
 import org.r4ppz.view.dialog.CreateFolderDialogView;
@@ -22,24 +21,22 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MainViewController {
+public class HomePageViewController {
 
-    private final CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
-    private final FileHandler fileHandler = FileHandler.getInstance();
+    private CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
     private ImageLoader imageLoader = ImageLoader.getInstance();
-    private FolderData folderData = FolderData.getInstance();
+    private FileHandler fileHandler = FileHandler.getInstance();
 
     @FXML
-    private VBox leftPanelVBox;
+    private VBox folderBox;
 
     @FXML
-    private FlowPane listButtonFilesFlowPane;
+    private VBox fileBox;
 
     @FXML
     public void initialize() {
         System.out.println("Controller initialized");
-        loadFiles();
-        populateButton();
+        loadFolder();
     }
 
     @FXML
@@ -54,47 +51,35 @@ public class MainViewController {
 
     @FXML
     public void handleRefreshButtonAction() {
-        folderData = FolderData.getInstance(); // Reinitialize to avoid duplicating entries
-        folderData.getFolderName().clear();
-        listButtonFilesFlowPane.getChildren().clear();
-    
-        loadFiles();
-        populateButton();
+        fileBox.getChildren().clear();
+        loadFolder();
     }
-    
 
-    private void loadFiles() {
-        Path uploadsPath = Paths.get(fileHandler.getDefaultUploadsPath());
+    private void loadFolder() {
+        try (Stream<Path> paths = Files.list(Paths.get(fileHandler.getDefaultUploadsPath()))) {
+            paths.filter(Files::isDirectory).forEach(folder -> {
+                Button folderButton = createFolderButton(folder.getFileName().toString());
 
-        try {
-            Map<String, List<String>> folderToFileMap = ListLoader.getFolderToFileMap(uploadsPath);
-            for (Map.Entry<String, List<String>> entry : folderToFileMap.entrySet()) {
-                folderData.addFolderData(entry.getKey(), entry.getValue());
-            }
-        } catch (Exception e) {
-            System.err.println("Error in loadFiles: " + e.getMessage());
+                // Folder button action
+                folderButton.setOnAction(e -> loadFiles(folder, fileBox));
+                folderBox.getChildren().add(folderButton);
+            });
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void populateButton() {
-        for (String folderName : folderData.getFolderName()) {
-            Button folderButton = createFolderButton(folderName);
+    private void loadFiles(Path folder, VBox fileBox) {
+        fileBox.getChildren().clear(); // Clear previous files
 
-            folderButton.setOnAction(event -> {
-                leftPanelVBox.getChildren().clear();
-
-                // Populate the second VBox with file buttons
-                List<String> files = folderData.getFile(folderName);
-                for (String fileName : files) {
-                    Button fileButton = createFileButton(fileName);
-                    listButtonFilesFlowPane.getChildren().add(fileButton);
-                }
+        try (Stream<Path> files = Files.list(folder)) {
+            files.filter(Files::isRegularFile).forEach(file -> {
+                Button fileButton = createFileButton(file.getFileName().toString());
+                fileBox.getChildren().add(fileButton);
             });
-
-            leftPanelVBox.getChildren().add(folderButton);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
 
     private Button createFolderButton(String folderName) {
