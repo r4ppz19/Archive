@@ -1,7 +1,12 @@
 package org.r4ppz.model;
 
 public class ValidateCredentials {
-    UserModel userModel = new UserModel();
+    private UserModel userModel;
+
+    public ValidateCredentials(UserModel userModel) {
+        this.userModel = userModel;
+    }
+
     DefaultUser defaultUser = DefaultUser.getInstanc();
     
     public boolean isValidSignInCredentials(String username, String password) {
