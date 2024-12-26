@@ -22,7 +22,7 @@ public class CreateFolderDialogViewController {
 
     @FXML
     public void handleFolderNameTextFieldAction(ActionEvent actionEvent) throws Exception {
-        String folderName = createButton.getText().trim();
+        String folderName = folderNameTextField.getText().trim();
         ValidateFolderName.validateFolderName(actionEvent, folderName);
     }
 }
