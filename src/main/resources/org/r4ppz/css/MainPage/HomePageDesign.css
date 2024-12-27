@@ -44,6 +44,7 @@
     -fx-border-color: #000000;
     -fx-border-radius:  5;
     -fx-background-radius: 5;
+    -fx-font-weight: bold;
 }
 
 .function-button:hover {
@@ -53,6 +54,7 @@
 
 .function-button:pressed {
     -fx-background-color: #606060;
+    -fx-text-fill: #ffffff;
 }
 
 .function-button:focused {
