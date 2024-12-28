@@ -27,8 +27,8 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="99.0" prefWidth="186.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" styleClass="function-button" text="Import" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" styleClass="function-button" text="New" />
+                  <Button mnemonicParsing="false" onAction="#handleUploadButtonAction" prefHeight="35.0" prefWidth="70.0" styleClass="function-button" text="Upload" />
+                  <Button mnemonicParsing="false" onAction="#handleAddFolderButtonAction" prefHeight="35.0" prefWidth="70.0" styleClass="function-button" text="New" />
                </children>
             </HBox>
             <VBox alignment="TOP_CENTER" prefHeight="334.0" prefWidth="186.0" spacing="10.0">
