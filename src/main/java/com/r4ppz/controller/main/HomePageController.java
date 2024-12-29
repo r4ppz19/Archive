@@ -86,7 +86,7 @@ public class HomePageController {
     private Button createFolderButton(String folderName) {
         Button folderButton = new Button(folderName);
 
-        Image folderImage = imageLoader.loadImage("/org/r4ppz/image/icon/folder-icon.png");
+        Image folderImage = imageLoader.loadImage("/com/r4ppz/image/icon/folder-icon.png");
         ImageView folderIcon = new ImageView(folderImage);
         folderIcon.setFitHeight(22);
         folderIcon.setFitWidth(22);

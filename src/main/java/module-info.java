@@ -1,4 +1,4 @@
-module org.r4ppz {
+module com.r4ppz {
     requires javafx.fxml;
     requires transitive javafx.graphics;
     requires transitive javafx.controls;

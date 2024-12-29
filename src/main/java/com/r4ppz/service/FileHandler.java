@@ -15,7 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class FileHandler {
-    private static final String DEFAULT_UPLOADS_PATH = "src/main/resources/org/r4ppz/uploads/";
+    private static final String DEFAULT_UPLOADS_PATH = "src/main/resources/com/r4ppz/uploads/";
     private static FileHandler instance;
 
     private final SuccessDialogView successDialogView;

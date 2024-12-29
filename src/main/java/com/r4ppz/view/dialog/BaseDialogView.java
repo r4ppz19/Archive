@@ -23,7 +23,7 @@ abstract class BaseDialogView {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(getFxmlPath())));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            stage.getIcons().add(imageLoader.loadImage("/org/r4ppz/image/icon/white-circle-icon.png"));
+            stage.getIcons().add(imageLoader.loadImage("/com/r4ppz/image/icon/white-circle-icon.png"));
             stage.setScene(scene);
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);

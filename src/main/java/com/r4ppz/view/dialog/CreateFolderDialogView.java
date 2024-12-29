@@ -16,7 +16,7 @@ public class CreateFolderDialogView extends BaseDialogView {
 
     @Override
     protected String getFxmlPath() {
-        return "/org/r4ppz/view/dialog/CreateFolderDialog.fxml";
+        return "/com/r4ppz/view/dialog/CreateFolderDialog.fxml";
     }
 
     public void showCreateFolderDialog(Stage ownerStage) throws Exception {

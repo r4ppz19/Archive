@@ -16,7 +16,7 @@ public class SuccessDialogView extends BaseDialogView {
 
     @Override
     protected String getFxmlPath() {
-        return "/org/r4ppz/view/dialog/SuccessDialog.fxml";
+        return "/com/r4ppz/view/dialog/SuccessDialog.fxml";
     }
 
     public void showSuccessDialog(Stage ownerStage) throws Exception {
