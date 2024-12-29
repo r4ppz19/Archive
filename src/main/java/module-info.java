@@ -5,14 +5,14 @@ module org.r4ppz {
 
     requires transitive java.desktop;
 
-    opens org.r4ppz to javafx.fxml;
-    opens org.r4ppz.controller.dialog to javafx.fxml;
-    opens org.r4ppz.controller.main to javafx.fxml;
+    opens com.r4ppz to javafx.fxml;
+    opens com.r4ppz.controller.dialog to javafx.fxml;
+    opens com.r4ppz.controller.main to javafx.fxml;
 
-    exports org.r4ppz;
-    exports org.r4ppz.util;
-    exports org.r4ppz.model;
-    exports org.r4ppz.test;
-    exports org.r4ppz.service;
-    exports org.r4ppz.view.dialog;
+    exports com.r4ppz;
+    exports com.r4ppz.util;
+    exports com.r4ppz.model;
+    exports com.r4ppz.test;
+    exports com.r4ppz.service;
+    exports com.r4ppz.view.dialog;
 }

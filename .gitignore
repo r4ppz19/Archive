@@ -76,7 +76,7 @@ Thumbs.db
 
 .github
 
-src/main/resources/org/r4ppz/uploads/
+src/main/resources/com/r4ppz/uploads/
 
 # Exclude test classes
-src/main/java/org/r4ppz/test/
+src/main/java/com/r4ppz/test/
