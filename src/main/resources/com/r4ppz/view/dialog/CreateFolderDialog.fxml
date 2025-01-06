@@ -9,28 +9,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="200.0" stylesheets="@../../css/DialogDesign/NewFolderDialogDesign.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.r4ppz.controller.dialog.CreateFolderDialogController">
-   <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="140.0" text="Create New Folder" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font></Label>
-            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="200.0" spacing="5.0" styleClass="background">
-               <children>
-                  <TextField fx:id="folderNameTextField" onAction="#handleFolderNameTextFieldAction" promptText="New Folder" styleClass="text-field" />
-                  <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateButtonAction" prefHeight="26.0" prefWidth="70.0" text="Create">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0"
+            prefWidth="200.0" stylesheets="@../../css/dialogDesign/NewFolderDialogDesign.css"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.r4ppz.controller.dialog.CreateFolderDialogController">
+   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" AnchorPane.bottomAnchor="0.0"
+         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="140.0" text="Create New Folder"
+             textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0"/>
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="200.0" spacing="5.0" styleClass="background">
+         <padding>
+            <Insets left="10.0" right="10.0"/>
+         </padding>
+         <TextField fx:id="folderNameTextField" onAction="#handleFolderNameTextFieldAction"
+                    promptText="New Folder" styleClass="text-field"/>
+         <Button mnemonicParsing="false" onAction="#handleCreateButtonAction" prefHeight="26.0" prefWidth="70.0"
+                 text="Create">
+            <font>
+               <Font size="10.0"/>
+            </font>
+         </Button>
+      </HBox>
+   </VBox>
 </AnchorPane>
