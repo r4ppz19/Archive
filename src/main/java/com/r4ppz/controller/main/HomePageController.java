@@ -42,6 +42,8 @@ public class HomePageController {
 
     @FXML
     public void handleUploadButtonAction(ActionEvent actionEvent) throws Exception {
+        Path defaultPath = Path.of(fileHandler.getDefaultUploadsPath());
+        fileHandler.uploadFile(actionEvent, defaultPath);
     }
 
     @FXML

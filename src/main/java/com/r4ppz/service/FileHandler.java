@@ -37,7 +37,7 @@ public class FileHandler {
         return DEFAULT_UPLOADS_PATH;
     }
 
-    public void copyFileToProject(Path sourceFile, Path destinationPath) throws IOException {
+    private void copyFileToProject(Path sourceFile, Path destinationPath) throws IOException {
         Path destinationDir = destinationPath;
         Path destinationFile = destinationDir.resolve(sourceFile.getFileName());
 

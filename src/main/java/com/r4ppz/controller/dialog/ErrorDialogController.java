@@ -12,6 +12,6 @@ public class ErrorDialogController {
     public void okButtonAction(ActionEvent actionEvent) {
         // Get the stage and close it
         Stage stage = StageGetter.getCurrentStage(actionEvent);
-        stage.close();
+        stage.hide();
     }
 }

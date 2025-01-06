@@ -85,7 +85,7 @@
                <children>
                   <VBox prefHeight="333.0" prefWidth="383.0" styleClass="box2">
                      <children>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="320.0" prefWidth="331.0" vbarPolicy="NEVER">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" focusTraversable="false" hbarPolicy="NEVER" prefHeight="320.0" prefWidth="331.0" vbarPolicy="NEVER">
                            <content>
                               <VBox fx:id="fileBox" alignment="TOP_CENTER" prefHeight="406.0" prefWidth="336.0" spacing="10.0" styleClass="box2-background-only">
                                  <padding>

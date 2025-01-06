@@ -12,7 +12,7 @@ public class SuccessDialogController {
     @FXML
     public void okButtonAction(ActionEvent actionEvent) {
         Stage stage = StageGetter.getCurrentStage(actionEvent);
-        stage.close();
+        stage.hide();
         
     }
 }
