@@ -25,7 +25,6 @@ target/
 /target/
 
 # Maven specific files
-target/
 dependency-reduced-pom.xml
 release.properties
 pom.xml.tag
@@ -49,8 +48,6 @@ bin/
 
 # IntelliJ IDEA
 .idea/
-*.iml
-*.iws
 out/
 
 # Ignore IDE specific files
@@ -80,3 +77,4 @@ src/main/resources/com/r4ppz/uploads/
 
 # Exclude test classes
 src/main/java/com/r4ppz/test/
+.qodo
