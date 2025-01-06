@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 public class HomePageController {
 
@@ -67,7 +68,7 @@ public class HomePageController {
         }
     }
 
-    private void loadFiles(Path folder, VBox fileBox) {
+    private void loadFiles(Path folder, @NotNull VBox fileBox) {
         fileBox.getChildren().clear(); // Clear previous files
 
         try (Stream<Path> files = Files.list(folder)) {
@@ -80,6 +81,7 @@ public class HomePageController {
         }
     }
 
+    @NotNull
     private Button createFolderButton(String folderName) {
         Button folderButton = new Button(folderName);
 
@@ -93,6 +95,7 @@ public class HomePageController {
         return folderButton;
     }
 
+    @NotNull
     private Button createFileButton(String fileName) {
         Button fileButton = new Button(fileName);
         fileButton.getStyleClass().add("file-button");

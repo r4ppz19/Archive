@@ -13,6 +13,8 @@ import com.r4ppz.view.dialog.SuccessDialogView;
 import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class FileHandler {
     private static final String DEFAULT_UPLOADS_PATH = "src/main/resources/com/r4ppz/uploads/";
@@ -37,7 +39,7 @@ public class FileHandler {
         return DEFAULT_UPLOADS_PATH;
     }
 
-    private void copyFileToProject(Path sourceFile, Path destinationPath) throws IOException {
+    private void copyFileToProject(@NotNull Path sourceFile, @NotNull Path destinationPath) throws IOException {
         Path destinationFile = destinationPath.resolve(sourceFile.getFileName());
 
         if (!Files.exists(destinationPath)) {
@@ -69,6 +71,7 @@ public class FileHandler {
         }
     }
 
+    @Nullable
     private Path fileChooser(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File");

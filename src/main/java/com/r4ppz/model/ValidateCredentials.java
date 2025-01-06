@@ -1,5 +1,7 @@
 package com.r4ppz.model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class ValidateCredentials {
     private static ValidateCredentials validateCredentials;
     private final UserModel userModel;
@@ -19,7 +21,7 @@ public class ValidateCredentials {
 
     DefaultUser defaultUser = DefaultUser.getInstance();
     
-    public boolean isValidSignInCredentials(String username, String password) {
+    public boolean isValidSignInCredentials(@NotNull String username, String password) {
         return (username.equals(userModel.getUsername()) && password.equals(userModel.getPassword()))
                 || (username.equals(defaultUser.getUsername()) && password.equals(defaultUser.getPassword()));
     }

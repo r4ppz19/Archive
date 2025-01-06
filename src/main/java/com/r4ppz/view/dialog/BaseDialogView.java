@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 abstract class BaseDialogView {
     private final ImageLoader imageLoader = ImageLoader.getInstance();
@@ -37,7 +38,7 @@ abstract class BaseDialogView {
     }
 
     // Center the dialog relative to the owner stage
-    public void centerView(Stage stage, Stage ownerStage) {
+    public void centerView(@NotNull Stage stage, Stage ownerStage) {
         stage.setOnShown(event -> {
             double x = ownerStage.getX() + (ownerStage.getWidth() - stage.getWidth()) / 2;
             double y = ownerStage.getY() + (ownerStage.getHeight() - stage.getHeight()) / 2;

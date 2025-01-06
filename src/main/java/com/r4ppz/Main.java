@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 public class Main extends Application {
 
@@ -18,7 +19,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage mainStage) throws Exception {
+    public void start(@NotNull Stage mainStage) throws Exception {
         mainStage.getIcons().add(imageLoader.loadImage("/com/r4ppz/image/icon/white-circle-icon.png"));
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/r4ppz/view/main/LoginPage.fxml"))));
         mainStage.setTitle("Archive");
