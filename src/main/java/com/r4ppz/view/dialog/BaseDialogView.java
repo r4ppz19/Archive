@@ -11,7 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 abstract class BaseDialogView {
-    private ImageLoader imageLoader = ImageLoader.getInstance();
+    private final ImageLoader imageLoader = ImageLoader.getInstance();
 
     // Abstract method for showing a dialog
     abstract String getFxmlPath();
@@ -31,7 +31,7 @@ abstract class BaseDialogView {
             stage.initOwner(ownerStage);
             stage.showAndWait();
         } catch (Exception e) {
-            e.printStackTrace(); // Or log this error for better visibility
+            System.out.println(e.getMessage());
             throw new Exception("Error loading dialog: " + e);
         }
     }

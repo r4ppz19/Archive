@@ -23,10 +23,10 @@ import javafx.stage.Stage;
 
 public class HomePageController {
 
-    private SuccessDialogView successDialogView = SuccessDialogView.getInstance();
-    private CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
-    private ImageLoader imageLoader = ImageLoader.getInstance();
-    private FileHandler fileHandler = FileHandler.getInstance(successDialogView);
+    private final SuccessDialogView successDialogView = SuccessDialogView.getInstance();
+    private final CreateFolderDialogView newFolderDialogView = CreateFolderDialogView.getInstance();
+    private final ImageLoader imageLoader = ImageLoader.getInstance();
+    private final FileHandler fileHandler = FileHandler.getInstance(successDialogView);
 
     @FXML
     private VBox folderBox;
@@ -52,11 +52,6 @@ public class HomePageController {
         newFolderDialogView.showCreateFolderDialog(ownerStage);
     }
 
-    @FXML
-    public void handleRefreshButtonAction() {
-        fileBox.getChildren().clear();
-        loadFolder();
-    }
 
     private void loadFolder() {
         try (Stream<Path> paths = Files.list(Paths.get(fileHandler.getDefaultUploadsPath()))) {
@@ -68,7 +63,7 @@ public class HomePageController {
                 folderBox.getChildren().add(folderButton);
             });
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -81,7 +76,7 @@ public class HomePageController {
                 fileBox.getChildren().add(fileButton);
             });
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 

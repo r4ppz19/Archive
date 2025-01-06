@@ -1,8 +1,6 @@
 package com.r4ppz.model;
 
 public class DefaultUser {
-    private final String username = "r4ppz";
-    private final String password = "12312005";
 
     private static DefaultUser instance;
 
@@ -19,10 +17,10 @@ public class DefaultUser {
     }
 
     public String getUsername() {
-        return username;
+        return "r4ppz";
     }
 
     public String getPassword() {
-        return password;
+        return "12312005";
     }
 }

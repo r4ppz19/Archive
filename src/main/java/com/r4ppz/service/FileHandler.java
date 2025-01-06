@@ -38,11 +38,10 @@ public class FileHandler {
     }
 
     private void copyFileToProject(Path sourceFile, Path destinationPath) throws IOException {
-        Path destinationDir = destinationPath;
-        Path destinationFile = destinationDir.resolve(sourceFile.getFileName());
+        Path destinationFile = destinationPath.resolve(sourceFile.getFileName());
 
-        if (!Files.exists(destinationDir)) {
-            Files.createDirectories(destinationDir);
+        if (!Files.exists(destinationPath)) {
+            Files.createDirectories(destinationPath);
         }
 
         Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);

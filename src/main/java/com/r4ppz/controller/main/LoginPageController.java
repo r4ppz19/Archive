@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginPageController {
-    private UserModel userModel = new UserModel();
+    private final UserModel userModel = new UserModel();
 
     private final ValidateCredentials validateCredentials = ValidateCredentials.getInstance(userModel);
     private final ErrorDialogView errorDialogView = ErrorDialogView.getInstance();

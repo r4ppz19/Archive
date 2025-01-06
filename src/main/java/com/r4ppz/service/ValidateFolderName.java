@@ -13,8 +13,8 @@ public class ValidateFolderName {
     
     private static ValidateFolderName instance;
 
-    private FileHandler fileHandler;
-    private ErrorDialogView errorDialogView;
+    private final FileHandler fileHandler;
+    private final ErrorDialogView errorDialogView;
 
     // Dependencies
     private ValidateFolderName(FileHandler fileHandler, ErrorDialogView errorDialogView) {
