@@ -2,39 +2,44 @@ package com.r4ppz.view.dialog;
 
 import java.util.Objects;
 
-import com.r4ppz.util.ImageLoader;
+import com.r4ppz.controller.stage.CustomDialogStageController;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.jetbrains.annotations.NotNull;
 
 abstract class BaseDialogView {
-    private final ImageLoader imageLoader = ImageLoader.getInstance();
-
     // Abstract method for showing a dialog
     abstract String getFxmlPath();
 
     // Show the dialog with common functionality
     public void showDialog(Stage ownerStage) throws Exception {
+        String customDialogStage = "/com/r4ppz/view/stage/CustomDialogStage.fxml";
         Stage stage = new Stage();
-        try {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(getFxmlPath())));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.getIcons().add(imageLoader.loadImage("/com/r4ppz/image/icon/white-circle-icon.png"));
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            centerView(stage, ownerStage);
-            stage.initOwner(ownerStage);
-            stage.showAndWait();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            throw new Exception("Error loading dialog: " + e);
-        }
+
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+
+        FXMLLoader customLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(customDialogStage)));
+        Parent customRoot = customLoader.load();
+
+        FXMLLoader contentLoader = new FXMLLoader(getClass().getResource(getFxmlPath()));
+        Parent contentRoot = contentLoader.load();
+
+        CustomDialogStageController customDialogStageController = customLoader.getController();
+        customDialogStageController.setContent(contentRoot);
+
+        Scene scene = new Scene(customRoot);
+        scene.setFill(null);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        centerView(stage, ownerStage);
+        stage.initOwner(ownerStage);
+        stage.showAndWait();
     }
 
     // Center the dialog relative to the owner stage
