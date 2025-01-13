@@ -1,18 +1,17 @@
 package com.r4ppz;
 
-import java.util.Objects;
-
-import com.r4ppz.util.ImageLoader;
+import com.r4ppz.controller.stage.CustomStageController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.jetbrains.annotations.NotNull;
 
 public class Main extends Application {
-
-    private final ImageLoader imageLoader = ImageLoader.getInstance();
 
     public static void main(String[] args) {
         launch(args);
@@ -20,11 +19,22 @@ public class Main extends Application {
 
     @Override
     public void start(@NotNull Stage mainStage) throws Exception {
-        mainStage.getIcons().add(imageLoader.loadImage("/com/r4ppz/image/icon/white-circle-icon.png"));
-        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/r4ppz/view/main/LoginPage.fxml"))));
-        mainStage.setTitle("Archive");
+        mainStage.initStyle(StageStyle.UNDECORATED);
+        mainStage.initStyle(StageStyle.TRANSPARENT);
+
+        FXMLLoader customLoader = new FXMLLoader(getClass().getResource("/com/r4ppz/view/stage/CustomStage.fxml"));
+        Parent customRoot = customLoader.load();
+
+        FXMLLoader contentLoader = new FXMLLoader(getClass().getResource("/com/r4ppz/view/main/LoginPage.fxml"));
+        HBox contentRoot = contentLoader.load();
+
+        CustomStageController customStageController = customLoader.getController();
+        customStageController.setStage(mainStage);
+        customStageController.setContent(contentRoot);
+
+        Scene scene = new Scene(customRoot);
+        scene.setFill(null);
         mainStage.setScene(scene);
-        mainStage.setResizable(false);
         mainStage.show();
     }
 
