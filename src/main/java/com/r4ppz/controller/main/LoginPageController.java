@@ -1,7 +1,7 @@
 package com.r4ppz.controller.main;
 
 import com.r4ppz.model.UserModel;
-import com.r4ppz.model.ValidateCredentials;
+import com.r4ppz.service.ValidateCredentials;
 import com.r4ppz.util.StageGetter;
 import com.r4ppz.view.dialog.ErrorDialogView;
 import com.r4ppz.view.dialog.SuccessDialogView;

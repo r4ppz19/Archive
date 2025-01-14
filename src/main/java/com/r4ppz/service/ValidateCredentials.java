@@ -1,5 +1,7 @@
-package com.r4ppz.model;
+package com.r4ppz.service;
 
+import com.r4ppz.model.DefaultUser;
+import com.r4ppz.model.UserModel;
 import org.jetbrains.annotations.NotNull;
 
 public class ValidateCredentials {
