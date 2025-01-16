@@ -16,9 +16,6 @@ public class CustomStageController {
     Stage stage;
 
     @FXML
-    private StackPane root;
-
-    @FXML
     private HBox titleBar;
 
     @FXML
@@ -49,10 +46,5 @@ public class CustomStageController {
             stage.setY(event.getScreenY() - yOffSet);
         });
 
-    }
-
-    public void setContent(Parent content) {
-        root.getChildren().add(content);
-        StackPane.setAlignment(content, Pos.CENTER);
     }
 }

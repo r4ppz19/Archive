@@ -1,29 +1,6 @@
 .root {
-    -fx-font-family: Lexend, Inter;
+    -fx-font-family: JetBrains Mono, Lexend;
 }
-
-.background {
-    -fx-background-color: #BDBDBD;
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
-}
-
-.password-field-box {
-    -fx-background-color: #D9D9D9;
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-}
-
-.text-field-box {
-    -fx-background-color: #D9D9D9;
-    -fx-border-color: #000000;
-    -fx-border-width: 1;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-}
-
 
 .button {
     -fx-background-color: #959595;

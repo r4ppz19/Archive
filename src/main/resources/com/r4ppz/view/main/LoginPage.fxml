@@ -8,27 +8,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" spacing="20.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px;"
-      styleClass="background" stylesheets="@../../css/loginPage/LoginPageDesign.css" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.r4ppz.controller.main.LoginPageController">
+<HBox alignment="CENTER" prefHeight="258.0" prefWidth="396.0" spacing="20.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: #BDBDBD;" styleClass="background" stylesheets="@../../css/loginPage/LoginPageDesign.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.r4ppz.controller.main.LoginPageController">
    <HBox alignment="CENTER" spacing="15.0">
-      <VBox alignment="CENTER" prefHeight="256.0" prefWidth="62.0" spacing="20.0">
-         <Label text="Username:"/>
-         <Label text="Password:"/>
+      <VBox alignment="CENTER" prefHeight="258.0" prefWidth="86.0" spacing="20.0">
+         <Label text="Username:" />
+         <Label text="Password:" />
       </VBox>
       <VBox alignment="CENTER" prefHeight="256.0" prefWidth="181.0" spacing="20.0">
          <Label alignment="CENTER" prefHeight="31.0" prefWidth="80.0" textFill="#5b5b5b">
             <font>
-               <Font name="System Bold" size="20.0"/>
+               <Font name="System Bold" size="20.0" />
             </font>
          </Label>
-         <TextField fx:id="usernameTextField" onAction="#handleUsernameTextFieldAction"
-                    styleClass="text-field-box"/>
-         <PasswordField fx:id="passwordTextField" onAction="#handlePasswordTextFieldAction"
-                        styleClass="password-field-box"/>
+         <TextField fx:id="usernameTextField" onAction="#handleUsernameTextFieldAction" style="-fx-background-color: #D9D9D9; -fx-border-color: #000000; -fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="text-field-box" />
+         <PasswordField fx:id="passwordTextField" onAction="#handlePasswordTextFieldAction" style="-fx-background-color: #D9D9D9; -fx-border-color: #000000; -fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="password-field-box" />
          <HBox alignment="CENTER" spacing="20.0">
-            <Button mnemonicParsing="false" onAction="#handleSignInAction" text="Sign In"/>
-            <Button mnemonicParsing="false" onAction="#handleSignUpAction" text="Sign Up"/>
+            <Button mnemonicParsing="false" onAction="#handleSignInAction" text="Sign In" />
+            <Button mnemonicParsing="false" onAction="#handleSignUpAction" text="Sign Up" />
          </HBox>
       </VBox>
    </HBox>
