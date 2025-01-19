@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import com.r4ppz.service.FileHandler;
 import com.r4ppz.util.ImageLoader;
 import com.r4ppz.util.StageGetter;
@@ -20,7 +22,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.NotNull;
 
 public class HomePageController {
 
@@ -68,7 +69,7 @@ public class HomePageController {
         }
     }
 
-    private void loadFiles(Path folder, @NotNull VBox fileBox) {
+    private void loadFiles(Path folder, @NonNull VBox fileBox) {
         fileBox.getChildren().clear(); // Clear previous files
 
         try (Stream<Path> files = Files.list(folder)) {
@@ -81,7 +82,7 @@ public class HomePageController {
         }
     }
 
-    @NotNull
+    @NonNull
     private Button createFolderButton(String folderName) {
         Button folderButton = new Button(folderName);
 
@@ -95,7 +96,7 @@ public class HomePageController {
         return folderButton;
     }
 
-    @NotNull
+    @NonNull
     private Button createFileButton(String fileName) {
         Button fileButton = new Button(fileName);
         fileButton.getStyleClass().add("file-button");

@@ -2,6 +2,8 @@ package com.r4ppz.view.dialog;
 
 import java.util.Objects;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import com.r4ppz.controller.stage.CustomDialogStageController;
 
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.jetbrains.annotations.NotNull;
 
 abstract class BaseDialogView {
     // Abstract method for showing a dialog
@@ -43,7 +44,7 @@ abstract class BaseDialogView {
     }
 
     // Center the dialog relative to the owner stage
-    public void centerView(@NotNull Stage stage, Stage ownerStage) {
+    public void centerView(@NonNull Stage stage, Stage ownerStage) {
         stage.setOnShown(event -> {
             double x = ownerStage.getX() + (ownerStage.getWidth() - stage.getWidth()) / 2;
             double y = ownerStage.getY() + (ownerStage.getHeight() - stage.getHeight()) / 2;
