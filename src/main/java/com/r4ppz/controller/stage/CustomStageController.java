@@ -1,10 +1,7 @@
 package com.r4ppz.controller.stage;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
