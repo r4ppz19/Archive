@@ -1,5 +1,7 @@
 package com.r4ppz;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import com.r4ppz.controller.stage.CustomStageController;
 
 import javafx.application.Application;
@@ -8,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.jetbrains.annotations.NotNull;
 
 public class Main extends Application {
 
@@ -17,7 +18,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(@NotNull Stage mainStage) throws Exception {
+    public void start(@NonNull Stage mainStage) throws Exception {
         mainStage.initStyle(StageStyle.UNDECORATED);
         mainStage.initStyle(StageStyle.TRANSPARENT);
 

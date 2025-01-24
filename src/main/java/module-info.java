@@ -4,7 +4,7 @@ module com.r4ppz {
     requires transitive javafx.controls;
 
     requires transitive java.desktop;
-    requires annotations;
+    requires org.checkerframework.checker.qual;
 
     opens com.r4ppz to javafx.fxml;
     opens com.r4ppz.controller.dialog to javafx.fxml;

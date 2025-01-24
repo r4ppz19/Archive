@@ -1,8 +1,9 @@
 package com.r4ppz.service;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import com.r4ppz.model.DefaultUser;
 import com.r4ppz.model.UserModel;
-import org.jetbrains.annotations.NotNull;
 
 public class ValidateCredentials {
     private static ValidateCredentials validateCredentials;
@@ -23,7 +24,7 @@ public class ValidateCredentials {
 
     DefaultUser defaultUser = DefaultUser.getInstance();
     
-    public boolean isValidSignInCredentials(@NotNull String username, String password) {
+    public boolean isValidSignInCredentials(@NonNull String username, String password) {
         return (username.equals(userModel.getUsername()) && password.equals(userModel.getPassword()))
                 || (username.equals(defaultUser.getUsername()) && password.equals(defaultUser.getPassword()));
     }

@@ -7,14 +7,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 import com.r4ppz.util.StageGetter;
 import com.r4ppz.view.dialog.SuccessDialogView;
 
 import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class FileHandler {
     private static final String DEFAULT_UPLOADS_PATH = "src/main/resources/com/r4ppz/uploads/";
@@ -39,7 +40,7 @@ public class FileHandler {
         return DEFAULT_UPLOADS_PATH;
     }
 
-    private void copyFileToProject(@NotNull Path sourceFile, @NotNull Path destinationPath) throws IOException {
+    private void copyFileToProject(@NonNull Path sourceFile, @NonNull Path destinationPath) throws IOException {
         Path destinationFile = destinationPath.resolve(sourceFile.getFileName());
 
         if (!Files.exists(destinationPath)) {
