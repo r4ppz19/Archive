@@ -11,8 +11,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.2</junit.version>
-        <javafx.version>17.0.6</javafx.version>
-        <maven.compiler.release>17</maven.compiler.release> <!-- Use release instead of source and target -->
+        <javafx.version>23.0.1</javafx.version>
+        <maven.compiler.release>23</maven.compiler.release> <!-- Use release instead of source and target -->
     </properties>
 
     <dependencies>
@@ -46,6 +46,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
