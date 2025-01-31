@@ -61,7 +61,7 @@ public class HomePageController {
                 Button folderButton = createFolderButton(folder.getFileName().toString());
 
                 // Folder button action
-                folderButton.setOnAction(e -> loadFiles(folder, fileBox));
+                folderButton.setOnAction(_ -> loadFiles(folder, fileBox));
                 folderBox.getChildren().add(folderButton);
             });
         } catch (IOException e) {

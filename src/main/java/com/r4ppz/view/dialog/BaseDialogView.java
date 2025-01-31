@@ -45,7 +45,7 @@ abstract class BaseDialogView {
 
     // Center the dialog relative to the owner stage
     public void centerView(@NonNull Stage stage, Stage ownerStage) {
-        stage.setOnShown(event -> {
+        stage.setOnShown(_ -> {
             double x = ownerStage.getX() + (ownerStage.getWidth() - stage.getWidth()) / 2;
             double y = ownerStage.getY() + (ownerStage.getHeight() - stage.getHeight()) / 2;
             stage.setX(x);
