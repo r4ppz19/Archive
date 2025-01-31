@@ -22,7 +22,7 @@ public class Main extends Application {
         mainStage.initStyle(StageStyle.UNDECORATED);
         mainStage.initStyle(StageStyle.TRANSPARENT);
 
-        FXMLLoader customLoader = new FXMLLoader(getClass().getResource("/com/r4ppz/view/stage/CustomStage.fxml"));
+        FXMLLoader customLoader = new FXMLLoader(getClass().getResource("/com/r4ppz/view/stage/LoginPageST.fxml"));
         Parent customRoot = customLoader.load();
 
         CustomStageController customStageController = customLoader.getController();
