@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane minHeight="50.0" minWidth="50.0" prefHeight="237.0" prefWidth="323.0" style="-fx-background-color: #1c1c1cff; -fx-border-radius: 20px; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.r4ppz.controller.stage.CustomStageController">
+   <HBox fx:id="titleBar" alignment="CENTER_RIGHT" layoutX="5.0" layoutY="14.0" maxHeight="20.0" maxWidth="1.7976931348623157E308" minHeight="20.0" minWidth="-Infinity" prefHeight="28.0" prefWidth="20.0" spacing="15.0" style="-fx-background-color: #1c1c1c; -fx-border-radius: 20px; -fx-background-radius: 20px;" AnchorPane.bottomAnchor="217.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+      <padding>
+         <Insets bottom="5.0" left="5.0" right="20.0" top="5.0" />
+      </padding>
+      <Button maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#closeActionButton" style="-fx-background-color: #1c1c1c; -fx-border-color: #ffffff;" text="X" />
+   </HBox>
+   <StackPane layoutX="102.0" layoutY="74.0" prefHeight="134.0" prefWidth="216.0" AnchorPane.bottomAnchor="5.0"
+              AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="20.0">
+      <fx:include source="CreateFolderDialog.fxml"/>
+   </StackPane>
+</AnchorPane>

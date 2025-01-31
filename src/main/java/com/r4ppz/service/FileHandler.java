@@ -40,6 +40,13 @@ public class FileHandler {
         return DEFAULT_UPLOADS_PATH;
     }
 
+    /**
+     * Copies a file from the source path to the destination path within the project.
+     *
+     * @param sourceFile the path of the source file to be copied
+     * @param destinationPath the path of the destination directory where the file will be copied
+     * @throws IOException if an I/O error occurs
+     */
     private void copyFileToProject(@NonNull Path sourceFile, @NonNull Path destinationPath) throws IOException {
         Path destinationFile = destinationPath.resolve(sourceFile.getFileName());
 
@@ -50,6 +57,13 @@ public class FileHandler {
         Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
     }
 
+    /**
+     * Creates a folder at the specified destination path.
+     *
+     * @param folderName the name of the folder to be created
+     * @param destinationPath the path where the folder should be created
+     * @throws IOException if an I/O error occurs or the folder cannot be created
+     */
     public void createFolder(String folderName, String destinationPath) throws IOException {
         Path newFolderPath = Paths.get(destinationPath, folderName);
 
@@ -61,6 +75,13 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Handles the file upload process triggered by an action event.
+     * 
+     * @param actionEvent The action event that triggered the file upload.
+     * @param uploadsFilePath The path where the uploaded file should be stored.
+     * @throws Exception If an error occurs during the file upload process.
+     */
     public void uploadFile(ActionEvent actionEvent, Path uploadsFilePath) throws Exception {
         Path selectedFile = fileChooser(StageGetter.getCurrentStage(actionEvent));
 
@@ -72,6 +93,12 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Opens a file chooser dialog to allow the user to select a file.
+     *
+     * @param stage the stage on which the file chooser dialog should be displayed
+     * @return the path of the selected file, or null if no file was selected
+     */
     @Nullable
     private Path fileChooser(Stage stage) {
         FileChooser fileChooser = new FileChooser();

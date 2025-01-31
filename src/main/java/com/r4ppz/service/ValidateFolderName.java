@@ -30,6 +30,14 @@ public class ValidateFolderName {
         return instance;
     }
 
+    /**
+     * Validates the provided folder name and creates the folder if it is valid.
+     * If the folder name is invalid, an error dialog is shown.
+     *
+     * @param actionEvent the action event that triggered the validation
+     * @param folderName the name of the folder to be validated and potentially created
+     * @throws Exception if an error occurs during folder creation
+     */
     public void validateFolderName(ActionEvent actionEvent, String folderName) throws Exception {
 
         // Validate folder name and create the folder if valid
@@ -40,10 +48,23 @@ public class ValidateFolderName {
         }
     }
 
+    /**
+     * Validates the given folder name.
+     *
+     * @param folderName the name of the folder to validate
+     * @return {@code true} if the folder name is not null, not empty, and does not contain any invalid characters;
+     *         {@code false} otherwise
+     */
     private boolean isFolderNameValid(String folderName) {
         return folderName != null && !folderName.isEmpty() && folderName.chars().noneMatch(c -> INVALID_CHARACTERS.contains((char) c));
     }
 
+    /**
+     * Displays an error dialog.
+     *
+     * @param actionEvent the action event that triggered the error dialog
+     * @throws Exception if an error occurs while showing the error dialog
+     */
     private void showErrorDialog(ActionEvent actionEvent) throws Exception {
         Stage ownerStage = StageGetter.getCurrentStage(actionEvent);
         errorDialogView.showErrorDialog(ownerStage);
