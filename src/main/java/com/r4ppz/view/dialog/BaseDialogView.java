@@ -2,16 +2,17 @@ package com.r4ppz.view.dialog;
 
 import java.util.Objects;
 
+import com.r4ppz.util.ImageLoader;
+import javafx.scene.image.Image;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 abstract class BaseDialogView {
+    
     // Abstract method for showing a dialog
     abstract String getFxmlPath();
 
@@ -19,11 +20,15 @@ abstract class BaseDialogView {
     public void showDialog(@NonNull Stage ownerStage) throws Exception {
         String dialog = getFxmlPath();
         Stage stage = new Stage();
-
+        
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        Image image = imageLoader.loadImage("/com/r4ppz/image/main/1.jpg");
+        
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(dialog)));
 
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
+        stage.getIcons().add(image);
         stage.initModality(Modality.APPLICATION_MODAL);
         centerView(stage, ownerStage);
         stage.setResizable(false);

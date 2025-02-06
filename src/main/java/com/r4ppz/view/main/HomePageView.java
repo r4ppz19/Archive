@@ -28,7 +28,7 @@ public class HomePageView {
     public void showMainView() throws Exception {
         Stage stage = new Stage();
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/r4ppz/view/main/HomePage.fxml"))));
-        stage.getIcons().add(imageLoader.loadImage("/com/r4ppz/image/icon/white-circle-icon.png"));
+        stage.getIcons().add(imageLoader.loadImage("/com/r4ppz/image/main/1.jpg"));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Archive");

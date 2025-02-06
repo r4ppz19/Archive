@@ -1,5 +1,7 @@
 package com.r4ppz;
 
+import com.r4ppz.util.ImageLoader;
+import javafx.scene.image.Image;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import javafx.application.Application;
@@ -16,11 +18,16 @@ public class Main extends Application {
 
     @Override
     public void start(@NonNull Stage mainStage) throws Exception {
+        ImageLoader imageLoader = ImageLoader.getInstance();
+
+        Image image = imageLoader.loadImage("/com/r4ppz/image/main/1.jpg");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/r4ppz/view/main/LoginPage.fxml"));
         Parent customRoot = loader.load();
 
         Scene scene = new Scene(customRoot);
         scene.setFill(null);
+        mainStage.getIcons().add(image);
+        mainStage.setResizable(false);
         mainStage.setScene(scene);
         mainStage.show();
     }
