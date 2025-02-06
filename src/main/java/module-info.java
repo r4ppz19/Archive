@@ -17,5 +17,4 @@ module com.r4ppz {
     exports com.r4ppz.test;
     exports com.r4ppz.service;
     exports com.r4ppz.view.dialog;
-    opens com.r4ppz.controller.stage to javafx.fxml;
 }

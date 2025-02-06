@@ -4,8 +4,6 @@ import java.util.Objects;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import com.r4ppz.controller.stage.CustomDialogStageController;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,27 +16,17 @@ abstract class BaseDialogView {
     abstract String getFxmlPath();
 
     // Show the dialog with common functionality
-    public void showDialog(Stage ownerStage) throws Exception {
-        String customDialogStage = "/com/r4ppz/view/stage/CustomDialogStage.fxml";
+    public void showDialog(@NonNull Stage ownerStage) throws Exception {
+        String dialog = getFxmlPath();
         Stage stage = new Stage();
 
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(dialog)));
 
-        FXMLLoader customLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(customDialogStage)));
-        Parent customRoot = customLoader.load();
-
-        FXMLLoader contentLoader = new FXMLLoader(getClass().getResource(getFxmlPath()));
-        Parent contentRoot = contentLoader.load();
-
-        CustomDialogStageController customDialogStageController = customLoader.getController();
-        customDialogStageController.setContent(contentRoot);
-
-        Scene scene = new Scene(customRoot);
-        scene.setFill(null);
+        Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         centerView(stage, ownerStage);
+        stage.setResizable(false);
         stage.initOwner(ownerStage);
         stage.showAndWait();
     }
