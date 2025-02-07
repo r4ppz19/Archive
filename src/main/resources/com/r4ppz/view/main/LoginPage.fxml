@@ -30,11 +30,11 @@
          </HBox>
       </VBox>
    </HBox>
-   <stylesheets>
-      <URL value="@../../css/loginPage/LoginPageDesign.css" />
-      <URL value="@../../css/loginPage/LoginPageDesign.css" />
-   </stylesheets>
    <padding>
       <Insets bottom="30.0" />
    </padding>
+   <stylesheets>
+      <URL value="@../../css/Root.css" />
+      <URL value="@../../css/ButtonDesign.css" />
+   </stylesheets>
 </HBox>

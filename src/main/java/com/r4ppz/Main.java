@@ -25,7 +25,6 @@ public class Main extends Application {
         Parent customRoot = loader.load();
 
         Scene scene = new Scene(customRoot);
-        scene.setFill(null);
         mainStage.getIcons().add(image);
         mainStage.setResizable(false);
         mainStage.setScene(scene);
