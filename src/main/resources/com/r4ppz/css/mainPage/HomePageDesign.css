@@ -1,0 +1,73 @@
+.root {
+    -fx-font-family: Lexend, Inter;
+}
+
+.title-label {
+    -fx-text-fill: #5B5B5B;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+}
+
+.r4ppz-label {
+    -fx-text-fill: #5B5B5B;
+    -fx-font-size: 15px;
+}
+
+.white-background {
+    -fx-background-color: #FFFFFF;
+}
+
+.box1 {
+    -fx-background-color: #BDBDBD;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
+    -fx-background-radius: 5;
+}
+
+.box1-background-only {
+    -fx-background-color: #BDBDBD;
+}
+
+.box2 {
+    -fx-background-color: #D9D9D9;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
+    -fx-background-radius: 5;
+}
+
+.box2-background-only {
+    -fx-background-color: #D9D9D9;
+}
+
+.function-button {
+    -fx-background-color: #959595;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
+    -fx-background-radius: 5;
+    -fx-font-weight: bold;
+}
+
+.function-button:hover {
+    -fx-background-color: #7f7f7f;
+    -fx-text-fill: #000000;
+}
+
+.function-button:pressed {
+    -fx-background-color: #606060;
+    -fx-text-fill: #ffffff;
+}
+
+.function-button:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* ScrollPane Styling */
+.scrollpane {
+    -fx-border-color: transparent;  /* Remove any border */
+    -fx-background-color: transparent; /* Remove the background color */
+    -fx-padding: 0;  /* Remove any padding around the ScrollPane */
+    -fx-effect: none;  /* Remove any effects like shadows */
+    -fx-focus-color: transparent;  /* Remove focus border on click */
+    -fx-faint-focus-color: transparent;  /* Remove faint focus border on click */
+}

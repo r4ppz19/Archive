@@ -1,0 +1,59 @@
+.folder-button {
+    -fx-background-color: #959595;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
+    -fx-background-radius: 5;
+
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    
+    -fx-min-width: 150;
+    -fx-min-height: 45;
+
+}
+
+.folder-button:hover {
+    -fx-background-color: #7f7f7f;
+    -fx-text-fill: #000000;
+}
+
+.folder-button:pressed {
+    -fx-background-color: #606060;
+    -fx-text-fill: #ffffff;
+
+}
+
+.folder-button:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.file-button {
+    -fx-background-color: #959595;
+    -fx-border-color: #000000;
+    -fx-border-radius:  5;
+    -fx-background-radius: 5;
+
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-min-width: 298;
+    -fx-min-height: 40;
+    -fx-max-width: 298;
+    -fx-max-height: 40;
+}
+
+.file-button:hover {
+    -fx-background-color: #7f7f7f;
+    -fx-text-fill: #000000;
+}
+
+.file-button:pressed {
+    -fx-background-color: #606060;
+    -fx-text-fill: #ffffff;
+}
+
+.file-button:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

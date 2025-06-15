@@ -1,0 +1,222 @@
+* a79879b Remove unnecessary exports and opens from module-info.java
+* b3233f7 Format CSS files for consistency and update image link in README
+* 4eac2d2 UI Changes
+* a002b43 Add image icon
+* 7967b6b Remove the custom stage
+* 1dd9229 Update FXML references and adjust JavaFX version in CreateFolderDialog
+* 765779a Refactor lambda parameters for clarity in button actions
+* 89ce488 Add detailed method documentation and create a new FXML file for folder creation dialog
+* 031d3dd Change the Java and JavaFX version to 23
+*   a49cd16 Merge remote-tracking branch 'origin/main'
+|\  
+| * 3b72036 Refactor code formatting and improve consistency across multiple files
+* | 218aa20 Small fixes
+|/  
+* 708fecd Improve "include" feature in fxml and clean up some code
+* 52d3219 Move the ValidateCredentials class from model package to service package
+* 841278f Implement the custom stage to login view
+* a09dd20 Implement custom stage (not finish yet)
+* e993042 Update module
+* b3c9267 Rename css package
+* ea1d6b5 Make reference variable final, remove button variable and clean up FXML
+* 9e9335d Add NotNull and Nullable annotations
+* 9f136a7 Add jetbrains annotations, edit .gitignore
+* 9eab69c FXML clean up
+* c5718af Code clean up
+* b647f85 Refactor dialog close actions to use hide() method and enhance file upload functionality in HomePageController
+* 2a82d2a Refactor package structure from 'org.r4ppz' to 'com.r4ppz' in Java files and FXML resources for improved organization
+* 33c8f80 Refactor package structure from 'org.r4ppz' to 'com.r4ppz' for improved organization
+* bcbcd3b Remove background and border radius styles from LoginPageDesign.css for a cleaner UI
+* d8e13b3 Update HomePage.fxml to change button text and actions for improved functionality
+* 0f82167 Enhance LoginPage design with border and background radius in CSS, and update FXML to use styleClass for background
+* c68405c Enhance UI styles in various CSS files and remove unused LoginDesign.css
+* 55fa664 Clear username text field after successful sign-up in LoginPageController
+* b78f7fd Refactor singleton implementations in DefaultUser, ValidateCredentials, FileHandler, ValidateFolderName, and ImageLoader for consistency and clarity
+* 8f5984d Remove unused import for SuccessDialogView in ValidateFolderName.java
+* 4972c90 Refactor dialog controllers and services to use singleton instances for improved dependency management and code clarity
+* 198df29 Export dialog package in module-info.java for improved accessibility
+* ad1a872 Rename dialog view controllers for consistency; update FXML references accordingly and remove obsolete Login.fxml file.
+* c10f781 Rename LoginViewController to LoginPageController and update references; modify Main class to load LoginPage.fxml for improved clarity and organization.
+* f74b684 Add LoginPageDesign.css and LoginPage.fxml for login interface styling and layout
+* 9951565 Remove ListLoader class and simplify BaseDialogView by making getFxmlPath method package-private
+* 95b6f44 Refactor LoginViewController and ValidateCredentials to use UserModel instance; update ValidateCredentials constructor for improved dependency management.
+* 2e2a5fc Update DynamicHomePageDesign.css to set min and max dimensions for buttons; add box2-background-only style in HomePageDesign.css; refactor HomePage.fxml to include ScrollPane for improved layout and organization.
+* 57c199d Update DynamicHomePageDesign.css to adjust button dimensions; modify HomePage.fxml to enhance layout spacing and improve UI consistency.
+* e6bb291 Refactor HomePageViewController by removing unused imports; update DynamicHomePageDesign.css to set min and max dimensions for buttons; clean up HomePage.fxml by removing redundant button elements for improved clarity and organization.
+* 0f510f4 Rename MainViewController and MainView to HomePageViewController and HomePageView respectively; refactor folder and file loading logic for improved clarity and organization.
+* 18be043 Fix folder name retrieval in CreateFolderDialogViewController to use the correct text field input
+* 045b619 Add DynamicHomePageDesign.css for folder and file button styles; update HomePageDesign.css to use new styles and improve button consistency in HomePage.fxml
+* 5282c52 Rename CustomDesign.css to HomePageDesign.css and update stylesheet reference in HomePage.fxml; enhance button hover, pressed, and focused styles for improved UI interaction.
+* 10bad5a Refactor CSS file paths and remove unused HomePageDesign.css for improved organization and clarity in styling.
+* 6a5caea Refactor CustomDesign.css for improved styling: consolidate background properties, enhance label styles, and streamline button design for better UI consistency.
+* b3939ed Refactor CSS styles for improved UI consistency: rename file-hbox to file-vbox, enhance button styling, and streamline background and border properties across multiple stylesheets.
+* 7d4e540 Add screenshot to README for better visual representation of the application
+* 01c7c69 Add custom CSS styles for improved UI design and enhance existing styles in HomePageDesign.css
+* 9d8283c Refactor FolderData and ListLoader: implement singleton pattern for FolderData, update file loading logic in ListLoader, and enhance MainViewController to utilize new methods for improved clarity and functionality
+* 7e3f60c Refactor MainViewController and FolderData: rename FoldersAndFiles to FolderData, update methods for clarity, and streamline button population logic
+* 36a80dc Refactor MainViewController: introduce loadFiles method for file and folder loading; replace GetFilesToList with ListLoader; add displayFolderData method in FoldersAndFiles; remove GetFilesToList utility
+* c64b62a Refactor MainViewController: remove RefresherService, streamline folder button loading, and update method names for clarity
+* 3efc1a2 Remove PopulateButtons service and clean up MainViewController imports
+*   823290f Fix import statement for LoadButtons service in MainViewController
+|\  
+| * 3c3fad1 Refactor button management: remove LoadButtons, PopulateButtons, and RefreshUI services; streamline folder and file button population logic
+* | 4959991 Refactor MainViewController: replace LoadButtons and RefreshUI with loadFolderButtons method; enhance folder button creation and handling; remove unused services
+* | a1d9ab6 Revert "Refactor folder management: remove CreateFolderDialogViewController; enhance PopulateButtons and RefreshUI services for improved folder and file button population"
+|/  
+* 1d886c1 Refactor folder management: remove CreateFolderDialogViewController; enhance PopulateButtons and RefreshUI services for improved folder and file button population
+* 3b4890f Refactor services: move LoadButtons and RefreshUI to controller package; introduce PopulateButtons for folder button management; add FoldersAndFiles model for folder data handling
+* 2be7655 Add PopulateButtons service and GetFilesToList utility for file management
+* 8965b65 Remove org.r4ppz.test classes and update .gitignore
+* 1320897 Refactor UI refresh logic: replace Refresher with RefreshUI service for improved clarity and functionality; introduce RefresherService for scheduled UI updates
+* ae5713b Refactor folder dialog classes: rename NewFolderDialogView and associated controller to CreateFolderDialogView for clarity; update references and FXML accordingly
+* 723d0e7 Refactor LoadButtons service: remove unnecessary MainViewController instantiation and clean up imports
+* f06939e Refactor MainViewController and services: update file upload logic to use LoadButtons for current folder path; enhance Refresher service to handle null containers and improve UI refresh functionality
+* c051352 Refactor NewFolderDialogViewController and MainViewController: update folder name retrieval and add refresh functionality; introduce Refresher service for improved UI management
+* 2ff5959 Refactor CSS and FXML: update styles for box elements and adjust layout dimensions for improved UI consistency
+* 61bf1e5 Refactor MainViewController: replace populateFolderButtons method with LoadButtons service for improved button loading
+* 2401c36 Refactor button creation: move button creation logic to CreateButton service and simplify MainViewController
+* 9b72e43 Refactor LoginViewController: simplify credential validation by introducing ValidateCredentials service and removing redundant methods
+* 57e25f3 Refactor NewFolderDialogView and NewFolderDialogViewController: remove unused imports and simplify code structure
+* a636dab Refactor NewFolderDialogView: simplify showNewFolderDialog method by removing MainViewController parameter and delegating to showDialog
+* f84e312 Refactor NewFolderDialogViewController: extract folder name validation to ValidateFolderName utility and remove unused imports
+* 0dad6ed Add folder name validation and container cleaning utilities
+* 92db60e Refactor stage retrieval: replace inline stage retrieval logic with StageGetter utility in dialog controllers and FileHandler
+* 2c0b2b2 Refactor package structure: move FileHandler to service package and update imports; add GetStage utility class; enhance TestMethod with scheduled task
+* 6301086 Refactor MainViewController and FileHandler: update uploadFile method to accept Path and track current folder path
+* f0db2b0 Update FinalDesign.css: adjust button padding, alignment, and remove min/max width constraints
+* a796e4d Refactor MainViewController and FileHandler: streamline refresh logic and encapsulate file chooser
+*   9195beb Merge branch 'main' of https://github.com/r4ppz19/archive
+|\  
+| * 25dbc71 Update LICENSE
+* | 8e409f9 Update copyright year in LICENSE file to 2024
+|/  
+* ea46775 Add MIT License file to the repository
+* 68b82d0 Refactor MainViewController to rename refreshContainer to refreshVbox and improve flowPane handling
+* 1c8ced5 CLEAN CODE !!!
+* 6ad0523 CLEAN CODE AND FUNCTIONAL !!!
+* bf151ee Refactor dialog handling to simplify FXMLLoader usage and enhance folder creation logic
+* 8abb957 Refactor LoginViewController to introduce getCurrentStage method for improved code readability and maintainability
+* e26f947 YAAYYY !!!
+* 3da47f6 Add BaseDialogView class to streamline dialog creation and management
+* 0b50c46 ATLEAST ITS WORKING
+* 7ac25a5 Enhance Login and Main UI by adding new styles for title and buttons; refactor layout for improved structure and alignment
+* b18d550 Add MainViewTest class to facilitate testing of Main.fxml loading
+* fc57202 Fix method name typos in singleton instances across MainView, ErrorDialogView, SuccessDialogView, and NewFolderDialogView; rename HandleFile to FileHandler for consistency
+* 9ef54d0 Refactor to remove LoadFXML utility; replace with direct FXMLLoader usage in Main, ErrorDialogView, SuccessDialogView, and MainView
+* f1fc71a Enhance documentation by adding method comments for folder validation, loading folders, file chooser, file copying, and image loading in respective controllers and utilities
+* 2571a0e Refactor NewFolderDialogViewController to improve folder name validation; update MainViewController to use Path for directory operations
+* 4d15490 SAVE POINT !!!
+* 52d7c53 Refactor NewFolderDialogViewController to extract folder creation validation into a separate method; update HandleFile to use Path for folder creation
+* 45e950d SAVE POINT !!!
+* 4d0177e Refactor package structure for dialog and main controllers; update FXML paths for consistency
+* b3c239d Refactor file handling in MainViewController and HandleFile to use Path instead of File for improved file operations
+* 5ef82cb Add error handling to NewFolderDialogViewController for empty folder names
+* df85f48 Rename alert and dialog view classes and FXML files for consistency; update main view initialization
+* be85c03 Refactor alert view methods to accept owner stage for improved dialog positioning
+* ee58818 Enhance AlertDesign.css by making label text bold for improved visibility
+* daf9eef Update pom.xml to set Java source and target version to 17; modify main class reference for consistency
+* 247d8f4 Rename MainViewV2 to MainView; update references in MainViewTest and MainView for consistency
+* 785ced2 Refactor MainViewV2 to MainView; update references in LoginViewController, NewFolderAlertView, and NewFolderAlertViewController for consistency
+* 5ba42a7 Refactor folder creation logic to use NewFolderAlertView; update MainViewV2Controller and related classes for improved structure and clarity
+* f6e619a Refactor FxmlLoader references to LoadFXML in Main class for consistency
+* 838f233 Refactor FxmlLoader references to LoadFXML for consistency across views
+* cae59e2 Rename FxmlLoader class to LoadFXML for improved clarity and consistency
+* 0b60d6d Enhance UI with new styles for folder creation and tooltips; add NewFolderAlert.css for folder creation dialog
+* 35ba79a Refactor folder creation logic into HandleFile class and update MainViewV2Controller to use it
+* b19517a Add NewFolderAlert functionality with UI components for folder creation
+* 8448a62 Implement addFolderButton method to create new folders dynamically in MainViewV2Controller
+* a568289 Add file chooser and file copy functionality to HandleFile class
+* cb965c7 Add functionality to create new folders with dynamic text fields in MainViewV2
+* 8fda2bd Rename TestMethod class package from model to test
+* 25b3d39 Refactor MainViewV2Controller to replace fileContainer with leftPanelVbox and implement loadFolderToButtons method for folder listing
+* fe0d7a6 Add TestMethod and FileSnippet classes for folder and file listing functionality
+* 6e4401b Add PDF image extraction functionality and update MainViewV2 layout
+* 5e9749b Update pom.xml to use version properties for JavaFX dependencies and add Apache PDFBox dependency
+* dd8cdc9 Add MainViewV2Test and enhance LoginViewController with ActionEvent parameter
+* e40b427 Add TestFX dependencies for enhanced testing support
+* 77e093a Refactor LoginViewController and MainViewV2Controller for improved code quality and null safety
+* 7254ab8 Remove unused buttons from LoginViewController and MainViewV2Controller for cleaner code
+* 3952e38 Update file path in MainViewV2Controller to reflect package structure change
+* c85211b Refactor package structure from 'com.r4ppz' to 'org.r4ppz' for improved organization and consistency
+* bbc8cbe Add Maven wrapper files for improved project setup and dependency management
+* 3e77255 Update .gitignore to include additional directories and files for improved project cleanliness
+* a3ba432 Update pom.xml for project restructuring: change groupId and artifactId, upgrade dependencies, and modify build configurations for improved compatibility and organization.
+* 67f0eb9 Open module for javafx.fxml access to enable FXML loading in com.r4ppz
+* 77ad3eb Remove WindowTest, MainViewController, MainView, MainDesign.css, and MainView.fxml for codebase cleanup
+* 9d224c9 Refactor ErrorAlertViewController and SuccessAlertViewController to remove unused button references; update LoginViewController to use MainViewV2 and add MainViewV2 class for improved main view management.
+* 1b80811 Remove unused okButton references from ErrorAlertViewController and SuccessAlertViewController; update FXML files accordingly
+* ea5a54e Remove text-fill color from button styles in AlertDesign.css, FinalDesign.css, and LoginDesign.css for consistency in button appearance
+* a8339d9 Refactor folder button tooltip and styles in MainViewV2Controller; update CSS for improved button appearance and tooltip design
+* 2379ec3 Add tooltip to folder buttons in MainViewV2Controller for improved user experience
+* e4558e4 Add loadFilesToButton method to MainViewV2Controller for improved file loading; clear fileContainer before refreshing
+* d7463c4 Add MainViewV2Controller for file upload functionality; enhance FinalDesign.css with new button styles; improve layout in MainViewController
+* 83e5831 Update MainViewV2.fxml layout; enhance button styles in FinalDesign.css; fix resource loading in WindowTest class
+* b1bf3e9 Add FinalDesign.css for improved styling; create MainViewV2.fxml for layout updates; adjust button position in MainView.fxml; clean up WindowTest class
+* 57d2403 Refactor CSS styles for buttons and containers; update FXML layout for improved structure and clarity
+* 82627da Refactor fields in various classes to use 'final' for immutability; correct comments for clarity
+* 0544307 Fix resource paths in Main and WindowTest classes; remove unused Delete button from MainView.fxml
+* 6fe25d6 Clean up Main class by removing commented-out FileManagerView instantiation; format WindowTest class for consistency
+* ebfc1c8 Refactor resource paths to include package structure; add WindowTest class for MainView testing
+* 6e5f8c4 Remove FileManagerController, FileManagerView, and associated FXML file to streamline codebase and eliminate unused functionality
+* 41691cc Refactor MainViewController to instantiate SuccessAlertView within the upload logic; update MainDesign.css comments for clarity; adjust layout properties in MainView.fxml for improved UI structure
+* 0b8fab7 Refactor MainViewController by renaming refreshFileContainer method to refresh for clarity and consistency
+* de1287c Refactor MainView layout by updating style classes from 'Box' to 'Default'; replace HBox with ScrollPane for file container and enhance button tooltips for clarity
+* c5a78b8 Add file container to MainView for dynamic file display; implement refresh logic on upload success and update CSS for file box styling
+* a89577f Add FileManagerView and FileManagerController for file management functionality; implement ListView to display files from uploads directory and enhance CSS for ListView styling
+* 371e1be Refactor MainView layout by renaming VBox style class to 'Box' and enhancing structure with additional HBox and Pane elements; add ScrollBar for improved navigation
+* 446b9d3 Enhance MainView layout by adding VBox for better structure and styling; update tooltip for upload button
+* 4e00d3f Remove console log for file upload success in MainViewController to streamline success alert handling
+* af510b7 Refactor LoginViewController and MainViewController to improve method naming for success alerts; update SuccessAlertView method to enhance clarity
+* 46c2c4c Refactor LoginViewController to replace TrollView with MainView and update pom.xml main class; remove TrollViewController and associated files for cleaner architecture
+* 33a1a2e Rename showSignUpView to successAlertView and update its usage in LoginViewController and MainViewController for clarity and consistency
+* b3f5bf2 Add uploads directory to .gitignore
+* f928505 Refactor DefaultUser to implement singleton pattern for consistent instance management
+* 68f0af9 Implement singleton pattern for alert views and MainView to ensure single instance usage across the application
+* 51dbf93 Refactor ImageLoader to reintroduce imageCache for improved image loading efficiency
+* f9eb4b4 Remove commented-out code and streamline FxmlLoader and ImageLoader classes for improved readability
+* 594f377 Add file upload functionality to MainViewController; implement HandleFile utility for file selection and copying
+* 017d22b Refactor LoginViewController to use TrollView; remove MainView references and update action handling. Add new TrollViewController and associated FXML for improved user interaction.
+* fba796b Add action handling for username field in LoginViewController; update FXML to trigger sign-in on enter key
+* ae82be3 Remove commented-out initialize method in LoginViewController; streamline password field action handling
+* ffb342d Implement password field action in LoginViewController; update FXML to trigger sign-in on enter key
+* feacd46 Rename button and update action method in MainViewController; adjust layout dimensions and modify FXML for improved UI
+* 3605210 Refactor MainViewController to add exception handling in button action; remove RewardView.fxml file
+* 3d5766f Update button text in MainView and add RewardView layout for reward display
+* 4666cf8 Implement dynamic button movement on hover in MainViewController; update FXML for button layout and label text
+* 142a868 Add MainView components and styling; implement button action in MainViewController
+* c919a61 Update README to reflect ongoing development status; remove outdated project name section
+* 9b43ab3 Update FXML files to use JavaFX 17; adjust namespaces in ErrorAlert, MainView, and SuccessAlert
+* 48749b2 Refactor signInAction logic in LoginViewController for improved readability; consolidate user validation conditions
+* b3e4034 Add MainView functionality and integrate with LoginViewController; implement main view display and close current stage on successful login
+* 621339f Rename ErrorAlert and SuccessAlert classes to ErrorAlertView and SuccessAlertView; update references in LoginViewController
+* c88880b Refactor alert handling: replace SignInAlert with ErrorAlert, implement error display logic, and remove unused SignInViewController
+* 85bebe5 Add ErrorAlert functionality with controller and FXML; implement error display logic
+* 2e2be46 Rename SignUpAlert to SuccessAlert and update related classes and FXML; enhance alert design
+* 3e3a650 Rename MainViewController to LoginViewController and update FXML to reflect changes
+* 97df212 Update README to reflect application purpose; add DefaultUser integration in MainViewController for enhanced sign-in functionality
+* 395af6d Update README to remove build and run instructions; add DefaultUser model class
+* 18d4174 Enhance sign-in validation and update UI messages; modify FXML for improved user feedback
+* 88ab387 Add SignInAlert and SignInViewController; integrate sign-in functionality in MainViewController
+* 6817c94 Update JavaFX version to 17 in pom.xml and FXML files
+* 302dfda Clean up code formatting and remove unnecessary blank lines in various classes
+* 4d089ec Refactor ImageLoader to implement singleton pattern; update Main and SignUpAlert to use the new instance method
+* 1dc43ee Refactor FxmlLoader to implement singleton pattern; update Main and SignUpAlert to use the new instance method
+* 1f88043 Implement image caching in ImageLoader to optimize image loading performance
+* 760c83b Fix password variable name in UserModel and streamline signUpAction validation
+* db9cf48 Validate username and password input in signUpAction; add error message for empty fields
+* 19fd640 Add SignUpViewController and AlertDesign CSS; update SignUpAlert.fxml for button action and styling
+* 4b82d9f Add public instances of ImageLoader and FxmlLoader in Main; create Main instance in SignUpAlert for utility access
+* 2d54a35 Refactor Main class to use FxmlLoader and ImageLoader; update SignUpAlert for modal display and non-resizable properties
+* 5324b8c Enhance SignUpAlert to be modal and non-resizable for improved user experience
+* 25898da Update main window title from "Welcome :)" to "Archive"
+* 56bb735 Rename UserPassModel to UserModel and update MainViewController to reflect changes in user credential handling
+* e43eb8c Add SignUpAlert class and integrate with MainViewController for sign-up functionality
+* e50dce1 Update .gitignore and enhance Main class with application icon and title
+* 8188034 Add UserPassModel for handling user credentials and update MainViewController for sign-in and sign-up actions
+* b4c3f54 Replace MainView with LoginView and implement basic login UI components
+* 51d70fb Add initial JavaFX application structure with main view and model classes
+* 2985ee8 Remove JavaFX application and associated resources
+* 663d5af Add .gitignore and update scene initialization in App.java
+* f308d50 Remove target directory from version control
+* b3181ec Add README.md
+* 6989453 Initialize repo for creating archive software by r4ppz

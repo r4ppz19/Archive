@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="145.0" prefWidth="225.0" style="-fx-background-color: #BDBDBD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.r4ppz.controller.dialog.CreateFolderDialogController">
+   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="157.0" text="Create New Folder" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="200.0" spacing="5.0" styleClass="background">
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+         <TextField fx:id="folderNameTextField" onAction="#handleFolderNameTextFieldAction" prefHeight="27.0" prefWidth="122.0" promptText="New Folder" styleClass="text-field" />
+         <Button mnemonicParsing="false" onAction="#handleCreateButtonAction" prefHeight="26.0" prefWidth="70.0" text="Create">
+            <font>
+               <Font size="10.0" />
+            </font>
+         </Button>
+      </HBox>
+   </VBox>
+   <stylesheets>
+      <URL value="@../../css/TextField.css" />
+      <URL value="@../../css/ButtonDesign.css" />
+   </stylesheets>
+</AnchorPane>
